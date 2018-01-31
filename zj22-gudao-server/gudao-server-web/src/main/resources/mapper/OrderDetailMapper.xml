@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="me.zj22.gudao.server.web.dao.db.OrderDetailMapper" >
+  <resultMap id="BaseResultMap" type="me.zj22.gudao.server.web.dao.model.OrderDetail" >
+    <id column="detail_id" property="detailId" jdbcType="INTEGER" />
+    <result column="product_quantity" property="productQuantity" jdbcType="INTEGER" />
+    <result column="price" property="price" jdbcType="INTEGER" />
+    <result column="order_id" property="orderId" jdbcType="INTEGER" />
+    <result column="product_id" property="productId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    detail_id, product_quantity, price, order_id, product_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from order_detail
+    where detail_id = #{detailId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from order_detail
+    where detail_id = #{detailId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="me.zj22.gudao.server.web.dao.model.OrderDetail" >
+    insert into order_detail (detail_id, product_quantity, price, 
+      order_id, product_id)
+    values (#{detailId,jdbcType=INTEGER}, #{productQuantity,jdbcType=INTEGER}, #{price,jdbcType=INTEGER}, 
+      #{orderId,jdbcType=INTEGER}, #{productId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="me.zj22.gudao.server.web.dao.model.OrderDetail" >
+    insert into order_detail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="detailId != null" >
+        detail_id,
+      </if>
+      <if test="productQuantity != null" >
+        product_quantity,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="productId != null" >
+        product_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="detailId != null" >
+        #{detailId,jdbcType=INTEGER},
+      </if>
+      <if test="productQuantity != null" >
+        #{productQuantity,jdbcType=INTEGER},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=INTEGER},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="productId != null" >
+        #{productId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="me.zj22.gudao.server.web.dao.model.OrderDetail" >
+    update order_detail
+    <set >
+      <if test="productQuantity != null" >
+        product_quantity = #{productQuantity,jdbcType=INTEGER},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=INTEGER},
+      </if>
+      <if test="orderId != null" >
+        order_id = #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="productId != null" >
+        product_id = #{productId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where detail_id = #{detailId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="me.zj22.gudao.server.web.dao.model.OrderDetail" >
+    update order_detail
+    set product_quantity = #{productQuantity,jdbcType=INTEGER},
+      price = #{price,jdbcType=INTEGER},
+      order_id = #{orderId,jdbcType=INTEGER},
+      product_id = #{productId,jdbcType=INTEGER}
+    where detail_id = #{detailId,jdbcType=INTEGER}
+  </update>
+</mapper>

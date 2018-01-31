@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="me.zj22.gudao.server.web.dao.db.OperationMapper" >
+  <resultMap id="BaseResultMap" type="me.zj22.gudao.server.web.dao.model.Operation" >
+    <id column="op_id" property="opId" jdbcType="INTEGER" />
+    <result column="op_name" property="opName" jdbcType="VARCHAR" />
+    <result column="op_href" property="opHref" jdbcType="VARCHAR" />
+    <result column="op_code" property="opCode" jdbcType="VARCHAR" />
+    <result column="op_seq" property="opSeq" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    op_id, op_name, op_href, op_code, op_seq, description
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from operation
+    where op_id = #{opId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from operation
+    where op_id = #{opId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="me.zj22.gudao.server.web.dao.model.Operation" >
+    insert into operation (op_id, op_name, op_href, 
+      op_code, op_seq, description
+      )
+    values (#{opId,jdbcType=INTEGER}, #{opName,jdbcType=VARCHAR}, #{opHref,jdbcType=VARCHAR}, 
+      #{opCode,jdbcType=VARCHAR}, #{opSeq,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="me.zj22.gudao.server.web.dao.model.Operation" >
+    insert into operation
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="opId != null" >
+        op_id,
+      </if>
+      <if test="opName != null" >
+        op_name,
+      </if>
+      <if test="opHref != null" >
+        op_href,
+      </if>
+      <if test="opCode != null" >
+        op_code,
+      </if>
+      <if test="opSeq != null" >
+        op_seq,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="opId != null" >
+        #{opId,jdbcType=INTEGER},
+      </if>
+      <if test="opName != null" >
+        #{opName,jdbcType=VARCHAR},
+      </if>
+      <if test="opHref != null" >
+        #{opHref,jdbcType=VARCHAR},
+      </if>
+      <if test="opCode != null" >
+        #{opCode,jdbcType=VARCHAR},
+      </if>
+      <if test="opSeq != null" >
+        #{opSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="me.zj22.gudao.server.web.dao.model.Operation" >
+    update operation
+    <set >
+      <if test="opName != null" >
+        op_name = #{opName,jdbcType=VARCHAR},
+      </if>
+      <if test="opHref != null" >
+        op_href = #{opHref,jdbcType=VARCHAR},
+      </if>
+      <if test="opCode != null" >
+        op_code = #{opCode,jdbcType=VARCHAR},
+      </if>
+      <if test="opSeq != null" >
+        op_seq = #{opSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where op_id = #{opId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="me.zj22.gudao.server.web.dao.model.Operation" >
+    update operation
+    set op_name = #{opName,jdbcType=VARCHAR},
+      op_href = #{opHref,jdbcType=VARCHAR},
+      op_code = #{opCode,jdbcType=VARCHAR},
+      op_seq = #{opSeq,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR}
+    where op_id = #{opId,jdbcType=INTEGER}
+  </update>
+</mapper>
