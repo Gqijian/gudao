@@ -11,5 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/demo")
 public class DemoController {
 
+    @RequestMapping("/test")
+    public Object test(){
+        return "test";
+    }
 
 }
