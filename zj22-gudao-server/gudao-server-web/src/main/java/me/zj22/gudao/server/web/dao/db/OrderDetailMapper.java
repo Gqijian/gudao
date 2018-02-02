@@ -1,7 +1,9 @@
 package me.zj22.gudao.server.web.dao.db;
 
 import me.zj22.gudao.server.web.dao.model.OrderDetail;
+import org.apache.ibatis.annotations.Mapper;
 
+@Mapper
 public interface OrderDetailMapper {
     int deleteByPrimaryKey(Integer detailId);
 
