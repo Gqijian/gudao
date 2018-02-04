@@ -1,7 +1,7 @@
 package me.zj22.gudao.server.web.dao.db;
 
-import me.zj22.gudao.server.web.dao.model.Points;
-import me.zj22.gudao.server.web.dao.model.PointsKey;
+import me.zj22.gudao.server.web.pojo.dto.Points;
+import me.zj22.gudao.server.web.pojo.dto.PointsKey;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper

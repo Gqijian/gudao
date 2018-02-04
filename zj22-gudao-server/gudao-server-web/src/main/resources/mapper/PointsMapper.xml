@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="me.zj22.gudao.server.web.dao.db.PointsMapper" >
-  <resultMap id="BaseResultMap" type="me.zj22.gudao.server.web.dao.model.Points" >
+  <resultMap id="BaseResultMap" type="me.zj22.gudao.server.web.pojo.dto.Points" >
     <id column="points_id" property="pointsId" jdbcType="INTEGER" />
     <id column="order_id" property="orderId" jdbcType="INTEGER" />
     <result column="create_time" property="createTime" jdbcType="INTEGER" />
@@ -12,19 +12,19 @@
   <sql id="Base_Column_List" >
     points_id, order_id, create_time, points_record, flag, user_id
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="me.zj22.gudao.server.web.dao.model.PointsKey" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="me.zj22.gudao.server.web.pojo.dto.PointsKey" >
     select 
     <include refid="Base_Column_List" />
     from points
     where points_id = #{pointsId,jdbcType=INTEGER}
       and order_id = #{orderId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="me.zj22.gudao.server.web.dao.model.PointsKey" >
+  <delete id="deleteByPrimaryKey" parameterType="me.zj22.gudao.server.web.pojo.dto.PointsKey" >
     delete from points
     where points_id = #{pointsId,jdbcType=INTEGER}
       and order_id = #{orderId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="me.zj22.gudao.server.web.dao.model.Points" >
+  <insert id="insert" parameterType="me.zj22.gudao.server.web.pojo.dto.Points" >
     insert into points (points_id, order_id, create_time, 
       points_record, flag, user_id
       )
@@ -32,7 +32,7 @@
       #{pointsRecord,jdbcType=INTEGER}, #{flag,jdbcType=TINYINT}, #{userId,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="me.zj22.gudao.server.web.dao.model.Points" >
+  <insert id="insertSelective" parameterType="me.zj22.gudao.server.web.pojo.dto.Points" >
     insert into points
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="pointsId != null" >
@@ -75,7 +75,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="me.zj22.gudao.server.web.dao.model.Points" >
+  <update id="updateByPrimaryKeySelective" parameterType="me.zj22.gudao.server.web.pojo.dto.Points" >
     update points
     <set >
       <if test="createTime != null" >
@@ -94,7 +94,7 @@
     where points_id = #{pointsId,jdbcType=INTEGER}
       and order_id = #{orderId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="me.zj22.gudao.server.web.dao.model.Points" >
+  <update id="updateByPrimaryKey" parameterType="me.zj22.gudao.server.web.pojo.dto.Points" >
     update points
     set create_time = #{createTime,jdbcType=INTEGER},
       points_record = #{pointsRecord,jdbcType=INTEGER},

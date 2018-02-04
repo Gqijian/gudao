@@ -7,6 +7,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  *
@@ -16,6 +17,7 @@ import org.springframework.context.annotation.ComponentScan;
 @MapperScan(basePackages = {"me.zj22.gudao.server.web.dao.db"})
 @ComponentScan({"me.zj22.gudao.server"})
 @ServletComponentScan// 允许servlet
+@EnableTransactionManagement
 @SpringBootApplication
 public class GuDaoWebApplication {// extends SpringBootServletInitializer {
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="me.zj22.gudao.server.web.dao.db.OrderMapper" >
-  <resultMap id="BaseResultMap" type="me.zj22.gudao.server.web.dao.model.Order" >
+  <resultMap id="BaseResultMap" type="me.zj22.gudao.server.web.pojo.dto.Order" >
     <id column="order_id" property="orderId" jdbcType="INTEGER" />
     <result column="receiver_name" property="receiverName" jdbcType="VARCHAR" />
     <result column="receiver_phone" property="receiverPhone" jdbcType="VARCHAR" />
@@ -33,7 +33,7 @@
     delete from order
     where order_id = #{orderId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="me.zj22.gudao.server.web.dao.model.Order" >
+  <insert id="insert" parameterType="me.zj22.gudao.server.web.pojo.dto.Order" >
     insert into order (order_id, receiver_name, receiver_phone, 
       prov, city, county, 
       address, zipcode, order_amount, 
@@ -47,7 +47,7 @@
       #{operationTime,jdbcType=BIGINT}, #{operator,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
       #{userId,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="me.zj22.gudao.server.web.dao.model.Order" >
+  <insert id="insertSelective" parameterType="me.zj22.gudao.server.web.pojo.dto.Order" >
     insert into order
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="orderId != null" >
@@ -150,7 +150,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="me.zj22.gudao.server.web.dao.model.Order" >
+  <update id="updateByPrimaryKeySelective" parameterType="me.zj22.gudao.server.web.pojo.dto.Order" >
     update order
     <set >
       <if test="receiverName != null" >
@@ -201,7 +201,7 @@
     </set>
     where order_id = #{orderId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="me.zj22.gudao.server.web.dao.model.Order" >
+  <update id="updateByPrimaryKey" parameterType="me.zj22.gudao.server.web.pojo.dto.Order" >
     update order
     set receiver_name = #{receiverName,jdbcType=VARCHAR},
       receiver_phone = #{receiverPhone,jdbcType=VARCHAR},

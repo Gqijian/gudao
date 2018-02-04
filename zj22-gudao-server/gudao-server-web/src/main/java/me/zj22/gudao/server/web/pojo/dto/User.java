@@ -1,4 +1,4 @@
-package me.zj22.gudao.server.web.dao.model;
+package me.zj22.gudao.server.web.pojo.dto;
 
 public class User {
     private Integer userId;

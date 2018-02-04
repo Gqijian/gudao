@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="me.zj22.gudao.server.web.dao.db.RebateMapper" >
-  <resultMap id="BaseResultMap" type="me.zj22.gudao.server.web.dao.model.Rebate" >
+  <resultMap id="BaseResultMap" type="me.zj22.gudao.server.web.pojo.dto.Rebate" >
     <id column="rebate_id" property="rebateId" jdbcType="INTEGER" />
     <result column="rebate_ratio" property="rebateRatio" jdbcType="DOUBLE" />
     <result column="available" property="available" jdbcType="TINYINT" />
@@ -23,7 +23,7 @@
     delete from rebate
     where rebate_id = #{rebateId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="me.zj22.gudao.server.web.dao.model.Rebate" >
+  <insert id="insert" parameterType="me.zj22.gudao.server.web.pojo.dto.Rebate" >
     insert into rebate (rebate_id, rebate_ratio, available, 
       create_time, create_user, update_time, 
       update_user)
@@ -31,7 +31,7 @@
       #{createTime,jdbcType=BIGINT}, #{createUser,jdbcType=VARCHAR}, #{updateTime,jdbcType=BIGINT}, 
       #{updateUser,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="me.zj22.gudao.server.web.dao.model.Rebate" >
+  <insert id="insertSelective" parameterType="me.zj22.gudao.server.web.pojo.dto.Rebate" >
     insert into rebate
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="rebateId != null" >
@@ -80,7 +80,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="me.zj22.gudao.server.web.dao.model.Rebate" >
+  <update id="updateByPrimaryKeySelective" parameterType="me.zj22.gudao.server.web.pojo.dto.Rebate" >
     update rebate
     <set >
       <if test="rebateRatio != null" >
@@ -104,7 +104,7 @@
     </set>
     where rebate_id = #{rebateId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="me.zj22.gudao.server.web.dao.model.Rebate" >
+  <update id="updateByPrimaryKey" parameterType="me.zj22.gudao.server.web.pojo.dto.Rebate" >
     update rebate
     set rebate_ratio = #{rebateRatio,jdbcType=DOUBLE},
       available = #{available,jdbcType=TINYINT},

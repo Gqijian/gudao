@@ -1,6 +1,6 @@
 package me.zj22.gudao.server.web.dao.db;
 
-import me.zj22.gudao.server.web.dao.model.ProductInfo;
+import me.zj22.gudao.server.web.pojo.dto.ProductInfo;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper

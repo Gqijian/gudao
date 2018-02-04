@@ -3,23 +3,21 @@ package me.zj22.gudao.server.web;
 import com.alibaba.druid.pool.DruidDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 import javax.sql.DataSource;
 
 /**
  * @author Gqijian
  */
-@Configuration
+//@Configuration
+@Deprecated
 public class MybatisConfig {
 
-    @Autowired
+//    @Autowired
     private DataSourceProperties dataSourceProperties;
 
-    @Bean(name="dataSource")
+//    @Bean(name="dataSource")
     public DataSource dataSource(){
         DruidDataSource dataSource = new  DruidDataSource();
         dataSource.setUrl(dataSourceProperties.getUrl());

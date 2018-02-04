@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="me.zj22.gudao.server.web.dao.db.OperationMapper" >
-  <resultMap id="BaseResultMap" type="me.zj22.gudao.server.web.dao.model.Operation" >
+  <resultMap id="BaseResultMap" type="me.zj22.gudao.server.web.pojo.dto.Operation" >
     <id column="op_id" property="opId" jdbcType="INTEGER" />
     <result column="op_name" property="opName" jdbcType="VARCHAR" />
     <result column="op_href" property="opHref" jdbcType="VARCHAR" />
@@ -22,7 +22,7 @@
     delete from operation
     where op_id = #{opId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="me.zj22.gudao.server.web.dao.model.Operation" >
+  <insert id="insert" parameterType="me.zj22.gudao.server.web.pojo.dto.Operation" >
     insert into operation (op_id, op_name, op_href, 
       op_code, op_seq, description
       )
@@ -30,7 +30,7 @@
       #{opCode,jdbcType=VARCHAR}, #{opSeq,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="me.zj22.gudao.server.web.dao.model.Operation" >
+  <insert id="insertSelective" parameterType="me.zj22.gudao.server.web.pojo.dto.Operation" >
     insert into operation
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="opId != null" >
@@ -73,7 +73,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="me.zj22.gudao.server.web.dao.model.Operation" >
+  <update id="updateByPrimaryKeySelective" parameterType="me.zj22.gudao.server.web.pojo.dto.Operation" >
     update operation
     <set >
       <if test="opName != null" >
@@ -94,7 +94,7 @@
     </set>
     where op_id = #{opId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="me.zj22.gudao.server.web.dao.model.Operation" >
+  <update id="updateByPrimaryKey" parameterType="me.zj22.gudao.server.web.pojo.dto.Operation" >
     update operation
     set op_name = #{opName,jdbcType=VARCHAR},
       op_href = #{opHref,jdbcType=VARCHAR},

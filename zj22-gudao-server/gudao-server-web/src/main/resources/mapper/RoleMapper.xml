@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="me.zj22.gudao.server.web.dao.db.RoleMapper" >
-  <resultMap id="BaseResultMap" type="me.zj22.gudao.server.web.dao.model.Role" >
+  <resultMap id="BaseResultMap" type="me.zj22.gudao.server.web.pojo.dto.Role" >
     <id column="role_id" property="roleId" jdbcType="INTEGER" />
     <result column="role_name" property="roleName" jdbcType="VARCHAR" />
     <result column="description" property="description" jdbcType="VARCHAR" />
@@ -25,7 +25,7 @@
     delete from role
     where role_id = #{roleId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="me.zj22.gudao.server.web.dao.model.Role" >
+  <insert id="insert" parameterType="me.zj22.gudao.server.web.pojo.dto.Role" >
     insert into role (role_id, role_name, description, 
       available, create_time, create_user, 
       update_time, update_user)
@@ -33,7 +33,7 @@
       #{available,jdbcType=TINYINT}, #{createTime,jdbcType=BIGINT}, #{createUser,jdbcType=INTEGER}, 
       #{updateTime,jdbcType=BIGINT}, #{updateUser,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="me.zj22.gudao.server.web.dao.model.Role" >
+  <insert id="insertSelective" parameterType="me.zj22.gudao.server.web.pojo.dto.Role" >
     insert into role
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="roleId != null" >
@@ -88,7 +88,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="me.zj22.gudao.server.web.dao.model.Role" >
+  <update id="updateByPrimaryKeySelective" parameterType="me.zj22.gudao.server.web.pojo.dto.Role" >
     update role
     <set >
       <if test="roleName != null" >
@@ -115,7 +115,7 @@
     </set>
     where role_id = #{roleId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="me.zj22.gudao.server.web.dao.model.Role" >
+  <update id="updateByPrimaryKey" parameterType="me.zj22.gudao.server.web.pojo.dto.Role" >
     update role
     set role_name = #{roleName,jdbcType=VARCHAR},
       description = #{description,jdbcType=VARCHAR},

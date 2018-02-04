@@ -7,7 +7,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>gudao-server-web</artifactId>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <name>gudao-server-web</name>
     <url>http://maven.apache.org</url>
 
