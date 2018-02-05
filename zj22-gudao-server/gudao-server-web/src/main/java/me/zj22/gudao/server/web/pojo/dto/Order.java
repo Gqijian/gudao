@@ -1,37 +1,44 @@
 package me.zj22.gudao.server.web.pojo.dto;
 
+/**
+ * @Program:zj22-gudao-server
+ * @Description:订单表
+ * @Author Gqjian
+ * @Create 2018/2/5 15:38:07
+ */
+
 public class Order {
     private Integer orderId;
 
-    private String receiverName;
+    private String receiverName;    //收件人姓名
 
-    private String receiverPhone;
+    private String receiverPhone;    //收件人电话
 
-    private String prov;
+    private String prov;    //省
 
-    private String city;
+    private String city;    //市
 
-    private String county;
+    private String county;    //区
 
-    private String address;
+    private String address;    //地址
 
-    private String zipcode;
+    private String zipcode;    //邮编
 
-    private Integer orderAmount;
+    private Integer orderAmount;    //总价（不含邮费）
 
-    private Integer postage;
+    private Integer postage;    //邮费
 
-    private Byte orderStatus;
+    private Byte orderStatus;    //订单状态
 
-    private Long createTime;
+    private Long createTime;    //创建时间
 
-    private Long operationTime;
+    private Long operationTime;    //最近一次操作时间
 
-    private String operator;
+    private String operator;    //操作人
 
-    private String remark;
+    private String remark;    //备注
 
-    private Integer userId;
+    private Integer userId;    //用户id
 
     public Integer getOrderId() {
         return orderId;

@@ -1,27 +1,34 @@
 package me.zj22.gudao.server.web.pojo.dto;
 
+/**
+ * @Program:zj22-gudao-server
+ * @Description:买家用户表
+ * @Author Gqjian
+ * @Create 2018/2/5 15:38:07
+ */
+
 public class User {
     private Integer userId;
 
-    private String openid;
+    private String openid;  //
 
-    private String nickname;
+    private String nickname;    //
 
-    private Integer sex;
+    private Integer sex;    //
 
-    private String country;
+    private String country; //
 
-    private String province;
+    private String province;    //
 
-    private String city;
+    private String city;    //
 
-    private String headImgUrl;
+    private String headImgUrl;  //
 
-    private Integer integral;
+    private Integer integral;   //
 
-    private Integer total;
+    private Integer total;  //
 
-    private Long createTime;
+    private Long createTime;    //
 
     public Integer getUserId() {
         return userId;

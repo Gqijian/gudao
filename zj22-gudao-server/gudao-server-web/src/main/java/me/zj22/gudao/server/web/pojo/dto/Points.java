@@ -1,13 +1,20 @@
 package me.zj22.gudao.server.web.pojo.dto;
 
+/**
+ * @Program:zj22-gudao-server
+ * @Description:积分表
+ * @Author Gqjian
+ * @Create 2018/2/5 15:38:07
+ */
+
 public class Points extends PointsKey {
-    private Integer createTime;
+    private Integer createTime; //创建时间
 
-    private Integer pointsRecord;
+    private Integer pointsRecord;   //积分
 
-    private Byte flag;
+    private Byte flag;  //能否提现标志，1，已提现，0，未提现，
 
-    private Integer userId;
+    private Integer userId; //用户id
 
     public Integer getCreateTime() {
         return createTime;

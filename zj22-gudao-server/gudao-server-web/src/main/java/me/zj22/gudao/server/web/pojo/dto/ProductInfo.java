@@ -1,37 +1,44 @@
 package me.zj22.gudao.server.web.pojo.dto;
 
+/**
+ * @Program:zj22-gudao-server
+ * @Description:商品表
+ * @Author Gqjian
+ * @Create 2018/2/5 15:38:07
+ */
+
 public class ProductInfo {
     private Integer productId;
 
-    private String productName;
+    private String productName; //商品名称
 
-    private String productIconOne;
+    private String productIconOne;  //图片
 
-    private String productIconTwo;
+    private String productIconTwo;     //图片
 
-    private String productIconThree;
+    private String productIconThree;       //图片
 
-    private Integer productPrice;
+    private Integer productPrice;   //单价，单位分
 
-    private Integer cost;
+    private Integer cost;   //成本价，单位分
 
-    private Integer weight;
+    private Integer weight; //重量，单位克
 
-    private Byte productStatus;
+    private Byte productStatus; //商品状态
 
-    private String productAbout;
+    private String productAbout;    //商品简介
 
-    private Integer productStock;
+    private Integer productStock;   //库存
 
-    private Long createTime;
+    private Long createTime;    //创建时间
 
-    private String creatUser;
+    private String creatUser;   //创建人
 
-    private Long updateTime;
+    private Long updateTime;    //修改时间
 
-    private String updateUser;
+    private String updateUser;  //修改人
 
-    private String productDescription;
+    private String productDescription;  //商品详情
 
     public Integer getProductId() {
         return productId;

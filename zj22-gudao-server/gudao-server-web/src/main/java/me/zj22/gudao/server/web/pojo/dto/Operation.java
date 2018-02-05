@@ -1,17 +1,24 @@
 package me.zj22.gudao.server.web.pojo.dto;
 
+/**
+ * @Program:zj22-gudao-server
+ * @Description:权限表
+ * @Author Gqjian
+ * @Create 2018/2/5 15:38:07
+ */
+
 public class Operation {
     private Integer opId;
 
-    private String opName;
+    private String opName;  //权限名
 
-    private String opHref;
+    private String opHref;  //访问url地址
 
-    private String opCode;
+    private String opCode;  //操作权限标识码
 
-    private String opSeq;
+    private String opSeq;   //序列生成默认增长顺序
 
-    private String description;
+    private String description; //描述
 
     public Integer getOpId() {
         return opId;

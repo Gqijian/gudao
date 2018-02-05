@@ -1,21 +1,28 @@
 package me.zj22.gudao.server.web.pojo.dto;
 
+/**
+ * @Program:zj22-gudao-server
+ * @Description:用户角色
+ * @Author Gqjian
+ * @Create 2018/2/5 15:38:07
+ */
+
 public class Role {
     private Integer roleId;
 
-    private String roleName;
+    private String roleName;    //权限角色名称1
 
-    private String description;
+    private String description; //描述
 
-    private Byte available;
+    private Byte available; //是否可用，1，不可用，0，可用
 
-    private Long createTime;
+    private Long createTime;    //创建时间
 
-    private Integer createUser;
+    private Integer createUser; //创建人
 
-    private Long updateTime;
+    private Long updateTime;    //修改时间
 
-    private Integer updateUser;
+    private Integer updateUser; //修改人
 
     public Integer getRoleId() {
         return roleId;
