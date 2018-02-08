@@ -34,6 +34,7 @@
         <mybatis.spring.version>1.3.1</mybatis.spring.version>
         <alibaba.druid.version>1.1.4</alibaba.druid.version>
         <zj22-commons.version>1.0-SNAPSHOT</zj22-commons.version>
+        <zj22.wechat.version>1.0-SNAPSHOT</zj22.wechat.version>
         <orionarmz-commons.version>1.0-SNAPSHOT</orionarmz-commons.version>
     </properties>
 
@@ -114,6 +115,29 @@
                 <artifactId>springfox-swagger2</artifactId>
                 <version>${springfox.version}</version>
             </dependency>
+
+            <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+            <dependency>
+                <groupId>com.google.code.gson</groupId>
+                <artifactId>gson</artifactId>
+                <version>2.8.0</version>
+            </dependency>
+
+            <!-- 微信API的支持 -->
+            <dependency>
+                <groupId>me.zj22</groupId>
+                <artifactId>wechat</artifactId>
+                <version>${zj22.wechat.version}</version>
+            </dependency>
+            <!--Intellij idea开发的话需要安装Lombok plugin，同时设置
+            Setting -> Compiler -> Annotation Processors -> Enable annotation processing勾选 -->
+           <!-- <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <scope>provided</scope>
+            </dependency>-->
+
+
             <!--<dependency>
                 <groupId>org.orionarmz.commons</groupId>
                 <artifactId>orionarmz-commons-lang</artifactId>

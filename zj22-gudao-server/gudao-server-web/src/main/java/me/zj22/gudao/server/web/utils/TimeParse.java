@@ -56,14 +56,26 @@ public class TimeParse {
 
     /**
      * 将Unix时间戳转换成指定格式日期字符串
-     * @param timestampString 时间戳 如："1473048265";
-     *
      * @return 返回结果 如："2018-01-01 10:01:01";
      */
-    public static String NUIX2Time(int timestampString, String formats) {
-        Long timestamp = (long)timestampString * 1000;
-        String date = getSimpleDateFormat().format(new Date(timestamp));
-        return date;
+    public static String NUIX2Time(Date date) {
+        return NUIX2Time(0, date);
+    }
+
+    public static String NUIX2Time(int timestampString) {
+        return NUIX2Time(timestampString, null);
+    }
+
+    public static String NUIX2Time(int timestampString,Date date) {
+        String formatDate = null;
+        if(timestampString != 0){
+            Long timestamp = (long)timestampString * 1000;
+            formatDate = getSimpleDateFormat().format(new Date(timestamp));
+        }
+        if(date != null){
+            formatDate = getSimpleDateFormat().format(date);
+        }
+        return formatDate;
     }
 
 }

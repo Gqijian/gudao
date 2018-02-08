@@ -43,16 +43,18 @@ public class Page<T> implements Serializable {
     public void setRows(Integer rows) {
         this.rows = rows;
     }
-    /*public Integer getTotalRecord() {
+
+    public Integer getTotalRecord() {
         return totalRecord;
-    }*/
+    }
     public void setTotalRecord(Integer totalRecord) {
         pageMap.put("total", totalRecord);
         this.totalRecord = totalRecord;
     }
-    /*	public List<T> getList() {
-            return list;
-        }*/
+    public List<T> getList() {
+        return list;
+    }
+
     public void setList(List<T> list) {
         pageMap.put("rows", list);
         this.list = list;
