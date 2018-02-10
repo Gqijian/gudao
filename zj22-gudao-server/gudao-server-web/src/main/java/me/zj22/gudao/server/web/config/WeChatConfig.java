@@ -2,6 +2,7 @@ package me.zj22.gudao.server.web.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -12,6 +13,7 @@ import java.util.Properties;
  * Created by 袁鹏 on 2018/2/8.
  */
 @Configuration
+@Component
 public class WeChatConfig {
 
     private static String WECHAT_APP_ID;
@@ -33,11 +35,15 @@ public class WeChatConfig {
      */
     private static String WECHAT_MCH_ID;
 
-    private static String WECHAT_PARTNER_KEY;
+    private static String WECHAT_MCHKEY;
+
+    private static String WECHAT_KEYPATH;
 
     private static String WECHAT_TRADE_TYPE;
 
     private static String WECHAT_KEY;
+
+    private static String WECHAT_NOTIFYURL;
 
     /**public WeChatConfig(Environment env) {
      WECHAT_APP_ID               = env.getProperty("wechat.app.id");
@@ -61,10 +67,37 @@ public class WeChatConfig {
         WECHAT_TEMPLATE_ID = properties.getProperty("wechat.Template.ID");
 
         //微信支付相关
-        WECHAT_PARTNER_KEY = properties.getProperty("wechat.mch.id");
-        WECHAT_MCH_ID = properties.getProperty("wechat.partner.key");
+        WECHAT_MCHKEY = properties.getProperty("wechat.mchKey");
+        WECHAT_MCH_ID = properties.getProperty("wechat.mch.id");
+        WECHAT_KEYPATH = properties.getProperty("wechat.keyPath");
         WECHAT_TRADE_TYPE = properties.getProperty("wechat.trade.type");
         WECHAT_KEY = properties.getProperty("wechat.key");
+        WECHAT_NOTIFYURL = properties.getProperty("wechat.notifyUrl");
+
+    }
+
+    public static String getWechatNotifyurl() {
+        return WECHAT_NOTIFYURL;
+    }
+
+    public static void setWechatNotifyurl(String wechatNotifyurl) {
+        WECHAT_NOTIFYURL = wechatNotifyurl;
+    }
+
+    public static String getWechatMchkey() {
+        return WECHAT_MCHKEY;
+    }
+
+    public static void setWechatMchkey(String wechatMchkey) {
+        WECHAT_MCHKEY = wechatMchkey;
+    }
+
+    public static String getWechatKeypath() {
+        return WECHAT_KEYPATH;
+    }
+
+    public static void setWechatKeypath(String wechatKeypath) {
+        WECHAT_KEYPATH = wechatKeypath;
     }
 
     public static String getWechatAppId() {
@@ -91,15 +124,43 @@ public class WeChatConfig {
         return WECHAT_MCH_ID;
     }
 
-    public static String getWechatPartnerKey() {
-        return WECHAT_PARTNER_KEY;
-    }
-
     public static String getWechatTradeType() {
         return WECHAT_TRADE_TYPE;
     }
 
     public static String getWechatKey() {
         return WECHAT_KEY;
+    }
+
+    public static void setWechatAppId(String wechatAppId) {
+        WECHAT_APP_ID = wechatAppId;
+    }
+
+    public static void setWechatAppSecret(String wechatAppSecret) {
+        WECHAT_APP_SECRET = wechatAppSecret;
+    }
+
+    public static void setWechatAppToken(String wechatAppToken) {
+        WECHAT_APP_TOKEN = wechatAppToken;
+    }
+
+    public static void setWechatUrl(String wechatUrl) {
+        WECHAT_URL = wechatUrl;
+    }
+
+    public static void setWechatTemplateId(String wechatTemplateId) {
+        WECHAT_TEMPLATE_ID = wechatTemplateId;
+    }
+
+    public static void setWechatMchId(String wechatMchId) {
+        WECHAT_MCH_ID = wechatMchId;
+    }
+
+    public static void setWechatTradeType(String wechatTradeType) {
+        WECHAT_TRADE_TYPE = wechatTradeType;
+    }
+
+    public static void setWechatKey(String wechatKey) {
+        WECHAT_KEY = wechatKey;
     }
 }
