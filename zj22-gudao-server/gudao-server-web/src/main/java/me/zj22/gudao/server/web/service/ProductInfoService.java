@@ -1,6 +1,7 @@
 package me.zj22.gudao.server.web.service;
 
 import me.zj22.gudao.server.web.pojo.dto.ProductInfo;
+import me.zj22.gudao.server.web.pojo.vo.Cart;
 import me.zj22.gudao.server.web.pojo.vo.Page;
 
 import java.util.List;
@@ -25,7 +26,9 @@ public interface ProductInfoService {
     /**保存商品*/
     void save(ProductInfo productInfo);
 
-    //TODO 加库存
+    //加库存
+    void increaseStock(List<Cart> cartList);
 
-    //TODO 减库存
+    //减库存
+    void decreaseStock(List<Cart> cartList);
 }

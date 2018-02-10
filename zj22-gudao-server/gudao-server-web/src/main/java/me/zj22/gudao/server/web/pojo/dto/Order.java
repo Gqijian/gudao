@@ -1,5 +1,7 @@
 package me.zj22.gudao.server.web.pojo.dto;
 
+import me.zj22.gudao.server.web.enums.OrderStatusEnum;
+
 /**
  * @Program:zj22-gudao-server
  * @Description:订单表
@@ -28,7 +30,7 @@ public class Order {
 
     private Integer postage;    //邮费
 
-    private Byte orderStatus;    //订单状态
+    private Byte orderStatus = OrderStatusEnum.NEW.getCode();    //订单状态
 
     private Long createTime;    //创建时间
 
