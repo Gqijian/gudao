@@ -1,0 +1,9 @@
+<html>
+<head>
+    <title>ftl测试</title>
+</head>
+<body>
+  <h1>ftl页面可以使用</h1>
+${test}
+</body>
+</html>

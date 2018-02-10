@@ -25,6 +25,8 @@ public enum  ResultEnum {
     CART_EMPTY(17, "购物车为空"),
 
     ORDER_OWNER_ERRR(18, "当前订单不属于您"),
+
+    WXPAY_NOTIFY_MONEY_ERROR(19, "异步支付微信金额不一致")
     ;
 
     private  Integer code;
