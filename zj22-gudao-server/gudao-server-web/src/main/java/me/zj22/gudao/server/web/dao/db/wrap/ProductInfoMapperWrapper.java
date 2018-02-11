@@ -2,7 +2,6 @@ package me.zj22.gudao.server.web.dao.db.wrap;
 
 import me.zj22.gudao.server.web.dao.db.ProductInfoMapper;
 import me.zj22.gudao.server.web.pojo.dto.ProductInfo;
-import me.zj22.gudao.server.web.pojo.vo.Cart;
 import me.zj22.gudao.server.web.pojo.vo.Page;
 import org.apache.ibatis.annotations.Mapper;
 

@@ -16,4 +16,8 @@ public class ResponseCodeConsts {
 
     // TODO 更多标识码
 
+    /**
+     * 抛出异常识别
+     */
+    public static final Integer EXCEPITON = 500;
 }
