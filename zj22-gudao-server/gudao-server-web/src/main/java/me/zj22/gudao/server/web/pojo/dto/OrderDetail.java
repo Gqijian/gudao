@@ -1,29 +1,22 @@
 package me.zj22.gudao.server.web.pojo.dto;
 
-/**
- * @Program:zj22-gudao-server
- * @Description:订单商品详情信息表
- * @Author Gqjian
- * @Create 2018/2/5 15:38:07
- */
-
 public class OrderDetail {
-    private Integer detailId;
+    private String detailId;
 
-    private Integer productQuantity;    //数量
+    private Integer productQuantity;
 
-    private Integer price;    //金额,单位分
+    private Integer price;
 
-    private Integer orderId;    //订单id
+    private String orderId;
 
-    private Integer productId;    //商品id
+    private Integer productId;
 
-    public Integer getDetailId() {
+    public String getDetailId() {
         return detailId;
     }
 
-    public void setDetailId(Integer detailId) {
-        this.detailId = detailId;
+    public void setDetailId(String detailId) {
+        this.detailId = detailId == null ? null : detailId.trim();
     }
 
     public Integer getProductQuantity() {
@@ -42,12 +35,12 @@ public class OrderDetail {
         this.price = price;
     }
 
-    public Integer getOrderId() {
+    public String getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(Integer orderId) {
-        this.orderId = orderId;
+    public void setOrderId(String orderId) {
+        this.orderId = orderId == null ? null : orderId.trim();
     }
 
     public Integer getProductId() {

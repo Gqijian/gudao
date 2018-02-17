@@ -4,7 +4,7 @@ import com.lly835.bestpay.model.PayResponse;
 import com.lly835.bestpay.service.BestPayService;
 import me.zj22.gudao.server.web.enums.ResultEnum;
 import me.zj22.gudao.server.web.exception.daoGuException;
-import me.zj22.gudao.server.web.pojo.dto.OrderDTO;
+import me.zj22.gudao.server.web.pojo.vo.OrderDTO;
 import me.zj22.gudao.server.web.service.OrderService;
 import me.zj22.gudao.server.web.service.PayService;
 import me.zj22.gudao.server.web.utils.JsonUtils;

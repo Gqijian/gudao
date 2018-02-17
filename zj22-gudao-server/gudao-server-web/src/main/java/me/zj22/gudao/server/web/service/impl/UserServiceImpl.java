@@ -1,6 +1,5 @@
 package me.zj22.gudao.server.web.service.impl;
 
-import me.zj22.gudao.server.web.dao.db.UserMapper;
 import me.zj22.gudao.server.web.pojo.dto.User;
 import me.zj22.gudao.server.web.service.UserSerivce;
 import org.springframework.beans.factory.annotation.Autowired;

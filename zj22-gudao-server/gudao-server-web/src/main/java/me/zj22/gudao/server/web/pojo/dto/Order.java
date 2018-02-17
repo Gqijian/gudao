@@ -1,53 +1,44 @@
 package me.zj22.gudao.server.web.pojo.dto;
 
-import me.zj22.gudao.server.web.enums.OrderStatusEnum;
-
-/**
- * @Program:zj22-gudao-server
- * @Description:订单表
- * @Author Gqjian
- * @Create 2018/2/5 15:38:07
- */
-
 public class Order {
-    private Integer orderId;
+    private String orderId;
 
-    private String receiverName;    //收件人姓名
+    private String receiverName;
 
-    private String receiverPhone;    //收件人电话
+    private String receiverPhone;
 
-    private String prov;    //省
+    private String prov;
 
-    private String city;    //市
+    private String city;
 
-    private String county;    //区
+    private String county;
 
-    private String address;    //地址
+    private String address;
 
-    private String zipcode;    //邮编
+    private String zipcode;
 
-    private Integer orderAmount;    //总价（不含邮费）
+    private Integer orderAmount;
 
-    private Integer postage;    //邮费
+    private Integer postage;
 
-    private Byte orderStatus = OrderStatusEnum.NEW.getCode();    //订单状态
+    private Byte orderStatus;
 
-    private Long createTime;    //创建时间
+    private Long createTime;
 
-    private Long operationTime;    //最近一次操作时间
+    private Long operationTime;
 
-    private String operator;    //操作人
+    private String operator;
 
-    private String remark;    //备注
+    private String remark;
 
-    private Integer userId;    //用户id
+    private Integer userId;
 
-    public Integer getOrderId() {
+    public String getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(Integer orderId) {
-        this.orderId = orderId;
+    public void setOrderId(String orderId) {
+        this.orderId = orderId == null ? null : orderId.trim();
     }
 
     public String getReceiverName() {

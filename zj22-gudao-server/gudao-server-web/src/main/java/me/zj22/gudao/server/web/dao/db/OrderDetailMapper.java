@@ -1,17 +1,15 @@
 package me.zj22.gudao.server.web.dao.db;
 
 import me.zj22.gudao.server.web.pojo.dto.OrderDetail;
-import org.apache.ibatis.annotations.Mapper;
 
-@Mapper
 public interface OrderDetailMapper {
-    int deleteByPrimaryKey(Integer detailId);
+    int deleteByPrimaryKey(String detailId);
 
     int insert(OrderDetail record);
 
     int insertSelective(OrderDetail record);
 
-    OrderDetail selectByPrimaryKey(Integer detailId);
+    OrderDetail selectByPrimaryKey(String detailId);
 
     int updateByPrimaryKeySelective(OrderDetail record);
 

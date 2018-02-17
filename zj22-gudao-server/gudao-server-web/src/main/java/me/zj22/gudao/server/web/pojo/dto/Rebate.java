@@ -1,26 +1,19 @@
 package me.zj22.gudao.server.web.pojo.dto;
 
-/**
- * @Program:zj22-gudao-server
- * @Description:返点表
- * @Author Gqjian
- * @Create 2018/2/5 15:38:07
- */
-
 public class Rebate {
     private Integer rebateId;
 
-    private Double rebateRatio; //返点比例
+    private Double rebateRatio;
 
-    private Byte available; //是否可用，1，可用，0，不可用
+    private Byte available;
 
-    private Long createTime;    //创建时间
+    private Long createTime;
 
-    private String createUser;  //创建人
+    private String createUser;
 
-    private Long updateTime;    //修改时间
+    private Long updateTime;
 
-    private String updateUser;  //修改人
+    private String updateUser;
 
     public Integer getRebateId() {
         return rebateId;

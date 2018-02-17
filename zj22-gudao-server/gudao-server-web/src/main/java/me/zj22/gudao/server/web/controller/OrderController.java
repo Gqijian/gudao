@@ -3,7 +3,7 @@ package me.zj22.gudao.server.web.controller;
 import me.zj22.gudao.server.web.enums.ResultEnum;
 import me.zj22.gudao.server.web.exception.daoGuException;
 import me.zj22.gudao.server.web.form.OrderForm;
-import me.zj22.gudao.server.web.pojo.dto.OrderDTO;
+import me.zj22.gudao.server.web.pojo.vo.OrderDTO;
 import me.zj22.gudao.server.web.pojo.vo.JsonResponse;
 import me.zj22.gudao.server.web.pojo.vo.Page;
 import me.zj22.gudao.server.web.service.BuyerService;

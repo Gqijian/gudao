@@ -1,4 +1,7 @@
-package me.zj22.gudao.server.web.pojo.dto;
+package me.zj22.gudao.server.web.pojo.vo;
+
+import me.zj22.gudao.server.web.pojo.dto.Order;
+import me.zj22.gudao.server.web.pojo.dto.OrderDetail;
 
 import java.util.List;
 
@@ -6,7 +9,7 @@ import java.util.List;
  * daogu
  * Created by 袁鹏 on 2018/2/6.
  */
-public class OrderDTO extends  Order {
+public class OrderDTO extends Order {
     private List<OrderDetail> orderDetailList;
 
     private String viewTimeToString;

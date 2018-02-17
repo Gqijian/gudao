@@ -1,6 +1,5 @@
 package me.zj22.gudao.server.web.service.impl;
 
-import me.zj22.gudao.server.web.dao.db.ProductInfoMapper;
 import me.zj22.gudao.server.web.pojo.dto.ProductInfo;
 import me.zj22.gudao.server.web.pojo.vo.CartProduct;
 import me.zj22.gudao.server.web.service.CartService;
