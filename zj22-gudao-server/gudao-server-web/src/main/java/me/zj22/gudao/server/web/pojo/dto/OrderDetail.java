@@ -1,22 +1,34 @@
 package me.zj22.gudao.server.web.pojo.dto;
 
+import java.math.BigDecimal;
+
 public class OrderDetail {
-    private String detailId;
+    private Integer detailId;
+
+    private String orderNum;
 
     private Integer productQuantity;
 
-    private Integer price;
+    private BigDecimal price;
 
     private String orderId;
 
     private Integer productId;
 
-    public String getDetailId() {
+    public Integer getDetailId() {
         return detailId;
     }
 
-    public void setDetailId(String detailId) {
-        this.detailId = detailId == null ? null : detailId.trim();
+    public void setDetailId(Integer detailId) {
+        this.detailId = detailId;
+    }
+
+    public String getOrderNum() {
+        return orderNum;
+    }
+
+    public void setOrderNum(String orderNum) {
+        this.orderNum = orderNum == null ? null : orderNum.trim();
     }
 
     public Integer getProductQuantity() {
@@ -27,11 +39,11 @@ public class OrderDetail {
         this.productQuantity = productQuantity;
     }
 
-    public Integer getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 

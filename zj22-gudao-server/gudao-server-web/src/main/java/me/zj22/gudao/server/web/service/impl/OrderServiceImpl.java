@@ -2,6 +2,7 @@ package me.zj22.gudao.server.web.service.impl;
 
 import me.zj22.gudao.server.web.dao.db.OrderDetailMapper;
 import me.zj22.gudao.server.web.dao.db.OrderMapper;
+import me.zj22.gudao.server.web.dao.db.UserMapper;
 import me.zj22.gudao.server.web.enums.OrderStatusEnum;
 import me.zj22.gudao.server.web.pojo.dto.Order;
 import me.zj22.gudao.server.web.pojo.dto.OrderDetail;
@@ -31,6 +32,11 @@ public class OrderServiceImpl implements OrderService{
     @Autowired
     private OrderDetailMapper orderDetailMapper;
 
+    /**
+     * 创建订单
+     * @param orderDTO
+     * @return
+     */
     @Override
     public OrderDTO create(OrderDTO orderDTO) {
         Order order = new Order();
@@ -60,14 +66,39 @@ public class OrderServiceImpl implements OrderService{
         return orderDTO;
     }
 
+    /**
+     * 查询单个订单
+     * @param orderId
+     * @return
+     */
     @Override
-    public OrderDTO findOne(Integer orderId) {
-
-        return null;
+    public OrderDTO findOne(Long orderId) {
+        Order order = orderMapper.selectByPrimaryKey(orderId.toString());
+        List<OrderDetail> orderDetails = orderDetailMapper.selectByOrderId(orderId.toString());
+        OrderDTO orderDTO = new OrderDTO();
+        orderDTO.setOrderId(order.getOrderId());
+        orderDTO.setReceiverName(order.getReceiverName());
+        orderDTO.setReceiverPhone(order.getReceiverPhone());
+        orderDTO.setProv(order.getProv());
+        orderDTO.setCity(order.getCity());
+        orderDTO.setCounty(order.getCounty());
+        orderDTO.setAddress(order.getAddress());
+        orderDTO.setZipcode(order.getZipcode());
+        orderDTO.setOrderAmount(order.getOrderAmount());
+        orderDTO.setPostage(order.getPostage());
+        orderDTO.setOrderStatus(order.getOrderStatus());
+        orderDTO.setCreateTime(order.getCreateTime());
+        orderDTO.setOperationTime(order.getOperationTime());
+        orderDTO.setOperator(order.getOperator());
+        orderDTO.setRemark(order.getRemark());
+        orderDTO.setUserId(order.getUserId());
+        orderDTO.setOrderDetailList(orderDetails);
+        return orderDTO;
     }
 
     @Override
     public Page<OrderDTO> findAllListOrder(Page<OrderDTO> page, String openId) {
+
         return null;
     }
 

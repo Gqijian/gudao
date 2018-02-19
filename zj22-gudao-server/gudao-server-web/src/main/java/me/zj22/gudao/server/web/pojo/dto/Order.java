@@ -1,7 +1,11 @@
 package me.zj22.gudao.server.web.pojo.dto;
 
+import java.math.BigDecimal;
+
 public class Order {
-    private String orderId;
+    private Integer orderId;
+
+    private String orderNum;
 
     private String receiverName;
 
@@ -17,9 +21,9 @@ public class Order {
 
     private String zipcode;
 
-    private Integer orderAmount;
+    private BigDecimal orderAmount;
 
-    private Integer postage;
+    private BigDecimal postage;
 
     private Byte orderStatus;
 
@@ -33,12 +37,22 @@ public class Order {
 
     private Integer userId;
 
-    public String getOrderId() {
+    private Byte payStatus;
+
+    public Integer getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(String orderId) {
-        this.orderId = orderId == null ? null : orderId.trim();
+    public void setOrderId(Integer orderId) {
+        this.orderId = orderId;
+    }
+
+    public String getOrderNum() {
+        return orderNum;
+    }
+
+    public void setOrderNum(String orderNum) {
+        this.orderNum = orderNum == null ? null : orderNum.trim();
     }
 
     public String getReceiverName() {
@@ -97,19 +111,19 @@ public class Order {
         this.zipcode = zipcode == null ? null : zipcode.trim();
     }
 
-    public Integer getOrderAmount() {
+    public BigDecimal getOrderAmount() {
         return orderAmount;
     }
 
-    public void setOrderAmount(Integer orderAmount) {
+    public void setOrderAmount(BigDecimal orderAmount) {
         this.orderAmount = orderAmount;
     }
 
-    public Integer getPostage() {
+    public BigDecimal getPostage() {
         return postage;
     }
 
-    public void setPostage(Integer postage) {
+    public void setPostage(BigDecimal postage) {
         this.postage = postage;
     }
 
@@ -159,5 +173,13 @@ public class Order {
 
     public void setUserId(Integer userId) {
         this.userId = userId;
+    }
+
+    public Byte getPayStatus() {
+        return payStatus;
+    }
+
+    public void setPayStatus(Byte payStatus) {
+        this.payStatus = payStatus;
     }
 }
