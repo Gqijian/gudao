@@ -57,7 +57,7 @@ public class OrderController {
         OrderDTO creatResult = orderService.create(orderDTO);
         JsonResponse<Map<String, String>> json = new JsonResponse<>();
         Map<String, String> map = new HashMap<>();
-        map.put("orderId", String.valueOf(creatResult.getOrderId()));//订单返回的是订单号、
+        map.put("orderNum", String.valueOf(creatResult.getOrderNum()));//订单返回的是订单号、
         json.setData(map);
         return json;
     }
@@ -83,8 +83,8 @@ public class OrderController {
     @ResponseBody
     public JsonResponse<OrderDTO> detail(
             @RequestParam("openId") String openId,
-            @RequestParam("orderId") Integer orderId){
-        OrderDTO orderDTO = buyerService.findOrderOne(openId, orderId);
+            @RequestParam("orderId") Long orderNum){
+        OrderDTO orderDTO = buyerService.findOrderOne(openId, orderNum);
         JsonResponse<OrderDTO> json = new JsonResponse<>();
         json.setData(orderDTO);
         return json;
@@ -96,8 +96,8 @@ public class OrderController {
     @ResponseBody
     public JsonResponse cancel(
             @RequestParam("openId") String openId,
-            @RequestParam("orderId") Integer orderId){
-        buyerService.cancelOrder(openId, orderId);
+            @RequestParam("orderNum") Long orderNum){
+        buyerService.cancelOrder(openId, orderNum);
         JsonResponse json = new JsonResponse();
         return json;
     }

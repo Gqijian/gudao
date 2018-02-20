@@ -16,7 +16,7 @@ public interface OrderService {
     OrderDTO create(OrderDTO orderDTO);
 
     /**查询单个订单*/
-    OrderDTO findOne(Long orderId);
+    OrderDTO findOne(String orderNum);
 
     /**查询订单列表,分页  里面的keyWord也填充为openId*/
     Page<OrderDTO> findAllListOrder(Page<OrderDTO> page, String openId);

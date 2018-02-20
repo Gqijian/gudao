@@ -42,9 +42,9 @@ public class OrderServiceImpl implements OrderService{
         Order order = new Order();
         //获得一个订单ID
         IdWorkerUtil idWork = new IdWorkerUtil(0,0);
-        Long orderId = idWork.nextId();
+        Long orderNum = idWork.nextId();
         //补全pojo
-        orderDTO.setOrderId(orderId.toString());
+        orderDTO.setOrderNum(orderNum.toString());
         //订单状态
         orderDTO.setOrderStatus(OrderStatusEnum.NEW.getCode());
         Date time = new Date();
@@ -58,9 +58,7 @@ public class OrderServiceImpl implements OrderService{
         //插入订单表明细
         List<OrderDetail> orderDetails = orderDTO.getOrderDetailList();
         for (OrderDetail orderDetail:orderDetails) {
-            Long orderDetailId = idWork.nextId();
-            orderDetail.setDetailId(orderDetailId.toString());
-            orderDetail.setOrderId(orderId.toString());
+            orderDetail.setOrderNum(orderNum.toString());
             orderDetailMapper.insert(orderDetail);
         }
         return orderDTO;
@@ -68,13 +66,58 @@ public class OrderServiceImpl implements OrderService{
 
     /**
      * 查询单个订单
-     * @param orderId
+     * @param orderNum
      * @return
      */
     @Override
-    public OrderDTO findOne(Long orderId) {
-        Order order = orderMapper.selectByPrimaryKey(orderId.toString());
-        List<OrderDetail> orderDetails = orderDetailMapper.selectByOrderId(orderId.toString());
+    public OrderDTO findOne(String orderNum) {
+        Order order = orderMapper.selectOrderByNum(orderNum);
+        List<OrderDetail> orderDetails = orderDetailMapper.selectOrderDetailsByNum(orderNum);
+        OrderDTO orderDTO = copyOderParams(order);
+        orderDTO.setOrderDetailList(orderDetails);
+        return orderDTO;
+    }
+
+    @Override
+    public Page<OrderDTO> findAllListOrder(Page<OrderDTO> page, String openId) {
+
+        return null;
+    }
+
+    @Override
+    public OrderDTO cancel(OrderDTO orderDTO) {
+        Order order = orderMapper.selectOrderByNum(orderDTO.getOrderNum());
+        order.setOrderStatus(OrderStatusEnum.CANCEL.getCode());
+        if(orderMapper.updateByPrimaryKey(order)>0){
+            OrderDTO orderDTO = copyOderParams(order);
+            return orderDTO;
+        }
+        return null;
+    }
+
+    @Override
+    public OrderDTO finish(OrderDTO orderDTO) {
+        Order order = orderMapper.selectOrderByNum(orderDTO.getOrderNum());
+        order.setOrderStatus(OrderStatusEnum.FINIFSHED.getCode());
+        if(orderMapper.updateByPrimaryKey(order)>0){
+            OrderDTO orderDTO = copyOderParams(order);
+            return orderDTO;
+        }
+        return null;
+    }
+
+    @Override
+    public OrderDTO paid(OrderDTO orderDTO) {
+        Order order = orderMapper.selectOrderByNum(orderDTO.getOrderNum());
+        order.setOrderStatus(OrderStatusEnum.PAY_WAIT.getCode());
+        if(orderMapper.updateByPrimaryKey(order)>0){
+            OrderDTO orderDTO = copyOderParams(order);
+            return orderDTO;
+        }
+        return null;
+    }
+
+    private OrderDTO copyOderParams(Order order){
         OrderDTO orderDTO = new OrderDTO();
         orderDTO.setOrderId(order.getOrderId());
         orderDTO.setReceiverName(order.getReceiverName());
@@ -92,28 +135,6 @@ public class OrderServiceImpl implements OrderService{
         orderDTO.setOperator(order.getOperator());
         orderDTO.setRemark(order.getRemark());
         orderDTO.setUserId(order.getUserId());
-        orderDTO.setOrderDetailList(orderDetails);
         return orderDTO;
-    }
-
-    @Override
-    public Page<OrderDTO> findAllListOrder(Page<OrderDTO> page, String openId) {
-
-        return null;
-    }
-
-    @Override
-    public OrderDTO cancel(OrderDTO orderDTO) {
-        return null;
-    }
-
-    @Override
-    public OrderDTO finish(OrderDTO orderDTO) {
-        return null;
-    }
-
-    @Override
-    public OrderDTO paid(OrderDTO orderDTO) {
-        return null;
     }
 }

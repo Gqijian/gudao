@@ -1,5 +1,7 @@
 package me.zj22.gudao.server.web.pojo.dto;
 
+import me.zj22.gudao.server.web.enums.OrderStatusEnum;
+
 import java.math.BigDecimal;
 
 public class Order {
@@ -25,7 +27,7 @@ public class Order {
 
     private BigDecimal postage;
 
-    private Byte orderStatus;
+    private Byte orderStatus = OrderStatusEnum.NEW.getCode();
 
     private Long createTime;
 

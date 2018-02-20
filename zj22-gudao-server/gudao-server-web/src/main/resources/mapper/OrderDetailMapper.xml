@@ -103,4 +103,11 @@
       product_id = #{productId,jdbcType=INTEGER}
     where detail_id = #{detailId,jdbcType=INTEGER}
   </update>
+
+  <select id="selectOrderDetailsByNum" resultMap="java.util.List" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from order_detail
+    where order_num = #{orderNum,jdbcType=VARCHAR}
+  </select>
 </mapper>

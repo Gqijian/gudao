@@ -14,4 +14,7 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+
+    //根据openId查询用户
+    User selectUserByOpenId(String openId);
 }

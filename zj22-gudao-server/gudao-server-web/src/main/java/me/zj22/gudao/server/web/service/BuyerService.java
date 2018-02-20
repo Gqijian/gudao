@@ -10,8 +10,8 @@ import me.zj22.gudao.server.web.pojo.vo.OrderDTO;
 public interface BuyerService {
 
     /**查询一个订单*/
-    OrderDTO findOrderOne(String openId, Integer orderId);
+    OrderDTO findOrderOne(String openId, Long orderNum);
 
     /**取消一个订单*/
-    OrderDTO cancelOrder(String openId, Integer orderId);
+    OrderDTO cancelOrder(String openId, Long orderNum);
 }
