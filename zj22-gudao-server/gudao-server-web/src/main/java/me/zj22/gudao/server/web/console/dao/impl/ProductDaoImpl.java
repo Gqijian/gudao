@@ -1,6 +1,6 @@
-package me.zj22.gudao.server.web.console.service.impl;
+package me.zj22.gudao.server.web.console.dao.impl;
 
-import me.zj22.gudao.server.web.console.service.ProductService;
+import me.zj22.gudao.server.web.console.dao.ProductDao;
 import org.springframework.stereotype.Service;
 
 /**
@@ -11,5 +11,5 @@ import org.springframework.stereotype.Service;
  * @Create 2018/2/18 17:18:28
  */
 @Service
-public class ProductServiceImpl implements ProductService{
+public class ProductDaoImpl implements ProductDao {
 }

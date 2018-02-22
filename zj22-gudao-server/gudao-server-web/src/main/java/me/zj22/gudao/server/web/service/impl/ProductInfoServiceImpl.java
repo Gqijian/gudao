@@ -3,6 +3,7 @@ package me.zj22.gudao.server.web.service.impl;
 import me.zj22.gudao.server.web.dao.db.wrap.ProductInfoMapperWrapper;
 import me.zj22.gudao.server.web.enums.ProductStatusEnum;
 import me.zj22.gudao.server.web.pojo.dto.ProductInfo;
+import me.zj22.gudao.server.web.pojo.vo.Cart;
 import me.zj22.gudao.server.web.pojo.vo.Page;
 import me.zj22.gudao.server.web.service.ProductInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,5 +48,15 @@ public class ProductInfoServiceImpl implements ProductInfoService {
     @Override
     public void save(ProductInfo productInfo) {
         productInfoMapperWrapper.save(productInfo);
+    }
+
+    @Override
+    public void increaseStock(List<Cart> cartList) {
+
+    }
+
+    @Override
+    public void decreaseStock(List<Cart> cartList) {
+
     }
 }

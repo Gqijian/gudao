@@ -1,4 +1,4 @@
-package me.zj22.gudao.server.web.console.service;
+package me.zj22.gudao.server.web.console.dao;
 
 import me.zj22.gudao.server.web.pojo.dto.ProductInfo;
 
@@ -8,6 +8,6 @@ import me.zj22.gudao.server.web.pojo.dto.ProductInfo;
  * @Author Gqjian
  * @Create 2018/2/18 17:15:33
  */
-public interface ProductService {
+public interface ProductDao {
 
 }
