@@ -223,9 +223,8 @@
 
   <select id="findSeller" parameterType="me.zj22.gudao.server.web.pojo.dto.Operator" resultMap="BaseResultMap">
     SELECT
-    id, username, password,
-    openid, create_time, update_time
+    <include refid="Base_Column_List" />
     from
-    seller_info where real_name = #{realName} and password = #{password}
+    operator where real_name = #{realName} and password = #{password}
   </select>
 </mapper>

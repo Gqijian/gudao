@@ -5,8 +5,8 @@ import me.zj22.gudao.server.web.enums.ProductStatusEnum;
 import me.zj22.gudao.server.web.enums.ResultEnum;
 import me.zj22.gudao.server.web.exception.SellerAuthorizeException;
 import me.zj22.gudao.server.web.exception.daoGuException;
+import me.zj22.gudao.server.web.pojo.dto.Operator;
 import me.zj22.gudao.server.web.pojo.dto.ProductInfo;
-import me.zj22.gudao.server.web.pojo.dto.SellerInfo;
 import me.zj22.gudao.server.web.pojo.vo.Cart;
 import me.zj22.gudao.server.web.pojo.vo.Page;
 import me.zj22.gudao.server.web.service.ProductInfoService;
@@ -59,26 +59,26 @@ public class ProductInfoServiceImp implements ProductInfoService {
     @Override
     public void save(ProductInfo productInfo) {
         // 从session中获取修改人保存
-        SellerInfo seller = (SellerInfo)request.getSession().getAttribute("seller");
+        Operator seller = (Operator)request.getSession().getAttribute("seller");
         if(seller == null){
             throw new SellerAuthorizeException();
         }
         productInfo.setCreateTime(TimeParse.Time2NUIX(TimeParse.NUIX2Time(new Date())));
         productInfo.setUpdateTime(TimeParse.Time2NUIX(TimeParse.NUIX2Time(new Date())));
-        productInfo.setCreatUser(seller.getUsername());
-        productInfo.setUpdateUser(seller.getUsername());
+        productInfo.setCreatUser(seller.getRealName());
+        productInfo.setUpdateUser(seller.getRealName());
         productInfoWrapperMapper.insert(productInfo);
     }
 
     @Override
     public void update(ProductInfo productInfo) {
         // 从session中获取修改人保存
-        SellerInfo seller = (SellerInfo)request.getSession().getAttribute("seller");
+        Operator seller = (Operator)request.getSession().getAttribute("seller");
         if(seller == null){
             throw new SellerAuthorizeException();
         }
         productInfo.setUpdateTime(TimeParse.Time2NUIX(TimeParse.NUIX2Time(new Date())));
-        productInfo.setUpdateUser(seller.getUsername());
+        productInfo.setUpdateUser(seller.getRealName());
         productInfoWrapperMapper.updateByPrimaryKeySelective(productInfo);
     }
 

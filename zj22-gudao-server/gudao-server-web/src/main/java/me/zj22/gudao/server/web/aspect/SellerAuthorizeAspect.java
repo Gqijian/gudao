@@ -1,9 +1,8 @@
 package me.zj22.gudao.server.web.aspect;
 
 import me.zj22.gudao.server.web.constants.CookieConstant;
-import me.zj22.gudao.server.web.controller.SellerOrderController;
 import me.zj22.gudao.server.web.exception.SellerAuthorizeException;
-import me.zj22.gudao.server.web.pojo.dto.SellerInfo;
+import me.zj22.gudao.server.web.pojo.dto.Operator;
 import me.zj22.gudao.server.web.utils.CookieUtil;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -11,7 +10,6 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
-import org.springframework.util.StringUtils;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -46,7 +44,7 @@ public class SellerAuthorizeAspect {
         }
 
         //去session里查询
-        SellerInfo seller = (SellerInfo)request.getSession().getAttribute("seller");
+        Operator seller = (Operator)request.getSession().getAttribute("seller");
         if (seller == null) {
             LOG.warn("【登录校验】session中没有该用户");
             throw new SellerAuthorizeException();

@@ -2,12 +2,9 @@ package me.zj22.gudao.server.web.controller;
 
 import me.zj22.gudao.server.web.exception.daoGuException;
 import me.zj22.gudao.server.web.form.ProductInfoForm;
-import me.zj22.gudao.server.web.pojo.dto.OrderDTO;
 import me.zj22.gudao.server.web.pojo.dto.ProductInfo;
-import me.zj22.gudao.server.web.pojo.dto.SellerInfo;
 import me.zj22.gudao.server.web.pojo.vo.Page;
 import me.zj22.gudao.server.web.service.ProductInfoService;
-import me.zj22.gudao.server.web.utils.TimeParse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -22,7 +19,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import java.util.Date;
 import java.util.Map;
 
 /**

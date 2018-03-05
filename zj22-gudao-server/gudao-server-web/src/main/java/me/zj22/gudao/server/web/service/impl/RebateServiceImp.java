@@ -2,8 +2,8 @@ package me.zj22.gudao.server.web.service.impl;
 
 import me.zj22.gudao.server.web.dao.db.wrap.RebateWrapperMapper;
 import me.zj22.gudao.server.web.exception.SellerAuthorizeException;
+import me.zj22.gudao.server.web.pojo.dto.Operator;
 import me.zj22.gudao.server.web.pojo.dto.Rebate;
-import me.zj22.gudao.server.web.pojo.dto.SellerInfo;
 import me.zj22.gudao.server.web.pojo.vo.Page;
 import me.zj22.gudao.server.web.service.RebateService;
 import me.zj22.gudao.server.web.utils.TimeParse;
@@ -30,14 +30,14 @@ public class RebateServiceImp implements RebateService {
     @Override
     public void save(Rebate rebate) {
         // 从session中获取修改人保存
-        SellerInfo seller = (SellerInfo)request.getSession().getAttribute("seller");
+        Operator seller = (Operator)request.getSession().getAttribute("seller");
         if(seller == null){
             throw new SellerAuthorizeException();
         }
         rebate.setCreateTime(TimeParse.Time2NUIX(TimeParse.NUIX2Time(new Date())));
         rebate.setUpdateTime(TimeParse.Time2NUIX(TimeParse.NUIX2Time(new Date())));
-        rebate.setCreateUser(seller.getUsername());
-        rebate.setUpdateUser(seller.getUsername());
+        rebate.setCreateUser(seller.getRealName());
+        rebate.setUpdateUser(seller.getRealName());
         rebateWrapperMapper.insert(rebate);
     }
 
