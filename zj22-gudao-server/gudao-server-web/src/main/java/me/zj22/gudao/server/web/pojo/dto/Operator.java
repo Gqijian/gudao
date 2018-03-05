@@ -1,44 +1,37 @@
 package me.zj22.gudao.server.web.pojo.dto;
 
-/**
- * @Program:zj22-gudao-server
- * @Description:管理员信息表
- * @Author Gqjian
- * @Create 2018/2/5 15:38:07
- */
-
 public class Operator {
     private Integer operatorId;
 
-    private String operatorName;    //用户名
+    private String operatorName;
 
-    private String realName;    //真实姓名
+    private String realName;
 
-    private Integer sex;    //性别
+    private Integer sex;
 
-    private String password;    //密码
+    private String password;
 
-    private String cellPhoneNum;    //电话
+    private String cellPhoneNum;
 
-    private String qq;    //qq
+    private String qq;
 
-    private String email;    //邮箱
+    private String email;
 
-    private String ip;    //用户权限ip（指定ip登录）
+    private String ip;
 
-    private String openid;    //微信
+    private String openid;
 
-    private Integer available;    //是否可用，1，可用，0，不可用
+    private Integer available;
 
-    private Long createTime;    //创建时间
+    private Long createTime;
 
-    private String creatUser;    //创建人
+    private String creatUser;
 
-    private Long updateTime;    //修改时间
+    private Long updateTime;
 
-    private String updateUser;    //修改人
+    private String updateUser;
 
-    private Integer roleId;    //权限角色
+    private Integer roleId;
 
     public Integer getOperatorId() {
         return operatorId;

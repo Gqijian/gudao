@@ -1,9 +1,9 @@
 package me.zj22.gudao.server.web.dao.db;
 
 import me.zj22.gudao.server.web.pojo.dto.Order;
-import org.apache.ibatis.annotations.Mapper;
 
-@Mapper
+import java.util.Map;
+
 public interface OrderMapper {
     int deleteByPrimaryKey(String orderId);
 
@@ -16,4 +16,8 @@ public interface OrderMapper {
     int updateByPrimaryKeySelective(Order record);
 
     int updateByPrimaryKey(Order record);
+
+    Order selectOrderByNum(String orderNum);
+
+    Order selectOrderOne(Map<String, Object> map);
 }

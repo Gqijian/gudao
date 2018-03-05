@@ -161,4 +161,11 @@
       create_time = #{createTime,jdbcType=BIGINT}
     where user_id = #{userId,jdbcType=INTEGER}
   </update>
+
+  <select id="selectUserByOpenId" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from user
+    where openid = #{openId,jdbcType=VARCHAR}
+  </select>
 </mapper>

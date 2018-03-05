@@ -5,7 +5,7 @@ import com.google.gson.reflect.TypeToken;
 import me.zj22.gudao.server.web.enums.ResultEnum;
 import me.zj22.gudao.server.web.exception.daoGuException;
 import me.zj22.gudao.server.web.form.OrderForm;
-import me.zj22.gudao.server.web.pojo.dto.OrderDTO;
+import me.zj22.gudao.server.web.pojo.vo.OrderDTO;
 import me.zj22.gudao.server.web.pojo.dto.OrderDetail;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

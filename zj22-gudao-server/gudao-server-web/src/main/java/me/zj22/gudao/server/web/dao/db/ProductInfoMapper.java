@@ -1,9 +1,7 @@
 package me.zj22.gudao.server.web.dao.db;
 
 import me.zj22.gudao.server.web.pojo.dto.ProductInfo;
-import org.apache.ibatis.annotations.Mapper;
 
-@Mapper
 public interface ProductInfoMapper {
     int deleteByPrimaryKey(Integer productId);
 
