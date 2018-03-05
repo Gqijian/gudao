@@ -16,4 +16,6 @@ public interface OperatorMapper {
     int updateByPrimaryKeySelective(Operator record);
 
     int updateByPrimaryKey(Operator record);
+
+    Operator findSeller(Operator operator);
 }

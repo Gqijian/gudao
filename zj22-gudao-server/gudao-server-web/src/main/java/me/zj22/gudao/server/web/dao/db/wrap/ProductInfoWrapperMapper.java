@@ -13,7 +13,7 @@ import java.util.List;
  * Created by 袁鹏 on 2018/2/5.
  */
 @Mapper
-public interface ProductInfoMapperWrapper extends ProductInfoMapper {
+public interface ProductInfoWrapperMapper extends ProductInfoMapper {
     /**查询所有在架商品 0 1*/
     List<ProductInfo> findUpAll(Byte productStatus);
 
@@ -30,7 +30,7 @@ public interface ProductInfoMapperWrapper extends ProductInfoMapper {
     Integer findByKeyCount();
 
     /**保存商品*/
-    void save(ProductInfo productInfo);
+    //void save(ProductInfo productInfo);
 
     //加库存
     void increaseStock(List<Cart> cartList);

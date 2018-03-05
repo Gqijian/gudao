@@ -1,5 +1,7 @@
 package me.zj22.gudao.server.web.pojo.dto;
 
+import me.zj22.gudao.server.web.utils.TimeParse;
+
 /**
  * @Program:zj22-gudao-server
  * @Description:买家用户表
@@ -29,6 +31,11 @@ public class User {
     private Integer total;  //
 
     private Long createTime;    //
+
+    public String getCreateTimeToString() {
+        //时间装换
+        return TimeParse.NUIX2Time((int)(createTime/1000));
+    }
 
     public Integer getUserId() {
         return userId;

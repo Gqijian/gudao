@@ -6,6 +6,8 @@ package me.zj22.gudao.server.web.enums;
  * Created by 袁鹏 on 2018/2/6.
  */
 public enum  ResultEnum {
+    SUCCESS(0, "成功"),
+
     PARAM_ERROR(1, "参数不正确"),
 
     PRODUCT_NOT_EXIT(10,"商品不存在"),
@@ -26,7 +28,17 @@ public enum  ResultEnum {
 
     ORDER_OWNER_ERRR(18, "当前订单不属于您"),
 
-    WXPAY_NOTIFY_MONEY_ERROR(19, "异步支付微信金额不一致")
+    WXPAY_NOTIFY_MONEY_ERROR(19, "异步支付微信金额不一致"),
+
+    ORDER_CALCLE_SUCCESS(20, "订单取消成功"),
+
+    ORDER_FINISH_SUCCESS(21, "订单完结成功"),
+
+    PRODUCT_STATUS_ERROR(22, "商品状态不正确"),
+
+    LOGIN_FAIL(23, "登录失败"),
+
+    LOGOUT_SUCCESS(24, "登出成功"),
     ;
 
     private  Integer code;

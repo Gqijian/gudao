@@ -1,6 +1,9 @@
 package me.zj22.gudao.server.web.pojo.dto;
 
 import me.zj22.gudao.server.web.enums.OrderStatusEnum;
+import me.zj22.gudao.server.web.enums.PayStatusEnum;
+
+import java.math.BigDecimal;
 
 /**
  * @Program:zj22-gudao-server
@@ -10,7 +13,7 @@ import me.zj22.gudao.server.web.enums.OrderStatusEnum;
  */
 
 public class Order {
-    private Integer orderId;
+    private String orderId;
 
     private String receiverName;    //收件人姓名
 
@@ -26,11 +29,13 @@ public class Order {
 
     private String zipcode;    //邮编
 
-    private Integer orderAmount;    //总价（不含邮费）
+    private BigDecimal orderAmount;    //总价（不含邮费）
 
-    private Integer postage;    //邮费
+    private BigDecimal postage;    //邮费
 
     private Byte orderStatus = OrderStatusEnum.NEW.getCode();    //订单状态
+
+    private Byte payStatus = PayStatusEnum.PAY_WAIT.getCode(); //订单支付状态
 
     private Long createTime;    //创建时间
 
@@ -42,11 +47,11 @@ public class Order {
 
     private Integer userId;    //用户id
 
-    public Integer getOrderId() {
+    public String getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(Integer orderId) {
+    public void setOrderId(String orderId) {
         this.orderId = orderId;
     }
 
@@ -106,19 +111,19 @@ public class Order {
         this.zipcode = zipcode == null ? null : zipcode.trim();
     }
 
-    public Integer getOrderAmount() {
+    public BigDecimal getOrderAmount() {
         return orderAmount;
     }
 
-    public void setOrderAmount(Integer orderAmount) {
+    public void setOrderAmount(BigDecimal orderAmount) {
         this.orderAmount = orderAmount;
     }
 
-    public Integer getPostage() {
+    public BigDecimal getPostage() {
         return postage;
     }
 
-    public void setPostage(Integer postage) {
+    public void setPostage(BigDecimal postage) {
         this.postage = postage;
     }
 
@@ -128,6 +133,14 @@ public class Order {
 
     public void setOrderStatus(Byte orderStatus) {
         this.orderStatus = orderStatus;
+    }
+
+    public Byte getPayStatus() {
+        return payStatus;
+    }
+
+    public void setPayStatus(Byte payStatus) {
+        this.payStatus = payStatus;
     }
 
     public Long getCreateTime() {

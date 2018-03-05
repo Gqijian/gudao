@@ -38,10 +38,10 @@ public class PayController {
      * @param orderId
      * @param returnUrl
      * @param map
-     * @return
+     * @return ModelAndView
      */
     @GetMapping("/create")
-    public ModelAndView create(@RequestParam("orderId") Integer orderId,
+    public ModelAndView create(@RequestParam("orderId") String orderId,
                        @RequestParam("returnUrl") String returnUrl,
                        Map<String, Object> map){
         //查询订单
@@ -57,11 +57,12 @@ public class PayController {
         return new ModelAndView("pay/create", map);
     }
 
-    /**微信异步通知
-     *
+    /**
+     * 微信异步通知
      * @param notifyData
+     * @return ModelAndView
      */
-    @PostMapping("/notify")
+    @RequestMapping("/notify")
     public ModelAndView notify(@RequestBody String notifyData){
         payService.notify(notifyData);
         //返回给微信处理结果

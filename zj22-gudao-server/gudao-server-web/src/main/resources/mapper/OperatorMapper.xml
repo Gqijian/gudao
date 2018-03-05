@@ -220,4 +220,12 @@
       role_id = #{roleId,jdbcType=INTEGER}
     where operator_id = #{operatorId,jdbcType=INTEGER}
   </update>
+
+  <select id="findSeller" parameterType="me.zj22.gudao.server.web.pojo.dto.Operator" resultMap="BaseResultMap">
+    SELECT
+    id, username, password,
+    openid, create_time, update_time
+    from
+    seller_info where real_name = #{realName} and password = #{password}
+  </select>
 </mapper>

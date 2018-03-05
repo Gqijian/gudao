@@ -63,11 +63,8 @@ public class WeiXinController {
     public JsonResponse callBack(@RequestParam(value ="code") String code){
         LOG.info("进入到授权 code = {}", code);
         //也可以通过设置参数的方式来获取code
-//        User wechatUser=null;
         SubscribeUserInfo userInfo = oauthService.getSubscribeUserInfoAndSaveIt(code);
 
-        //根据用户opeanId查找是否已存入数据库
-//        wechatUser = userSerivce.selectByPrimaryKey(Integer.valueOf(userInfo.getOpenid()));
         LOG.debug("\n\n\n用户授权返回数据:" + userInfo + "\n\n\n");
         JsonResponse json = new JsonResponse();
         json.setData("success");

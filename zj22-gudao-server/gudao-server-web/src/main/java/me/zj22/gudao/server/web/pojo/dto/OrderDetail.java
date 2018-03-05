@@ -1,5 +1,7 @@
 package me.zj22.gudao.server.web.pojo.dto;
 
+import java.math.BigDecimal;
+
 /**
  * @Program:zj22-gudao-server
  * @Description:订单商品详情信息表
@@ -8,21 +10,21 @@ package me.zj22.gudao.server.web.pojo.dto;
  */
 
 public class OrderDetail {
-    private Integer detailId;
+    private String detailId;
 
     private Integer productQuantity;    //数量
 
-    private Integer price;    //金额,单位分
+    private BigDecimal price;    //金额,单位分
 
-    private Integer orderId;    //订单id
+    private String orderId;    //订单id
 
     private Integer productId;    //商品id
 
-    public Integer getDetailId() {
+    public String getDetailId() {
         return detailId;
     }
 
-    public void setDetailId(Integer detailId) {
+    public void setDetailId(String detailId) {
         this.detailId = detailId;
     }
 
@@ -34,19 +36,19 @@ public class OrderDetail {
         this.productQuantity = productQuantity;
     }
 
-    public Integer getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
-    public Integer getOrderId() {
+    public String getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(Integer orderId) {
+    public void setOrderId(String orderId) {
         this.orderId = orderId;
     }
 

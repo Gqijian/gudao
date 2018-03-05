@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="me.zj22.gudao.server.web.dao.db.wrap.PointsWrapperMapper" >
+  <resultMap id="BaseResultMap" type="me.zj22.gudao.server.web.pojo.dto.Points" >
+    <id column="points_id" property="pointsId" jdbcType="INTEGER" />
+    <id column="order_id" property="orderId" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="BIGINT" />
+    <result column="points_record" property="pointsRecord" jdbcType="INTEGER" />
+    <result column="flag" property="flag" jdbcType="TINYINT" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+  </resultMap>
+
+  <select id="findByOrderId" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    SELECT points_id, create_time, points_record, flag, user_id FROM points WHERE order_id = #{orderId}
+  </select>
+
+  <select id="findAllPoints" resultMap="BaseResultMap" parameterType="me.zj22.gudao.server.web.pojo.vo.Page">
+    SELECT
+    points_id, order_id, create_time, points_record, flag, user_id
+    FROM points ORDER BY create_time DESC limit #{start},#{rows}
+  </select>
+
+  <select id="findPointsCount" resultType="java.lang.Integer">
+    SELECT COUNT(0) FROM points
+  </select>
+</mapper>

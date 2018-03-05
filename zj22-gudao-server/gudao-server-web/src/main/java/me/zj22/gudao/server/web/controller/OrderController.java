@@ -65,8 +65,8 @@ public class OrderController {
     //订单列表
     @GetMapping("/list")
     @ResponseBody
-    public JsonResponse<List<OrderDTO>> list(Page<OrderDTO> page, String openId){
-        Page<OrderDTO> orderPage = orderService.findAllListOrder(page, openId);
+    public JsonResponse<List<OrderDTO>> list(Page<OrderDTO> page, Integer userId){
+        Page<OrderDTO> orderPage = orderService.findAllListOrder(page, userId);
         JsonResponse<List<OrderDTO>> json = new JsonResponse<>();
         List<OrderDTO> orderPageList = orderPage.getList();
         //日期转换
@@ -83,7 +83,7 @@ public class OrderController {
     @ResponseBody
     public JsonResponse<OrderDTO> detail(
             @RequestParam("openId") String openId,
-            @RequestParam("orderId") Integer orderId){
+            @RequestParam("orderId") String orderId){
         OrderDTO orderDTO = buyerService.findOrderOne(openId, orderId);
         JsonResponse<OrderDTO> json = new JsonResponse<>();
         json.setData(orderDTO);
@@ -96,7 +96,7 @@ public class OrderController {
     @ResponseBody
     public JsonResponse cancel(
             @RequestParam("openId") String openId,
-            @RequestParam("orderId") Integer orderId){
+            @RequestParam("orderId") String orderId){
         buyerService.cancelOrder(openId, orderId);
         JsonResponse json = new JsonResponse();
         return json;

@@ -1,6 +1,6 @@
 package me.zj22.gudao.server.web.utils;
 
-import java.util.Random;
+import java.util.UUID;
 
 /**
  * 随机数生成
@@ -13,10 +13,8 @@ public class KeyUtil {
      * 格式: 时间+随机数
      * @return
      */
-    public static synchronized Integer genUniqueKey() {
-        Random random = new Random();
-        Integer number = random.nextInt(90000) + 10000;
-        String uniqueKey = System.currentTimeMillis() + String.valueOf(number);
-        return Integer.valueOf(uniqueKey.substring(uniqueKey.length()-9,uniqueKey.length()));
+    public static synchronized String genUniqueKey() {
+
+        return  UUID.randomUUID().toString().replace("-","")+UUID.randomUUID().toString().replace("-","");
     }
 }

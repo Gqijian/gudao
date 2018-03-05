@@ -1,5 +1,7 @@
 package me.zj22.gudao.server.web.pojo.dto;
 
+import me.zj22.gudao.server.web.utils.TimeParse;
+
 /**
  * @Program:zj22-gudao-server
  * @Description:返点表
@@ -21,6 +23,22 @@ public class Rebate {
     private Long updateTime;    //修改时间
 
     private String updateUser;  //修改人
+
+    public String getAvailableStatus(){
+        if(available == 0)
+            return "不可用";
+        return "可用";
+    }
+
+    public String getCreateTimeToString() {
+        //时间装换
+        return TimeParse.NUIX2Time((int)(createTime/1000));
+    }
+
+    public String getUpdateTimeToString() {
+        //时间装换
+        return TimeParse.NUIX2Time((int)(updateTime/1000));
+    }
 
     public Integer getRebateId() {
         return rebateId;

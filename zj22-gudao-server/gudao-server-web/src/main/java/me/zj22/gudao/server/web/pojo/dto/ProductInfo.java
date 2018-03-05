@@ -1,5 +1,11 @@
 package me.zj22.gudao.server.web.pojo.dto;
 
+import me.zj22.gudao.server.web.enums.ProductStatusEnum;
+import me.zj22.gudao.server.web.utils.EnumUtil;
+import me.zj22.gudao.server.web.utils.TimeParse;
+
+import java.math.BigDecimal;
+
 /**
  * @Program:zj22-gudao-server
  * @Description:商品表
@@ -18,13 +24,13 @@ public class ProductInfo {
 
     private String productIconThree;       //图片
 
-    private Integer productPrice;   //单价，单位分
+    private BigDecimal productPrice;   //单价，单位分
 
-    private Integer cost;   //成本价，单位分
+    private BigDecimal cost;   //成本价，单位分
 
     private Integer weight; //重量，单位克
 
-    private Byte productStatus; //商品状态
+    private Byte productStatus = ProductStatusEnum.UP.getCode(); //商品状态
 
     private String productAbout;    //商品简介
 
@@ -40,6 +46,20 @@ public class ProductInfo {
 
     private String productDescription;  //商品详情
 
+    public String getCreateTimeToString() {
+        //时间装换
+        return TimeParse.NUIX2Time((int)(createTime/1000));
+    }
+
+    public String getUpdateTimeToString() {
+        //时间装换
+        return TimeParse.NUIX2Time((int)(updateTime/1000));
+    }
+
+    //后台页面商品状态显示转换
+    public ProductStatusEnum getProductStatusEnum(){
+        return EnumUtil.getByCode(productStatus, ProductStatusEnum.class);
+    }
     public Integer getProductId() {
         return productId;
     }
@@ -80,19 +100,19 @@ public class ProductInfo {
         this.productIconThree = productIconThree == null ? null : productIconThree.trim();
     }
 
-    public Integer getProductPrice() {
+    public BigDecimal getProductPrice() {
         return productPrice;
     }
 
-    public void setProductPrice(Integer productPrice) {
+    public void setProductPrice(BigDecimal productPrice) {
         this.productPrice = productPrice;
     }
 
-    public Integer getCost() {
+    public BigDecimal getCost() {
         return cost;
     }
 
-    public void setCost(Integer cost) {
+    public void setCost(BigDecimal cost) {
         this.cost = cost;
     }
 

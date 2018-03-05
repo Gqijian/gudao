@@ -5,11 +5,11 @@ package me.zj22.gudao.server.web.enums;
  * daogu
  * Created by 袁鹏 on 2018/2/5.
  */
-public enum ProductStatusEnum {
+public enum ProductStatusEnum implements  CodeEnum {
     UP((byte) 0, "在架"),
         DOWN((byte)1, "下架");
 
-    private Byte code;
+    private byte code;
     private String message;
 
     ProductStatusEnum(Byte code, String message){
@@ -17,7 +17,7 @@ public enum ProductStatusEnum {
         this.message = message;
     }
 
-    public Byte getCode() {
+    public byte getCode() {
         return code;
     }
 

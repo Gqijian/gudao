@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
  * @since 2018-01-28
  */
 @Service
-public class DemoServiceImpl implements DemoService {
+public class DemoServiceImp implements DemoService {
 
     @Autowired
     private UserMapper userMapper;

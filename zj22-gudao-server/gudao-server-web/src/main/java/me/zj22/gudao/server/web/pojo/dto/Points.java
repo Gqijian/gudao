@@ -1,5 +1,7 @@
 package me.zj22.gudao.server.web.pojo.dto;
 
+import me.zj22.gudao.server.web.utils.TimeParse;
+
 /**
  * @Program:zj22-gudao-server
  * @Description:积分表
@@ -8,7 +10,7 @@ package me.zj22.gudao.server.web.pojo.dto;
  */
 
 public class Points extends PointsKey {
-    private Integer createTime; //创建时间
+    private long createTime; //创建时间
 
     private Integer pointsRecord;   //积分
 
@@ -16,11 +18,28 @@ public class Points extends PointsKey {
 
     private Integer userId; //用户id
 
-    public Integer getCreateTime() {
+    public String getCreateTimeToString() {
+        //时间装换
+        return TimeParse.NUIX2Time((int)(createTime/1000));
+    }
+
+    public String getAllFlag(){
+        //能否提现
+        if(flag == 1) {
+            return "已提现";
+        }
+        else if(flag == 0) {
+            return "未提现";
+        }else {
+            return "未知错误";
+        }
+    }
+
+    public long getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Integer createTime) {
+    public void setCreateTime(long createTime) {
         this.createTime = createTime;
     }
 

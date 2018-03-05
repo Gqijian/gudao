@@ -2,30 +2,30 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="me.zj22.gudao.server.web.dao.db.OrderDetailMapper" >
   <resultMap id="BaseResultMap" type="me.zj22.gudao.server.web.pojo.dto.OrderDetail" >
-    <id column="detail_id" property="detailId" jdbcType="INTEGER" />
+    <id column="detail_id" property="detailId" jdbcType="VARCHAR" />
     <result column="product_quantity" property="productQuantity" jdbcType="INTEGER" />
-    <result column="price" property="price" jdbcType="INTEGER" />
-    <result column="order_id" property="orderId" jdbcType="INTEGER" />
+    <result column="price" property="price"/>
+    <result column="order_id" property="orderId" jdbcType="VARCHAR" />
     <result column="product_id" property="productId" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
     detail_id, product_quantity, price, order_id, product_id
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from order_detail
-    where detail_id = #{detailId,jdbcType=INTEGER}
+    where detail_id = #{detailId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from order_detail
-    where detail_id = #{detailId,jdbcType=INTEGER}
+    where detail_id = #{detailId,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="me.zj22.gudao.server.web.pojo.dto.OrderDetail" >
     insert into order_detail (detail_id, product_quantity, price, 
       order_id, product_id)
-    values (#{detailId,jdbcType=INTEGER}, #{productQuantity,jdbcType=INTEGER}, #{price,jdbcType=INTEGER}, 
-      #{orderId,jdbcType=INTEGER}, #{productId,jdbcType=INTEGER})
+    values (#{detailId,jdbcType=VARCHAR}, #{productQuantity,jdbcType=INTEGER}, #{price},
+      #{orderId,jdbcType=VARCHAR}, #{productId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="me.zj22.gudao.server.web.pojo.dto.OrderDetail" >
     insert into order_detail
@@ -48,16 +48,16 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="detailId != null" >
-        #{detailId,jdbcType=INTEGER},
+        #{detailId,jdbcType=VARCHAR},
       </if>
       <if test="productQuantity != null" >
         #{productQuantity,jdbcType=INTEGER},
       </if>
       <if test="price != null" >
-        #{price,jdbcType=INTEGER},
+        #{price},
       </if>
       <if test="orderId != null" >
-        #{orderId,jdbcType=INTEGER},
+        #{orderId,jdbcType=VARCHAR},
       </if>
       <if test="productId != null" >
         #{productId,jdbcType=INTEGER},
@@ -71,23 +71,38 @@
         product_quantity = #{productQuantity,jdbcType=INTEGER},
       </if>
       <if test="price != null" >
-        price = #{price,jdbcType=INTEGER},
+        price = #{price},
       </if>
       <if test="orderId != null" >
-        order_id = #{orderId,jdbcType=INTEGER},
+        order_id = #{orderId,jdbcType=VARCHAR},
       </if>
       <if test="productId != null" >
         product_id = #{productId,jdbcType=INTEGER},
       </if>
     </set>
-    where detail_id = #{detailId,jdbcType=INTEGER}
+    where detail_id = #{detailId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="me.zj22.gudao.server.web.pojo.dto.OrderDetail" >
     update order_detail
     set product_quantity = #{productQuantity,jdbcType=INTEGER},
-      price = #{price,jdbcType=INTEGER},
-      order_id = #{orderId,jdbcType=INTEGER},
+      price = #{price},
+      order_id = #{orderId,jdbcType=VARCHAR},
       product_id = #{productId,jdbcType=INTEGER}
-    where detail_id = #{detailId,jdbcType=INTEGER}
+    where detail_id = #{detailId,jdbcType=VARCHAR}
   </update>
+
+
+  <select id="findByOrderId" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select
+    detail_id,
+    product_quantity,
+    price,
+    order_id,
+    product_id
+    FROM
+    order_detail
+    WHERE
+    order_id = #{orderId}
+
+  </select>
 </mapper>

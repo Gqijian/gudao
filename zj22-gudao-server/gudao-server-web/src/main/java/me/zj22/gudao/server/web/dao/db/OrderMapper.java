@@ -5,13 +5,13 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface OrderMapper {
-    int deleteByPrimaryKey(Integer orderId);
+    int deleteByPrimaryKey(String orderId);
 
     int insert(Order record);
 
     int insertSelective(Order record);
 
-    Order selectByPrimaryKey(Integer orderId);
+    Order selectByPrimaryKey(String orderId);
 
     int updateByPrimaryKeySelective(Order record);
 

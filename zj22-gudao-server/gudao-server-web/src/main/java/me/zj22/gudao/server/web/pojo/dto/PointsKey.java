@@ -10,7 +10,7 @@ package me.zj22.gudao.server.web.pojo.dto;
 public class PointsKey {
     private Integer pointsId;
 
-    private Integer orderId;    //订单id
+    private String orderId;    //订单id
 
     public Integer getPointsId() {
         return pointsId;
@@ -20,11 +20,11 @@ public class PointsKey {
         this.pointsId = pointsId;
     }
 
-    public Integer getOrderId() {
+    public String getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(Integer orderId) {
+    public void setOrderId(String orderId) {
         this.orderId = orderId;
     }
 }

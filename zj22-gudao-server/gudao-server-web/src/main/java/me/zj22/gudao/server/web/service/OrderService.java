@@ -1,6 +1,5 @@
 package me.zj22.gudao.server.web.service;
 
-import me.zj22.gudao.server.web.pojo.dto.Order;
 import me.zj22.gudao.server.web.pojo.dto.OrderDTO;
 import me.zj22.gudao.server.web.pojo.vo.Page;
 
@@ -13,10 +12,10 @@ public interface OrderService {
     OrderDTO create(OrderDTO orderDTO);
 
     /**查询单个订单*/
-    OrderDTO findOne(Integer orderId);
+    OrderDTO findOne(String orderId);
 
-    /**查询订单列表,分页  里面的keyWord也填充为openId*/
-    Page<OrderDTO> findAllListOrder(Page<OrderDTO> page, String openId);
+    /**查询订单列表,分页  里面的keyWord也填充为userId*/
+    Page<OrderDTO> findAllListOrder(Page<OrderDTO> page, Integer userId);
 
     /**取消订单*/
     OrderDTO cancel(OrderDTO orderDTO);
@@ -26,4 +25,7 @@ public interface OrderService {
 
     /**支付订单*/
     OrderDTO paid(OrderDTO orderDTO);
+
+    /**查询订单列表,分页*/
+    Page<OrderDTO> findAllList(Page<OrderDTO> page);
 }

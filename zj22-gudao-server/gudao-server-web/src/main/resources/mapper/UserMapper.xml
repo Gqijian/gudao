@@ -28,7 +28,7 @@
     delete from user
     where user_id = #{userId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="me.zj22.gudao.server.web.pojo.dto.User" >
+  <insert useGeneratedKeys="true" keyProperty="userId" id="insert" parameterType="me.zj22.gudao.server.web.pojo.dto.User" >
     insert into user (user_id, openid, nickname, 
       sex, country, province, 
       city, head_img_url, integral, 
