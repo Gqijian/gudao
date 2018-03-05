@@ -7,7 +7,7 @@
     <result column="product_icon_one" property="productIconOne" jdbcType="VARCHAR" />
     <result column="product_icon_two" property="productIconTwo" jdbcType="VARCHAR" />
     <result column="product_icon_three" property="productIconThree" jdbcType="VARCHAR" />
-    <result column="product_price" property="productPrice" jdbcType="INTEGER" />
+    <result column="product_price" property="productPrice" jdbcType="DECIMAL" />
     <result column="cost" property="cost" jdbcType="INTEGER" />
     <result column="weight" property="weight" jdbcType="INTEGER" />
     <result column="product_status" property="productStatus" jdbcType="TINYINT" />

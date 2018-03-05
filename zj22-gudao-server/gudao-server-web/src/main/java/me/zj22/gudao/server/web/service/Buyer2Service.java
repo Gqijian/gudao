@@ -7,7 +7,7 @@ import me.zj22.gudao.server.web.pojo.vo.OrderDTO;
  * daogu
  * Created by 袁鹏 on 2018/2/7.
  */
-public interface BuyerService {
+public interface Buyer2Service {
 
     /**查询一个订单*/
     OrderDTO findOrderOne(String openId, String orderId);

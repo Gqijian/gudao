@@ -1,7 +1,9 @@
 package me.zj22.gudao.server.web.dao.db;
 
 import me.zj22.gudao.server.web.pojo.dto.Operation;
+import org.apache.ibatis.annotations.Mapper;
 
+@Mapper
 public interface OperationMapper {
     int deleteByPrimaryKey(Integer opId);
 

@@ -4,10 +4,12 @@ import me.zj22.gudao.server.web.dao.db.OrderDetailMapper;
 import me.zj22.gudao.server.web.dao.db.OrderMapper;
 import me.zj22.gudao.server.web.dao.db.UserMapper;
 import me.zj22.gudao.server.web.enums.OrderStatusEnum;
+import me.zj22.gudao.server.web.enums.PayStatusEnum;
 import me.zj22.gudao.server.web.pojo.dto.Order;
 import me.zj22.gudao.server.web.pojo.dto.OrderDetail;
 import me.zj22.gudao.server.web.pojo.vo.OrderDTO;
 import me.zj22.gudao.server.web.pojo.vo.Page;
+import me.zj22.gudao.server.web.service.Order2Service;
 import me.zj22.gudao.server.web.service.OrderService;
 import me.zj22.gudao.server.web.utils.IdWorkerUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +26,7 @@ import java.util.List;
  * @Create 2018/2/13 19:50:57
  */
 @Service
-public class OrderServiceImpl implements OrderService{
+public class OrderServiceImpl implements Order2Service {
 
     @Autowired
     private OrderMapper orderMapper;
@@ -42,9 +44,9 @@ public class OrderServiceImpl implements OrderService{
         Order order = new Order();
         //获得一个订单ID
         IdWorkerUtil idWork = new IdWorkerUtil(0,0);
-        Long orderNum = idWork.nextId();
+        Long orderId = idWork.nextId();
         //补全pojo
-        orderDTO.setOrderNum(orderNum.toString());
+        orderDTO.setOrderId(String.valueOf(orderId));
         //订单状态
         orderDTO.setOrderStatus(OrderStatusEnum.NEW.getCode());
         Date time = new Date();
@@ -58,7 +60,7 @@ public class OrderServiceImpl implements OrderService{
         //插入订单表明细
         List<OrderDetail> orderDetails = orderDTO.getOrderDetailList();
         for (OrderDetail orderDetail:orderDetails) {
-            orderDetail.setOrderNum(orderNum.toString());
+            orderDetail.setOrderId(orderId.toString());
             orderDetailMapper.insert(orderDetail);
         }
         return orderDTO;
@@ -66,41 +68,41 @@ public class OrderServiceImpl implements OrderService{
 
     /**
      * 查询单个订单
-     * @param orderNum
+     * @param orderId
      * @return
      */
     @Override
-    public OrderDTO findOne(String orderNum) {
-        Order order = orderMapper.selectOrderByNum(orderNum);
-        List<OrderDetail> orderDetails = orderDetailMapper.selectOrderDetailsByNum(orderNum);
+    public OrderDTO findOne(String orderId) {
+        Order order = orderMapper.selectOrderById(orderId);
+        List<OrderDetail> orderDetails = orderDetailMapper.selectOrderDetailsId(orderId);
         OrderDTO orderDTO = copyOderParams(order);
         orderDTO.setOrderDetailList(orderDetails);
         return orderDTO;
     }
 
     @Override
-    public Page<OrderDTO> findAllListOrder(Page<OrderDTO> page, String openId) {
-
+    public Page<OrderDTO> findAllListOrder(Page<OrderDTO> page, Integer userId) {
         return null;
     }
 
+
     @Override
     public OrderDTO cancel(OrderDTO orderDTO) {
-        Order order = orderMapper.selectOrderByNum(orderDTO.getOrderNum());
+        Order order = orderMapper.selectOrderById(orderDTO.getOrderId());
         order.setOrderStatus(OrderStatusEnum.CANCEL.getCode());
         if(orderMapper.updateByPrimaryKey(order)>0){
-            OrderDTO orderDTO = copyOderParams(order);
-            return orderDTO;
+            OrderDTO orderDTO2 = copyOderParams(order);
+            return orderDTO2;
         }
         return null;
     }
 
     @Override
     public OrderDTO finish(OrderDTO orderDTO) {
-        Order order = orderMapper.selectOrderByNum(orderDTO.getOrderNum());
+        Order order = orderMapper.selectOrderById(orderDTO.getOrderId());
         order.setOrderStatus(OrderStatusEnum.FINIFSHED.getCode());
         if(orderMapper.updateByPrimaryKey(order)>0){
-            OrderDTO orderDTO = copyOderParams(order);
+            orderDTO = copyOderParams(order);
             return orderDTO;
         }
         return null;
@@ -108,12 +110,17 @@ public class OrderServiceImpl implements OrderService{
 
     @Override
     public OrderDTO paid(OrderDTO orderDTO) {
-        Order order = orderMapper.selectOrderByNum(orderDTO.getOrderNum());
-        order.setOrderStatus(OrderStatusEnum.PAY_WAIT.getCode());
+        Order order = orderMapper.selectOrderById(orderDTO.getOrderId());
+        order.setOrderStatus(PayStatusEnum.PAY_WAIT.getCode());
         if(orderMapper.updateByPrimaryKey(order)>0){
-            OrderDTO orderDTO = copyOderParams(order);
+            orderDTO = copyOderParams(order);
             return orderDTO;
         }
+        return null;
+    }
+
+    @Override
+    public Page<OrderDTO> findAllList(Page<OrderDTO> page) {
         return null;
     }
 

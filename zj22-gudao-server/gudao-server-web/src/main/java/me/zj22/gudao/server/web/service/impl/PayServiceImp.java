@@ -10,7 +10,7 @@ import me.zj22.gudao.server.web.dao.db.UserMapper;
 import me.zj22.gudao.server.web.dao.db.wrap.PointsWrapperMapper;
 import me.zj22.gudao.server.web.enums.ResultEnum;
 import me.zj22.gudao.server.web.exception.daoGuException;
-import me.zj22.gudao.server.web.pojo.dto.OrderDTO;
+import me.zj22.gudao.server.web.pojo.vo.OrderDTO;
 import me.zj22.gudao.server.web.pojo.dto.Points;
 import me.zj22.gudao.server.web.pojo.dto.User;
 import me.zj22.gudao.server.web.service.OrderService;

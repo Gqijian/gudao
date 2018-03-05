@@ -1,5 +1,7 @@
 package me.zj22.gudao.server.web.pojo.vo;
 
+import java.math.BigDecimal;
+
 /**
  * @Program:zj22-gudao-server
  * @Description:
@@ -14,7 +16,7 @@ public class CartProduct {
 
     private String productIconOne;  //图片
 
-    private Integer productPrice;   //单价，单位分
+    private BigDecimal productPrice;   //单价，单位分
 
     private Integer num;    //数量
 
@@ -42,11 +44,11 @@ public class CartProduct {
         this.productIconOne = productIconOne;
     }
 
-    public Integer getProductPrice() {
+    public BigDecimal getProductPrice() {
         return productPrice;
     }
 
-    public void setProductPrice(Integer productPrice) {
+    public void setProductPrice(BigDecimal productPrice) {
         this.productPrice = productPrice;
     }
 

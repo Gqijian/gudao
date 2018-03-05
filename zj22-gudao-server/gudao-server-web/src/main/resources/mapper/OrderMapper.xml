@@ -231,4 +231,20 @@
       user_id = #{userId,jdbcType=INTEGER}
     where order_id = #{orderId,jdbcType=VARCHAR}
   </update>
+
+
+  <select id="selectOrderOne" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select
+    <include refid="Base_Column_List" />
+    from order
+    where user_id = #{userId,jdbcType=INTEGER}
+    AND order_id = #{orderId, jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectOrderById" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from order
+    where order_id = #{orderId,jdbcType=VARCHAR}
+  </select>
 </mapper>

@@ -21,4 +21,6 @@ public interface OrderDetailMapper {
 
     /**根据订单id查询订单详情*/
     List<OrderDetail> findByOrderId(String orderId);
+
+    List<OrderDetail> selectOrderDetailsId(String orderId);
 }

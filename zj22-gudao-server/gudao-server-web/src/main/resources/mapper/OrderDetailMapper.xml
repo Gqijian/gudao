@@ -105,4 +105,11 @@
     order_id = #{orderId}
 
   </select>
+
+  <select id="selectOrderDetailsId" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from order_detail
+    where order_num = #{orderNum,jdbcType=VARCHAR}
+  </select>
 </mapper>

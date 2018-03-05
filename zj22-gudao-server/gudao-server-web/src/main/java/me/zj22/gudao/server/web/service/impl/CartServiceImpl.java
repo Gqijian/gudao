@@ -1,5 +1,6 @@
 package me.zj22.gudao.server.web.service.impl;
 
+import me.zj22.gudao.server.web.dao.db.ProductInfoMapper;
 import me.zj22.gudao.server.web.pojo.dto.ProductInfo;
 import me.zj22.gudao.server.web.pojo.vo.CartProduct;
 import me.zj22.gudao.server.web.service.CartService;
@@ -24,11 +25,11 @@ import java.util.List;
 @Service
 public class CartServiceImpl implements CartService{
 
-    @Value("${GD_CART}")
-    private String GD_CART;
+    //@Value("${GD_CART}")
+    private static final String GD_CART = "gu_cart";
 
     @Autowired
-    private ProductInfoMapper productMapper;
+    private ProductInfoMapper productInfoMapper;
 
     @Override
     public String addCartItem(Integer productId, Integer num,
@@ -44,7 +45,7 @@ public class CartServiceImpl implements CartService{
         }
         if(cartProduct == null){
             cartProduct = new CartProduct();
-            ProductInfo productInfo = productMapper.selectByPrimaryKey(productId);
+            ProductInfo productInfo = productInfoMapper.selectByPrimaryKey(productId);
             cartProduct.setProductId(productInfo.getProductId());
             cartProduct.setProductName(productInfo.getProductName());
             cartProduct.setProductIconOne(productInfo.getProductIconOne());

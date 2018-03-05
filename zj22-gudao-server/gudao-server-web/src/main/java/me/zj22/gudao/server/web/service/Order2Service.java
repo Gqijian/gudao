@@ -7,7 +7,7 @@ import me.zj22.gudao.server.web.pojo.vo.Page;
  * daogu
  * Created by 袁鹏 on 2018/2/6.
  */
-public interface OrderService {
+public interface Order2Service {
     /**创建订单*/
     OrderDTO create(OrderDTO orderDTO);
 

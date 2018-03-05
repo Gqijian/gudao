@@ -1,9 +1,7 @@
-package me.zj22.gudao.server.web.pojo.vo;
+package me.zj22.gudao.server.web.pojo.dto;
 
 import me.zj22.gudao.server.web.enums.OrderStatusEnum;
 import me.zj22.gudao.server.web.enums.PayStatusEnum;
-import me.zj22.gudao.server.web.pojo.dto.Order;
-import me.zj22.gudao.server.web.pojo.dto.OrderDetail;
 import me.zj22.gudao.server.web.utils.EnumUtil;
 import me.zj22.gudao.server.web.utils.TimeParse;
 

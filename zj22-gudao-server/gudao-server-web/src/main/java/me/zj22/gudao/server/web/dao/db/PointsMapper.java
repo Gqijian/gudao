@@ -2,7 +2,10 @@ package me.zj22.gudao.server.web.dao.db;
 
 import me.zj22.gudao.server.web.pojo.dto.Points;
 import me.zj22.gudao.server.web.pojo.dto.PointsKey;
+import org.apache.ibatis.annotations.Mapper;
 
+
+@Mapper
 public interface PointsMapper {
     int deleteByPrimaryKey(PointsKey key);
 
