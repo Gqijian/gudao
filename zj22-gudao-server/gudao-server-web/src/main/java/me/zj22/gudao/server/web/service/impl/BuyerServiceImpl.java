@@ -5,11 +5,10 @@ import me.zj22.gudao.server.web.dao.db.OrderMapper;
 import me.zj22.gudao.server.web.dao.db.UserMapper;
 import me.zj22.gudao.server.web.enums.OrderStatusEnum;
 import me.zj22.gudao.server.web.pojo.dto.Order;
-import me.zj22.gudao.server.web.pojo.vo.OrderDTO;
+import me.zj22.gudao.server.web.pojo.dto.OrderDTO;
 import me.zj22.gudao.server.web.pojo.dto.OrderDetail;
 import me.zj22.gudao.server.web.pojo.dto.User;
 import me.zj22.gudao.server.web.service.Buyer2Service;
-import me.zj22.gudao.server.web.service.BuyerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

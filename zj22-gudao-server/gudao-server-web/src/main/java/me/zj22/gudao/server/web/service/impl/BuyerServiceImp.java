@@ -2,7 +2,7 @@ package me.zj22.gudao.server.web.service.impl;
 
 import me.zj22.gudao.server.web.enums.ResultEnum;
 import me.zj22.gudao.server.web.exception.daoGuException;
-import me.zj22.gudao.server.web.pojo.vo.OrderDTO;
+import me.zj22.gudao.server.web.pojo.dto.OrderDTO;
 import me.zj22.gudao.server.web.service.BuyerService;
 import me.zj22.gudao.server.web.service.OrderService;
 import org.slf4j.Logger;

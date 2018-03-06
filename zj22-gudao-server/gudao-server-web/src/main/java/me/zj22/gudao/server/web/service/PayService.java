@@ -2,7 +2,7 @@ package me.zj22.gudao.server.web.service;
 
 import com.lly835.bestpay.model.PayResponse;
 import com.lly835.bestpay.model.RefundResponse;
-import me.zj22.gudao.server.web.pojo.vo.OrderDTO;
+import me.zj22.gudao.server.web.pojo.dto.OrderDTO;
 
 /**
  * daogu

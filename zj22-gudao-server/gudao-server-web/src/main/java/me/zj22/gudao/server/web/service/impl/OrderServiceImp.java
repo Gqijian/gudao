@@ -8,7 +8,7 @@ import me.zj22.gudao.server.web.enums.PayStatusEnum;
 import me.zj22.gudao.server.web.enums.ResultEnum;
 import me.zj22.gudao.server.web.exception.daoGuException;
 import me.zj22.gudao.server.web.pojo.dto.Order;
-import me.zj22.gudao.server.web.pojo.vo.OrderDTO;
+import me.zj22.gudao.server.web.pojo.dto.OrderDTO;
 import me.zj22.gudao.server.web.pojo.dto.OrderDetail;
 import me.zj22.gudao.server.web.pojo.dto.ProductInfo;
 import me.zj22.gudao.server.web.pojo.vo.Cart;

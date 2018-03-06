@@ -1,5 +1,6 @@
 package me.zj22.gudao.server.web.dao.db.wrap;
 
+import me.zj22.gudao.server.web.dao.db.OrderDetailMapper;
 import me.zj22.gudao.server.web.pojo.dto.OrderDetail;
 import org.apache.ibatis.annotations.Mapper;
 

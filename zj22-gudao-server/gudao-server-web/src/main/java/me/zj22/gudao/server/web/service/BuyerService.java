@@ -1,6 +1,6 @@
 package me.zj22.gudao.server.web.service;
 
-import me.zj22.gudao.server.web.pojo.vo.OrderDTO;
+import me.zj22.gudao.server.web.pojo.dto.OrderDTO;
 
 /**
  * 买家
