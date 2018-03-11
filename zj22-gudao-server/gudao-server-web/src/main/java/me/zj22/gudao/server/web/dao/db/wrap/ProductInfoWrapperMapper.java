@@ -24,7 +24,7 @@ public interface ProductInfoWrapperMapper extends ProductInfoMapper {
     List<ProductInfo> findPageList(Page<ProductInfo> page);
 
     /**查询总记录数*/
-    Integer findCount();
+    Integer findCount(Page<ProductInfo> page);
 
     /**根据关键字查询总记录数*/
     Integer findByKeyCount();
@@ -37,4 +37,7 @@ public interface ProductInfoWrapperMapper extends ProductInfoMapper {
 
     //减库存
     void decreaseStock(List<Cart> cartList);
+
+    //删除商品
+    Integer delete(String pks[]);
 }

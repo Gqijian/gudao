@@ -20,6 +20,16 @@ public class OrderDetail {
 
     private Integer productId;    //商品id
 
+    private BigDecimal productTotal;
+
+    public BigDecimal getProductTotal() {
+        return this.price.multiply(new BigDecimal(this.productQuantity));
+    }
+
+//    public void setProductTotal(BigDecimal productTotal) {
+//        this.productTotal = price.multiply(new BigDecimal(productQuantity));
+//    }
+
     public String getDetailId() {
         return detailId;
     }

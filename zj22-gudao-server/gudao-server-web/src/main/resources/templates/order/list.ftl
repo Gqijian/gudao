@@ -8,22 +8,37 @@
     <#include "../common/nav.ftl">
 
     <#--主要内容content-->
-    <div id="page-content-wrapper">
         <div class="container-fluid">
-            <div class="row clearfix">
-                <div class="col-md-12 column">
+            <div class="panel-group">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        列表
+                    </div>
+                    <div class="panel-body">
+                        <div class="list-op" id="list_op">
+                            <button type="button" class="btn btn-default btn-sm">
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
+                            </button>
+                            <button type="button" class="btn btn-default btn-sm">
+                                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>修改
+                            </button>
+                            <button type="button" class="btn btn-default btn-sm">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>删除
+                            </button>
+                        </div>
+                    </div>
                     <table class="table table-bordered table-condensed">
                         <thead>
                         <tr>
                             <th>订单id</th>
                             <th>姓名</th>
-                            <th>手机号</th>
+                            <th width="100">手机号</th>
                             <th>地址</th>
                             <th>金额</th>
                             <th>邮费</th>
                             <th>订单状态</th>
-                            <th>支付状态</th>
-                            <th>创建时间</th>
+                            <th width="60">支付状态</th>
+                            <th width="200">创建时间</th>
                             <th colspan="2">操作</th>
                         </tr>
                         </thead>
@@ -78,7 +93,6 @@
                 </div>
             </div>
         </div>
-    </div>
 
 </div>
 

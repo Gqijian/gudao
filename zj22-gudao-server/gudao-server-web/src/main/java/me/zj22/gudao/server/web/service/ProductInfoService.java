@@ -40,4 +40,7 @@ public interface ProductInfoService {
 
     //下架
     Integer offSale(Integer productId);
+
+    //删除商品
+    Integer delete(String pks[]);
 }

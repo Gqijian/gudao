@@ -1,5 +1,6 @@
 package me.zj22.gudao.server.web.service.impl;
 
+import me.zj22.gudao.server.web.dao.db.RebateMapper;
 import me.zj22.gudao.server.web.dao.db.wrap.RebateWrapperMapper;
 import me.zj22.gudao.server.web.exception.SellerAuthorizeException;
 import me.zj22.gudao.server.web.pojo.dto.Operator;
@@ -25,6 +26,9 @@ public class RebateServiceImp implements RebateService {
     private RebateWrapperMapper rebateWrapperMapper;
 
     @Autowired
+    private RebateMapper rebateMapper;
+
+    @Autowired
     private HttpServletRequest request;
 
     @Override
@@ -34,6 +38,7 @@ public class RebateServiceImp implements RebateService {
         if(seller == null){
             throw new SellerAuthorizeException();
         }
+        rebate.setAvailable((byte)0);//默认可用
         rebate.setCreateTime(TimeParse.Time2NUIX(TimeParse.NUIX2Time(new Date())));
         rebate.setUpdateTime(TimeParse.Time2NUIX(TimeParse.NUIX2Time(new Date())));
         rebate.setCreateUser(seller.getRealName());
@@ -53,5 +58,17 @@ public class RebateServiceImp implements RebateService {
         page.setList(rebateList);
         page.setTotalRecord(totalRecord);
         return page;
+    }
+
+    @Override
+    public int update(Rebate rebate) {
+        // 从session中获取修改人保存
+        Operator seller = (Operator)request.getSession().getAttribute("seller");
+        if(seller == null){
+            throw new SellerAuthorizeException();
+        }
+        rebate.setUpdateTime(TimeParse.Time2NUIX(TimeParse.NUIX2Time(new Date())));
+        rebate.setUpdateUser(seller.getRealName());
+        return rebateWrapperMapper.updateByPrimaryKeySelective(rebate);
     }
 }

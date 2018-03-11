@@ -26,10 +26,18 @@
       product_price, cost, weight, product_status, product_about, product_stock, create_time,
       creat_user, update_time, update_user
     FROM
-      product_info limit #{start},#{rows}
+      product_info WHERE product_name like #{keyWord} limit #{start},#{rows}
   </select>
 
-  <select id="findCount" resultType="java.lang.Integer">
-    SELECT COUNT(0) FROM product_info
+  <select id="findCount" resultType="java.lang.Integer" parameterType="me.zj22.gudao.server.web.pojo.vo.Page">
+    SELECT COUNT(0) FROM product_info WHERE  product_name like #{keyWord}
   </select>
+
+  <!-- 批量删除用户 -->
+  <delete id="delete">
+  delete from product_info where product_id in
+  <foreach collection="array" open="(" close=")" separator="," item="pks">
+    #{pks}
+  </foreach>
+  </delete>
 </mapper>

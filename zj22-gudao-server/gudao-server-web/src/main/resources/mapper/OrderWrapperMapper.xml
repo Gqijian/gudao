@@ -29,23 +29,57 @@
         address, zipcode, order_amount, postage, order_status, pay_status,
         create_time, operation_time, operator, remark, user_id
       FROM `order`
-      WHERE order_id = #{KeyWord} limit #{start},#{rows}
+      WHERE order_id = #{keyWord} limit #{start},#{rows}
   </select>
 
   <select id="findAllOrderCount" resultType="java.lang.Integer" parameterType="java.lang.Integer">
       SELECT COUNT(0) FROM `order` WHERE user_id = #{userId}
   </select>
 
-  <select id="findAllOrder" resultMap="BaseResultMap" parameterType="me.zj22.gudao.server.web.pojo.vo.Page">
+  <!--新订单-->
+  <select id="findAllNOrder" resultMap="BaseResultMap" parameterType="me.zj22.gudao.server.web.pojo.vo.Page">
       SELECT
         order_id, receiver_name, receiver_phone, prov, city, county,
         address, zipcode, order_amount, postage, order_status, pay_status,
         create_time, operation_time, operator, remark, user_id
-      FROM `order` ORDER BY create_time DESC limit #{start},#{rows}
+      FROM `order` WHERE receiver_name like #{keyWord}  AND order_status = 0 ORDER BY create_time DESC limit #{start},#{rows}
   </select>
 
-  <select id="findOrderCount" resultType="java.lang.Integer">
-      SELECT COUNT(0) FROM `order`
+  <select id="findOrderNCount" resultType="java.lang.Integer" parameterType="me.zj22.gudao.server.web.pojo.vo.Page">
+      SELECT COUNT(0) FROM `order` WHERE receiver_name like #{keyWord}  AND order_status = 0
   </select>
 
+  <!--完结订单-->
+  <select id="findAllFOrder" resultMap="BaseResultMap" parameterType="me.zj22.gudao.server.web.pojo.vo.Page">
+    SELECT
+    order_id, receiver_name, receiver_phone, prov, city, county,
+    address, zipcode, order_amount, postage, order_status, pay_status,
+    create_time, operation_time, operator, remark, user_id
+    FROM `order` WHERE receiver_name like #{keyWord}  AND order_status = 1 ORDER BY create_time DESC limit #{start},#{rows}
+  </select>
+
+  <select id="findOrderFCount" resultType="java.lang.Integer" parameterType="me.zj22.gudao.server.web.pojo.vo.Page">
+    SELECT COUNT(0) FROM `order` WHERE receiver_name like #{keyWord}  AND order_status = 1
+  </select>
+
+  <!--已取消的订单-->
+  <select id="findAllCOrder" resultMap="BaseResultMap" parameterType="me.zj22.gudao.server.web.pojo.vo.Page">
+    SELECT
+    order_id, receiver_name, receiver_phone, prov, city, county,
+    address, zipcode, order_amount, postage, order_status, pay_status,
+    create_time, operation_time, operator, remark, user_id
+    FROM `order` WHERE receiver_name like #{keyWord}  AND order_status = 2 ORDER BY create_time DESC limit #{start},#{rows}
+  </select>
+
+  <select id="findOrderCCount" resultType="java.lang.Integer" parameterType="me.zj22.gudao.server.web.pojo.vo.Page">
+    SELECT COUNT(0) FROM `order` WHERE receiver_name like #{keyWord}  AND order_status = 2
+  </select>
+
+  <!-- 批量删除取消的订单 -->
+  <!--<delete id="delete">-->
+    <!--delete from `order` where order_id in-->
+    <!--<foreach collection="array" open="(" close=")" separator="," item="pks">-->
+      <!--#{pks}-->
+    <!--</foreach>-->
+  <!--</delete>-->
 </mapper>
