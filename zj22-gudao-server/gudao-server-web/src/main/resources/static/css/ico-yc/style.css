@@ -1,0 +1,38 @@
+@font-face {
+  font-family: 'ico-yc';
+  src:  url('fonts/ico-yc.eot?6l6thy');
+  src:  url('fonts/ico-yc.eot?6l6thy#iefix') format('embedded-opentype'),
+    url('fonts/ico-yc.ttf?6l6thy') format('truetype'),
+    url('fonts/ico-yc.woff?6l6thy') format('woff'),
+    url('fonts/ico-yc.svg?6l6thy#ico-yc') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'ico-yc' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-quill:before {
+  content: "\e907";
+}
+.icon-user-tie:before {
+  content: "\e976";
+}
+.icon-wrench:before {
+  content: "\e991";
+}
+.icon-switch:before {
+  content: "\e9b6";
+}

@@ -22,4 +22,26 @@
         order_id = #{orderId}
 
   </select>
+
+    <select id="findDetailByOrderId" resultMap="BaseResultMap" parameterType="me.zj22.gudao.server.web.pojo.vo.Page">
+        SELECT
+        detail_id,
+        product_quantity,
+        price,
+        order_id,
+        product_id
+        FROM order_detail WHERE order_id = #{keyWord}
+    </select>
+
+    <select id="findDetailCountByOrderId" resultType="java.lang.Integer" parameterType="me.zj22.gudao.server.web.pojo.vo.Page">
+        SELECT COUNT(0) FROM order_detail WHERE order_id = #{keyWord}
+    </select>
+
+    <!-- 批量删除取消的订单详情 -->
+    <!--<delete id="delete">-->
+        <!--delete from `order` where order_id in-->
+        <!--<foreach collection="array" open="(" close=")" separator="," item="pks">-->
+            <!--#{pks}-->
+        <!--</foreach>-->
+    <!--</delete>-->
 </mapper>

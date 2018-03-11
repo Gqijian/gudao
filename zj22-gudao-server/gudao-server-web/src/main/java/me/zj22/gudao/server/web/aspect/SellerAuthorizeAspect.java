@@ -28,6 +28,7 @@ public class SellerAuthorizeAspect {
     private static final Logger LOG = LoggerFactory.getLogger(SellerAuthorizeAspect.class);
 
     @Pointcut("execution(public * me.zj22.gudao.server.web.controller.Seller*.*(..))" +
+              "&& execution(public * me.zj22.gudao.server.web.controller.BaseAction.*(..))"+
             "&& !execution(public * me.zj22.gudao.server.web.controller.SellerUserController.*(..))")
     public void verify() {}
 

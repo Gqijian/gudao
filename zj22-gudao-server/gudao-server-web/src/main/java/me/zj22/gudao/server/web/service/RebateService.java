@@ -16,4 +16,6 @@ public interface RebateService {
 
     /**查询折扣列表,分页*/
     Page<Rebate> findAllList(Page<Rebate> page);
+
+    int update(Rebate rebate);
 }

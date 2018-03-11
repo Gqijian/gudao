@@ -44,7 +44,7 @@ public class SellerUserController {
         Operator seller = operatorService.findSeller(operator);
         if (seller == null) {
             map.put("msg", ResultEnum.LOGIN_FAIL.getMessage());
-            map.put("url", "/gudao/seller/order/list");
+            map.put("url", "/gudao/seller/auth");
             return new ModelAndView("common/error");
         }
         //2. 设置session 过期时间30分钟 web.xml
@@ -54,8 +54,9 @@ public class SellerUserController {
 
         //3. 设置token至cookie
         CookieUtil.set(response, CookieConstant.TOKEN, token, expire);
-
-        return new ModelAndView("redirect:" + WeChatConfig.getWechatUrl() + "/seller/order/list");
+        return new ModelAndView("redirect:" + WeChatConfig.getWechatUrl() + "/base/goURL/main");
+//        return new ModelAndView("main");
+//        return new ModelAndView("redirect:" + WeChatConfig.getWechatUrl() + "/seller/order/list");
 
     }
 

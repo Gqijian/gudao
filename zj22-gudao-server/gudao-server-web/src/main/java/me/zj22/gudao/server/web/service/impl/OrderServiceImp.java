@@ -38,6 +38,7 @@ import java.util.stream.Collectors;
  */
 @Service("OrderServiceImp")
 public class OrderServiceImp implements OrderService {
+
     private static final Logger LOG = LoggerFactory.getLogger(OrderServiceImp.class);
     @Autowired
     private OrderWrapperMapper orderWrapperMapper;
@@ -213,11 +214,41 @@ public class OrderServiceImp implements OrderService {
     }
 
     @Override
-    public Page<OrderDTO> findAllList(Page<OrderDTO> page) {
-        List<OrderDTO> orderList = orderWrapperMapper.findAllOrder(page);
-        Integer allOrderCount = orderWrapperMapper.findOrderCount();
+    public Page<OrderDTO> findAllNList(Page<OrderDTO> page) {
+        Integer allOrderCount = orderWrapperMapper.findOrderNCount(page);
+        List<OrderDTO> orderList = orderWrapperMapper.findAllNOrder(page);
+
         page.setList(orderList);
         page.setTotalRecord(allOrderCount);
         return page;
     }
+
+    @Override
+    public Page<OrderDTO> findAllFList(Page<OrderDTO> page) {
+        List<OrderDTO> orderList = orderWrapperMapper.findAllFOrder(page);
+        Integer allOrderCount = orderWrapperMapper.findOrderFCount(page);
+        page.setList(orderList);
+        page.setTotalRecord(allOrderCount);
+        return page;
+    }
+
+    @Override
+    public Page<OrderDTO> findAllCList(Page<OrderDTO> page) {
+        Integer allOrderCount = orderWrapperMapper.findOrderCCount(page);
+        List<OrderDTO> orderList = orderWrapperMapper.findAllCOrder(page);
+
+        page.setList(orderList);
+        page.setTotalRecord(allOrderCount);
+        return page;
+    }
+
+    @Override
+    public Page<OrderDetail> findAllDetailByOrderId(Page<OrderDetail> page) {
+        Integer allOrderDetailCount = orderDetailMapperWrapper.findDetailCountByOrderId(page);
+        List<OrderDetail> orderDetailList = orderDetailMapperWrapper.findDetailByOrderId(page);
+        page.setList(orderDetailList);
+        page.setTotalRecord(allOrderDetailCount);
+        return page;
+    }
+
 }

@@ -1,6 +1,7 @@
 package me.zj22.gudao.server.web.service;
 
 import me.zj22.gudao.server.web.pojo.dto.OrderDTO;
+import me.zj22.gudao.server.web.pojo.dto.OrderDetail;
 import me.zj22.gudao.server.web.pojo.vo.Page;
 
 /**
@@ -26,6 +27,16 @@ public interface OrderService {
     /**支付订单*/
     OrderDTO paid(OrderDTO orderDTO);
 
-    /**查询订单列表,分页*/
-    Page<OrderDTO> findAllList(Page<OrderDTO> page);
+    /**查询新订单列表,分页*/
+    Page<OrderDTO> findAllNList(Page<OrderDTO> page);
+
+    /**查询完结订单列表,分页*/
+    Page<OrderDTO> findAllFList(Page<OrderDTO> page);
+
+    /**查询取消订单列表,分页*/
+    Page<OrderDTO> findAllCList(Page<OrderDTO> page);
+
+    /**查询订单详情*/
+    Page<OrderDetail> findAllDetailByOrderId(Page<OrderDetail> page);
+
 }

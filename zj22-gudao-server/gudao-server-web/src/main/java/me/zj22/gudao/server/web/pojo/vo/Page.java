@@ -15,7 +15,7 @@ public class Page<T> implements Serializable {
     private Integer rows;//页大小
     private Integer totalRecord;// 总记录 数
     private List<T> list;//页面数据列表
-    private Object keyWord;//查询关键字
+    private String keyWord;//查询关键字
     private T paramEntity;//多条件查询
     private Integer start;//需要这里处理
     private Integer showPages;//显示的页数
@@ -68,12 +68,15 @@ public class Page<T> implements Serializable {
         pageMap.put("rows", list);
         this.list = list;
     }
-    public Object getKeyWord() {
+
+    public String getKeyWord() {
         return keyWord;
     }
-    public void setKeyWord(Object keyWord) {
+
+    public void setKeyWord(String keyWord) {
         this.keyWord = keyWord;
     }
+
     public Integer getStart() {
         this.start = (page-1)*rows;
         return start;
