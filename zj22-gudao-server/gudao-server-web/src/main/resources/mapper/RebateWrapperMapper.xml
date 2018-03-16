@@ -19,4 +19,12 @@
   <select id="findRebateCount" resultType="java.lang.Integer">
     SELECT COUNT(0) FROM rebate
   </select>
+
+  <!-- 批量删除折扣 -->
+  <delete id="delete">
+    delete from rebate where rebate_id in
+    <foreach collection="array" open="(" close=")" separator="," item="pks">
+      #{pks}
+    </foreach>
+  </delete>
 </mapper>

@@ -1,0 +1,35 @@
+#north {
+    overflow: hidden;
+    background:#E0ECFF;
+    line-height: 20px;
+    color: #000;
+    font-family: Verdana, 微软雅黑,黑体;
+}
+@font-face {
+    font-family: 'ico-yc';
+    src:  url('../font/ico-yc.eot?6l6thy');
+    src:  url('../font/ico-yc.eot?6l6thy#iefix') format('embedded-opentype'),
+    url('../font/ico-yc.ttf?6l6thy') format('truetype'),
+    url('../font/ico-yc.woff?6l6thy') format('woff'),
+    url('../font/ico-yc.svg?6l6thy#ico-yc') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    font-family: 'ico-yc' !important;
+    font-style: normal;
+}
+
+.icon-quill:before {
+    content: "\e907";
+}
+.icon-user-tie:before {
+    content: "\e976";
+}
+.icon-wrench:before {
+    content: "\e991";
+}
+.icon-switch:before {
+    content: "\e9b6";
+}

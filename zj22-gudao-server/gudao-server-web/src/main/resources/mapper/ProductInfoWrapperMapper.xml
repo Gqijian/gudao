@@ -33,7 +33,7 @@
     SELECT COUNT(0) FROM product_info WHERE  product_name like #{keyWord}
   </select>
 
-  <!-- 批量删除用户 -->
+  <!-- 批量删除商品 -->
   <delete id="delete">
   delete from product_info where product_id in
   <foreach collection="array" open="(" close=")" separator="," item="pks">

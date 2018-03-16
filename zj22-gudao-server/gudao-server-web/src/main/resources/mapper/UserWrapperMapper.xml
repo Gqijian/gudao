@@ -47,4 +47,25 @@
     FROM `user` WHERE nickname LIKE CONCAT(CONCAT('%', #{keyWord}), '%') limit #{start},#{rows}
   </select>
 
+  <select id="findPageList" resultMap="BaseResultMap" parameterType="me.zj22.gudao.server.web.pojo.vo.Page">
+    SELECT
+      user_id, openid, nickname, sex, country, province, city, head_img_url, integral,
+      total, create_time
+    FROM
+      `user`
+    <where>
+      <if test="paramEntity.openid != null"> openid like #{paramEntity.openid}</if>
+      <if test="paramEntity.nickname != null"> and nickname like #{paramEntity.nickname}</if>
+    </where> ORDER  BY create_time DESC  limit #{start},#{rows}
+  </select>
+
+  <select id="findCount" resultType="java.lang.Integer" parameterType="me.zj22.gudao.server.web.pojo.vo.Page">
+    SELECT COUNT(0) FROM `user`
+    <where>
+      <if test="paramEntity.openid != null"> openid like #{paramEntity.openid}</if>
+      <if test="paramEntity.nickname != null"> and nickname like #{paramEntity.nickname}</if>
+    </where>
+  </select>
+
+
 </mapper>

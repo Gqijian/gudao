@@ -13,6 +13,10 @@ public class Operation {
 
     private String description;
 
+    private Integer opPid;
+
+    private String opType;
+
     public Integer getOpId() {
         return opId;
     }
@@ -59,5 +63,21 @@ public class Operation {
 
     public void setDescription(String description) {
         this.description = description == null ? null : description.trim();
+    }
+
+    public Integer getOpPid() {
+        return opPid;
+    }
+
+    public void setOpPid(Integer opPid) {
+        this.opPid = opPid;
+    }
+
+    public String getOpType() {
+        return opType;
+    }
+
+    public void setOpType(String opType) {
+        this.opType = opType == null ? null : opType.trim();
     }
 }

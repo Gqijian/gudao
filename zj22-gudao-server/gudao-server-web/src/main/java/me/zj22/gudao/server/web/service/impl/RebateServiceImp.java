@@ -71,4 +71,9 @@ public class RebateServiceImp implements RebateService {
         rebate.setUpdateUser(seller.getRealName());
         return rebateWrapperMapper.updateByPrimaryKeySelective(rebate);
     }
+
+    @Override
+    public Integer delete(String[] pks) {
+        return rebateWrapperMapper.delete(pks);
+    }
 }

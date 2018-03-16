@@ -66,5 +66,12 @@ public class UserServiceImp implements UserSerivce {
         return page;
     }
 
+    @Override
+    public Page<User> findUserList(Page<User> page) {
+        page.setTotalRecord(userWrapperMapper.findCount(page));
+        page.setList(userWrapperMapper.findPageList(page));
+        return page;
+    }
+
 
 }

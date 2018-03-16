@@ -18,4 +18,7 @@ public interface RebateWrapperMapper extends RebateMapper{
 
     /**后台查询订单数*/
     Integer findRebateCount();
+
+    //删除折扣
+    Integer delete(String pks[]);
 }

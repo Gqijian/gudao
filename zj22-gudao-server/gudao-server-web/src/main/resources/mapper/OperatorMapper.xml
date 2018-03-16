@@ -223,8 +223,9 @@
 
   <select id="findSeller" parameterType="me.zj22.gudao.server.web.pojo.dto.Operator" resultMap="BaseResultMap">
     SELECT
-    <include refid="Base_Column_List" />
+      <include refid="Base_Column_List" />
     from
     operator where real_name = #{realName} and password = #{password}
   </select>
+
 </mapper>

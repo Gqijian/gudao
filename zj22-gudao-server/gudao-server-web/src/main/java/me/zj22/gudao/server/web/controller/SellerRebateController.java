@@ -106,4 +106,23 @@ public class SellerRebateController {
 //        map.put("url", "/gudao/seller/rebate/list");
 //        return new ModelAndView("common/success", map);
     }
+
+    /**
+     * 删除折扣
+     * @param pks
+     * @return
+     */
+    @RequestMapping("/delete")
+    @ResponseBody
+    public int deleteList(String[] pks){
+        int i = 0;
+
+        try {
+            i = rebateService.delete(pks);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return i;
+    }
+
 }

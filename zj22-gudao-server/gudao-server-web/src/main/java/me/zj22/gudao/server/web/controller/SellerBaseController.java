@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 @RequestMapping("/base")
-public class BaseAction {
+public class SellerBaseController {
 	@Resource
 	 ServletContext application;
 	

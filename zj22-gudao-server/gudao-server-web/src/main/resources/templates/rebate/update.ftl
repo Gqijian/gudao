@@ -1,23 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="/gudao/lib/jquery-easyui-1.5/themes/default/easyui.css">
-    <link rel="stylesheet" type="text/css" href="/gudao/lib/jquery-easyui-1.5/themes/icon.css">
-    <script type="text/javascript" src="/gudao/lib/jquery-easyui-1.5/jquery.min.js"></script>
-    <script type="text/javascript" src="/gudao/lib/jquery-easyui-1.5/jquery.easyui.min.js"></script>
-    <script type="text/javascript" src="/gudao/lib/jquery-easyui-1.5/datagrid-detailview.js"></script>
-    <script type="text/javascript" src="/gudao/lib/jquery-easyui-1.5/locale/easyui-lang-zh_CN.js"></script>
-    <script type="text/javascript" src="/gudao/js/baseJS.js"></script>
-    <script type="text/javascript" src="/gudao/js/goods.js"></script>
-
-    <title>修改商品</title>
-</head>
+<#include "../common/header.ftl">
 
 
 <body>
-<div id="dlg" class="easyui-dialog" style="width: 570px;padding: 10px 20px"
-     closed="true" buttons="#dlg-buttons">
+
     <form id="ff" method="post">
         <table>
             <tr>
@@ -47,10 +34,11 @@
             <#--<input id="btn" type="button" value="提交" />-->
         <#--</div>-->
     </form>
-</div>
+    <br>
+    <br>
 <div id="dlg-buttons">
-    <a id="btn" class="easyui-linkbutton" iconCls="icon-ok" >保存</a>
-    <a href="javascript:closeSaveDialog()" class="easyui-linkbutton" iconCls="icon-cancel" >关闭</a>
+    <a style="margin-left: 85px;" id="btn" class="easyui-linkbutton" iconCls="icon-ok" >保存</a>
+    <a style="margin-left: 105px;" href="javascript:closeSaveDialog()" class="easyui-linkbutton" iconCls="icon-cancel" >关闭</a>
 </div>
 </body>
 

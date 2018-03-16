@@ -1,16 +1,5 @@
 <html lang="en">
-<head>
-    <link rel="stylesheet" type="text/css" href="/gudao/lib/jquery-easyui-1.5/themes/default/easyui.css">
-    <link rel="stylesheet" type="text/css" href="/gudao/lib/jquery-easyui-1.5/themes/icon.css">
-    <script type="text/javascript" src="/gudao/lib/jquery-easyui-1.5/jquery.min.js"></script>
-    <script type="text/javascript" src="/gudao/lib/jquery-easyui-1.5/jquery.easyui.min.js"></script>
-    <script type="text/javascript" src="/gudao/lib/jquery-easyui-1.5/datagrid-detailview.js"></script>
-    <script type="text/javascript" src="/gudao/lib/jquery-easyui-1.5/locale/easyui-lang-zh_CN.js"></script>
-    <script type="text/javascript" src="/gudao/js/baseJS.js"></script>
-    <script type="text/javascript" src="/gudao/js/goods.js"></script>
-
-    <title>商品列表信息</title>
-</head>
+<#include "../common/header.ftl">
     <style type="text/css">
 
         .searchbox{
@@ -51,7 +40,6 @@
                     iconCls: 'icon-add',
                     text:'上架',
                     handler: function(){
-                        alert('上架按钮');
                         var array = $('#dg').datagrid("getSelections");
                         if(array.length==1){
                             var id = new Array();
@@ -92,7 +80,6 @@
                     iconCls: 'icon-remove',
                     text:'下架',
                     handler: function(){
-                        alert('下架按钮');
                         var array = $('#dg').datagrid("getSelections");
                         if(array.length==1){
                             var id = new Array();
@@ -153,7 +140,7 @@
                             return false;
                         };
                         parent.$('#win').window({
-                            title:'编辑管理员',
+                            title:'修改商品',
                             width:570,
                             height:560,
                             modal:true,
@@ -165,7 +152,6 @@
                     iconCls: 'icon-remove',
                     text:'删除',
                     handler: function(){
-                        alert('删除按钮');
                         var array = $('#dg').datagrid("getSelections");
                         if(array.length>0){
                             var ids = new Array();
@@ -176,7 +162,6 @@
 
                             parent.$.messager.confirm('删除对话框','您确认想要删除记录吗？',function(r){
                                 if (r){
-                                    alert('确认删除');
                                     $.ajax({
                                         url: "/gudao/seller/product/delete.action",
                                         type:"POST",
@@ -276,7 +261,7 @@
                         formatter:function(value,row){
                             var str = "";
                             if(value!="" || value!=null){
-                                str =  "<img style=\"height: 50px;width: 100px;\" src=\""+value+"\"/>";
+                                str =  "<img style=\"height: 70px;width: 100px;\" src=\""+"/gudao/upload/"+value+"\"/>";
                                 return str;
                             }
                         }

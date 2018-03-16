@@ -1,18 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="/gudao/lib/jquery-easyui-1.5/themes/default/easyui.css">
-    <link rel="stylesheet" type="text/css" href="/gudao/lib/jquery-easyui-1.5/themes/icon.css">
-    <script type="text/javascript" src="/gudao/lib/jquery-easyui-1.5/jquery.min.js"></script>
-    <script type="text/javascript" src="/gudao/lib/jquery-easyui-1.5/jquery.easyui.min.js"></script>
-    <script type="text/javascript" src="/gudao/lib/jquery-easyui-1.5/datagrid-detailview.js"></script>
-    <script type="text/javascript" src="/gudao/lib/jquery-easyui-1.5/locale/easyui-lang-zh_CN.js"></script>
-    <script type="text/javascript" src="/gudao/js/baseJS.js"></script>
-    <script type="text/javascript" src="/gudao/js/goods.js"></script>
-
-    <title>修改商品</title>
-</head>
+<#include "../common/header.ftl">
 
 
 <body style="overflow：hidden">
@@ -60,19 +48,22 @@
             </tr>
             <tr>
                 <td><span>商品图片1：</span></td>
-                <td><input type="text" style="width: 250px" id="imgfile1" class="file" name="productIconOne"/>
+                <td><img id="img1" src="" width=100 height=70/>
+                    <input type="file" style="width: 250px" id="imgfile1" class="file" name="files"/>
                     <#--<input type="hidden" id="product_icon_one" name="product_icon_one"/>-->
                 </td>
             </tr>
             <tr>
                 <td><span>商品图片2：</span></td>
-                <td><input type="text" style="width: 250px" class="file" id="imgfile2" name="productIconTwo"/>
+                <td><img id="img2" src="" width=100 height=70/>
+                    <input type="file" style="width: 250px" class="file" id="imgfile2" name="files"/>
                     <#--<input type="hidden" id="product_icon_two" name="product_icon_two"/>-->
                 </td>
             </tr>
             <tr>
                 <td><span>商品图片3：</span></td>
-                <td><input type="text" style="width: 250px" class="file" id="imgfile3" name="productIconThree"/>
+                <td><img id="img3" src="" width=100 height=70/>
+                <input type="file" style="width: 250px" class="file" id="imgfile3" name="files"/>
                     <#--<input type="hidden" id="product_icon_three" name="product_icon_three"/>-->
                 </td>
             </tr>
@@ -128,9 +119,9 @@
             productAbout:row.productAbout,
             productDescription:row.productDescription
         });
-        $(".imgfile1").attr("src",row.productIconOne);
-        $(".imgfile2").attr("src",row.productIconTwo);
-        $(".imgfile3").attr("src",row.productIconThree);
+        $("#img1").attr("src","/gudao/upload/"+row.productIconOne);
+        $("#img2").attr("src","/gudao/upload/"+row.productIconTwo);
+        $("#img3").attr("src","/gudao/upload/"+row.productIconThree);
 
         //禁用验证
         $("#ff").form("disableValidation");

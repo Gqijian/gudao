@@ -28,4 +28,10 @@ public interface UserWrapperMapper extends UserMapper {
     /**后台查询用户数*/
     Integer findWechatUserCount();
 
+    /**查询所有用户,分页*/
+    List<User> findPageList(Page<User> page);
+
+    /**查询总记录数*/
+    Integer findCount(Page<User> page);
+
 }

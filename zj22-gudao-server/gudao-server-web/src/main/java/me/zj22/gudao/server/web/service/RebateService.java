@@ -18,4 +18,7 @@ public interface RebateService {
     Page<Rebate> findAllList(Page<Rebate> page);
 
     int update(Rebate rebate);
+
+    //删除折扣
+    Integer delete(String pks[]);
 }

@@ -27,4 +27,9 @@ public interface UserSerivce {
 
     /**根据用户昵称模糊查找查询用户*/
     Page<User> findUserByName(Page<User> page);
+
+    /**查询所有用户,分页*/
+    Page<User> findUserList(Page<User> page);
+
+
 }

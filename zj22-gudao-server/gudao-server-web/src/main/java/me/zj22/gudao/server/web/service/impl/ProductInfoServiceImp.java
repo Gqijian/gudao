@@ -50,7 +50,7 @@ public class ProductInfoServiceImp implements ProductInfoService {
     @Override
     public Page<ProductInfo> findAll(Page<ProductInfo> page) {
         List<ProductInfo> productList = productInfoWrapperMapper.findPageList(page);
-        Integer count = productInfoWrapperMapper.findCount();
+        Integer count = productInfoWrapperMapper.findCount(page);
         page.setList(productList);
         page.setTotalRecord(count);
         return page;
@@ -142,5 +142,10 @@ public class ProductInfoServiceImp implements ProductInfoService {
         //更新
         productInfo.setProductStatus(ProductStatusEnum.DOWN.getCode());
         return productInfoWrapperMapper.updateByPrimaryKey(productInfo);
+    }
+
+    @Override
+    public Integer delete(String[] pks) {
+        return productInfoWrapperMapper.delete(pks);
     }
 }

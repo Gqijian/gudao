@@ -1,19 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="/gudao/lib/jquery-easyui-1.5/themes/default/easyui.css">
-    <link rel="stylesheet" type="text/css" href="/gudao/lib/jquery-easyui-1.5/themes/icon.css">
-    <script type="text/javascript" src="/gudao/lib/jquery-easyui-1.5/jquery.min.js"></script>
-    <script type="text/javascript" src="/gudao/lib/jquery-easyui-1.5/jquery.easyui.min.js"></script>
-    <script type="text/javascript" src="/gudao/lib/jquery-easyui-1.5/datagrid-detailview.js"></script>
-    <script type="text/javascript" src="/gudao/lib/jquery-easyui-1.5/locale/easyui-lang-zh_CN.js"></script>
-    <script type="text/javascript" src="/gudao/js/baseJS.js"></script>
-    <script type="text/javascript" src="/gudao/js/goods.js"></script>
-
-    <title>添加商品</title>
-</head>
-
+<#include "../common/header.ftl">
 
 <body overflow="hidden">
 
@@ -45,19 +32,19 @@
             </tr>
             <tr>
                 <td><span>商品图片1：</span></td>
-                <td><input type="text" style="width: 250px" id="imgfile1" class="file" name="productIconOne"/>
+                <td><input type="file" style="width: 250px" id="imgfile1" class="file" name="files"/>
                     <#--<input type="hidden" id="product_icon_one" name="product_icon_one"/>-->
                 </td>
             </tr>
             <tr>
                 <td><span>商品图片2：</span></td>
-                <td><input type="text" style="width: 250px" class="file" id="imgfile2" name="productIconTwo"/>
+                <td><input type="file" style="width: 250px" class="file" id="imgfile2" name="files"/>
                     <#--<input type="hidden" id="product_icon_two" name="product_icon_two"/>-->
                 </td>
             </tr>
             <tr>
                 <td><span>商品图片3：</span></td>
-                <td><input type="text" style="width: 250px" class="file" id="imgfile3" name="productIconThree"/>
+                <td><input type="file" style="width: 250px" class="file" id="imgfile3" name="files"/>
                     <#--<input type="hidden" id="product_icon_three" name="product_icon_three"/>-->
                 </td>
             </tr>

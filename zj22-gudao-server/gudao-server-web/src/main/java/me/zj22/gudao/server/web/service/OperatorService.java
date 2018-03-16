@@ -1,6 +1,9 @@
 package me.zj22.gudao.server.web.service;
 
+import me.zj22.gudao.server.web.pojo.dto.Operation;
 import me.zj22.gudao.server.web.pojo.dto.Operator;
+
+import java.util.List;
 
 /**
  * daogu
@@ -9,4 +12,5 @@ import me.zj22.gudao.server.web.pojo.dto.Operator;
 public interface OperatorService {
 
     Operator findSeller(Operator operator);
+
 }
