@@ -164,13 +164,18 @@ function checkNode(node,name){
 
 function saveTree(){
     var nodes=$('#tree').tree('getChecked');
-    var authArrIds=[];
+    var ids = new Array();
+    alert("222222");
+    //var authArrIds=[];
     for(var i=0;i<nodes.length;i++){
-        authArrIds.push(nodes[i].id);
+        ids[i]=nodes[i].opId;
+        alert(ids[i]);
+        //authArrIds.push(nodes[i].id);
     }
     var url;
-    var authIds=authArrIds.join(",");
-    $.post(url,{OperationIds:authIds,roleId:roleId},function(result){
+
+    //var authIds=authArrIds.join(",");
+    $.post(url,{pks:ids,roleId:id},function(result){
         if(result.code == 0){
             $.messager.show({title:'系统提示',msg:'操作成功！', timeout:1000, showType:'slide',style: {right:'', bottom:''}});
             closeTreeDialog();

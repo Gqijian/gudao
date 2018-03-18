@@ -19,4 +19,6 @@
     <script type="text/javascript" src="/gudao/lib/jquery-easyui-1.5/datagrid-detailview.js"></script>
     <script type="text/javascript" src="/gudao/lib/jquery-easyui-1.5/locale/easyui-lang-zh_CN.js"></script>
     <script type="text/javascript" src="/gudao/js/main.js"></script>
+    <script type="text/javascript" src="/gudao/js/baseJS.js"></script>
+    <script type="text/javascript" src="/gudao/js/role.js"></script>
 </head>

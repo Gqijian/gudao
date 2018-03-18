@@ -221,11 +221,137 @@
     where operator_id = #{operatorId,jdbcType=INTEGER}
   </update>
 
+  <!--登录查找-->
   <select id="findSeller" parameterType="me.zj22.gudao.server.web.pojo.dto.Operator" resultMap="BaseResultMap">
     SELECT
       <include refid="Base_Column_List" />
     from
     operator where real_name = #{realName} and password = #{password}
   </select>
+
+  <select id="findPageList" resultMap="BaseResultMap" parameterType="me.zj22.gudao.server.web.pojo.vo.Page">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM
+    operator WHERE real_name like #{keyWord} limit #{start},#{rows}
+  </select>
+
+  <select id="findCount" resultType="java.lang.Integer" parameterType="me.zj22.gudao.server.web.pojo.vo.Page">
+    SELECT COUNT(0) FROM operator WHERE  real_name like #{keyWord}
+  </select>
+
+  <!-- 批量删除 -->
+  <delete id="delete">
+    delete from operator where operator_id in
+    <foreach collection="array" open="(" close=")" separator="," item="pks">
+      #{pks}
+    </foreach>
+  </delete>
+
+  <!---冻结管理员账户-->
+  <update id="freeze" parameterType="me.zj22.gudao.server.web.pojo.dto.Operator">
+    update operator
+    <set >
+      <if test="operatorName != null" >
+        operator_name = #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null" >
+        real_name = #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="cellPhoneNum != null" >
+        cell_phone_num = #{cellPhoneNum,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null" >
+        qq = #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null" >
+        ip = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="openid != null" >
+        openid = #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="available != null" >
+        available = #{available,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="creatUser != null" >
+        creat_user = #{creatUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=BIGINT},
+      </if>
+      <if test="updateUser != null" >
+        update_user = #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null" >
+        role_id = #{roleId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where operator_id = #{operatorId,jdbcType=INTEGER}
+  </update>
+
+  <!---解冻管理员账户-->
+  <update id="nofreeze" parameterType="me.zj22.gudao.server.web.pojo.dto.Operator">
+    update operator
+    <set >
+      <if test="operatorName != null" >
+        operator_name = #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null" >
+        real_name = #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="cellPhoneNum != null" >
+        cell_phone_num = #{cellPhoneNum,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null" >
+        qq = #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null" >
+        ip = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="openid != null" >
+        openid = #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="available != null" >
+        available = #{available,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="creatUser != null" >
+        creat_user = #{creatUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=BIGINT},
+      </if>
+      <if test="updateUser != null" >
+        update_user = #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null" >
+        role_id = #{roleId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where operator_id = #{operatorId,jdbcType=INTEGER}
+  </update>
 
 </mapper>

@@ -21,7 +21,7 @@
             <tr>
                 <td id="name">欢迎：</td>
                 <td id="role">${seller.realName}</td>
-                <td><a href="javascript:openPasswordModifyDialog()">修改密码</a></td>
+                <#--<td><a href="javascript:openPasswordModifyDialog()">修改密码</a></td>-->
                 <td><a href="javascript:logout()" >退出系统</a></td>
             </tr>
         </table>

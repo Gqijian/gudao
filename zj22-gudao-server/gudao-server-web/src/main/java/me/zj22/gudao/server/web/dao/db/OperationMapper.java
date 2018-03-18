@@ -21,4 +21,13 @@ public interface OperationMapper {
 
     //查找用户权限
     List<Operation> findOperationByRoleId(Integer roleId);
+
+    //查询权限数
+    Integer findOperationCount(Integer roleId);
+
+    //查询未有的权限
+    List<Operation> findNoOperationByRoleId(Integer roleId);
+
+    //删除选择的权限
+    Integer delete(String pks[]);
 }

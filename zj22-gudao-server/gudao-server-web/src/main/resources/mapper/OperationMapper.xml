@@ -127,10 +127,33 @@
   </update>
 
   <!--权限查询-->
-  <select id="findOperationByRoleId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="findOperationByRoleId" parameterType="me.zj22.gudao.server.web.pojo.vo.Page" resultMap="BaseResultMap">
     SELECT
     <include refid="Base_Column_List" />
     FROM operation
-    WHERE op_id in (SELECT op_id FROM role_permission WHERE role_id = #{roleId})
+    WHERE  op_id in (SELECT op_id FROM role_permission WHERE role_id = #{KeyWord})
   </select>
+
+  <!--未有的权限查询-->
+  <select id="findNoOperationByRoleId" parameterType="me.zj22.gudao.server.web.pojo.vo.Page" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM operation
+    WHERE op_id NOT IN (SELECT op_id FROM role_permission WHERE role_id = #{KeyWord})
+  </select>
+
+  <select id="findOperationCount" parameterType="me.zj22.gudao.server.web.pojo.vo.Page" resultType="java.lang.Integer">
+    SELECT
+      count(0)
+    FROM operation
+    WHERE op_id in (SELECT op_id FROM role_permission WHERE role_id = #{KeyWord})
+  </select>
+
+  <!-- 批量删除 -->
+  <delete id="delete">
+    delete from operation where op_id in
+    <foreach collection="array" open="(" close=")" separator="," item="pks">
+      #{pks}
+    </foreach>
+  </delete>
 </mapper>

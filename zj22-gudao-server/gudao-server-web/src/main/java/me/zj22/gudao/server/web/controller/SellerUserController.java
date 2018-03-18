@@ -10,6 +10,7 @@ import me.zj22.gudao.server.web.service.OperationService;
 import me.zj22.gudao.server.web.service.OperatorService;
 import me.zj22.gudao.server.web.utils.CookieUtil;
 import me.zj22.gudao.server.web.utils.MD5Util;
+import me.zj22.gudao.server.web.utils.TreeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,6 +42,11 @@ public class SellerUserController {
         return new ModelAndView("login");
     }
 
+    /**
+     * 根据不同用户角色Id查询所有权限树
+     * @param request
+     * @return
+     */
     @RequestMapping("/tree")
     @ResponseBody
     public Object tree(HttpServletRequest request){
@@ -48,58 +54,7 @@ public class SellerUserController {
         //根据operator_id查找该用户所以权限
         Integer roleId = seller.getRoleId();
         List<Operation> operationList = operationService.findOperationByRoleId(roleId);
-
-        //遍历所有权限，封装在children中，父子关系注意
-        List<Children> parentList = new ArrayList<>(); //父集合 menu
-        List<Children> childrenList = null;//子集合 permission
-
-        for (Operation op : operationList) {
-            //判断是否是menu类型
-            if(op.getOpType().equalsIgnoreCase("menu")){
-                Children parent = new Children(op.getOpId(),op.getOpHref(),op.getOpName());
-                parentList.add(parent);
-            }
-        }
-
-
-        for(int i=0; i<parentList.size(); i++){
-//            Iterator<Operation> iterator = operationList.iterator();
-                childrenList = new ArrayList<>();
-                for (Operation op : operationList) {
-
-                if( "permission".equalsIgnoreCase(op.getOpType()) && parentList.get(i).getId() == op.getOpPid()){
-
-//                    System.out.println("-----------------------");
-//                    System.out.println("parentList.get(i).getId()"+parentList.get(i).getId());
-//                    System.out.println("op.getOpPid()"+op.getOpPid());
-//                    System.out.println("========================");
-                    Children children = new Children(op.getOpId(),op.getOpHref(),op.getOpName());
-                    childrenList.add(children);
-                }
-                    parentList.get(i).setChildren(childrenList);
-
-            }
-        }
-
-//        for (Operation op : operationList) {
-//            //判断是否是menu类型
-//            if(op.getOpType().equalsIgnoreCase("permission")){
-//                for(int i=0; i<parentList.size(); i++){
-//                    if(parentList.get(i).getId() == op.getOpPid()){
-//                        System.out.println("-----------------------");
-//                        System.out.println("parentList.get(i).getId()"+parentList.get(i).getId());
-//                        System.out.println("op.getOpPid()"+op.getOpPid());
-//                        System.out.println("========================");
-//                        Children children = new Children(op.getOpId(),op.getOpHref(),op.getOpName());
-//                        childrenList.add(children);
-//                        parentList.get(i).setChildren(childrenList);
-//                    }
-//                }
-//            }
-//        }
-
-        //返回list<children>集合
-         return parentList;
+        return TreeUtil.forTree(operationList);
     }
 
     /**

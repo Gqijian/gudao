@@ -28,4 +28,18 @@
       </if>
     </trim>
   </insert>
+
+  <!-- 批量删除 collection的值为pks，是传入的参数Map的key-->
+  <delete id="delete">
+    delete from role_permission where role_id = #{roleId} AND  op_id in
+    <foreach collection="pks" open="(" close=")" separator="," item="ids">
+      #{ids}
+    </foreach>
+  </delete>
+
+  <!--根据role_id删除-->
+  <delete id="deleteByRoleId" parameterType="java.lang.Integer">
+    delete from role_permission where role_id = #{roleId}
+  </delete>
+
 </mapper>
