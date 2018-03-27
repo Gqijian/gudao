@@ -1,0 +1,99 @@
+@charset "UTF-8";
+.tour{
+    width: 100%;
+    height: 5rem;
+    border-bottom: 1px solid #000000;
+    position: relative;
+}
+.tour1{
+    position: absolute;
+    top:1rem;
+    left: 2%;
+}
+.tour p{
+    text-align: center;
+    line-height: 5rem;
+    font-size: 1.8rem;
+}
+.tour2{
+    position: absolute;
+    top:1rem;
+    right: 2%;
+}
+figure{
+    margin: 0 auto;
+    border-left: 1px solid #b4b4b4;
+    border-right: 1px solid #b4b4b4;
+}
+figure img{
+    border-radius: 0.1rem;
+}
+figure p {
+    padding-top: 1rem;
+    font-size:1.3rem;
+    font-weight: normal;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align:left;
+    padding-left: 2%;
+}
+figure div em{
+    font-style: normal;
+    font-size:1.6rem;
+    line-height:3rem;
+    color: red;
+    padding-left: 2%;
+}
+figure div a {
+    float: right;
+}
+figure div a button{
+    font-size:1.4rem;
+    margin-top: -0.5rem;
+    height:30px;
+    width: 8rem;
+    color: green;
+    background-color: #ffffff;
+    border:1px solid green;
+    border-radius: 6px;
+    text-align: center;
+    outline: none;
+    margin-right: 1.5rem;
+}
+.sjxx {
+    max-width: 640px;
+    margin: 0 auto;
+    height: 70px;
+}
+.sjxx .pclass1{
+    line-height: 70px;
+    font-size:1.3rem;
+    font-weight: normal;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-left: 2%;
+}
+.sjxx .pclass2{
+    line-height: 35px;
+    font-size:1.3rem;
+    font-weight: normal;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-left: 2%;
+}
+.zshlogo{
+    width: 100%;
+    height: 13rem;
+}
+.zshlogo a img{
+    padding: 0.5rem;
+    margin: 0 auto;
+}
+
+.zshlogo p{
+    font-size: 1.2rem;
+    text-align: center;
+}
