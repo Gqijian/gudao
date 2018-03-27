@@ -1,9 +1,11 @@
 package me.zj22.gudao.server.web.service;
 
+import me.zj22.gudao.server.web.pojo.dto.Order;
 import me.zj22.gudao.server.web.pojo.dto.User;
 import me.zj22.gudao.server.web.pojo.vo.Page;
 
 import java.util.List;
+
 
 /**
  * @Description:
@@ -31,9 +33,5 @@ public interface UserSerivce {
 
     /**查询用户所有订单*/
     List<Order> findUserOrders(Integer userId);
-
-    /**查询所有用户,分页*/
-    Page<User> findUserList(Page<User> page);
-
 
 }

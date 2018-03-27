@@ -65,7 +65,7 @@ public class OrderController {
     }
 
     //订单列表
-    @GetMapping("/list")
+    @GetMapping("/orderLists")
     @ResponseBody
     public JsonResponse<List<OrderDTO>> list(Page<OrderDTO> page, Integer userId){
         Page<OrderDTO> orderPage = orderService.findAllListOrder(page, userId);
