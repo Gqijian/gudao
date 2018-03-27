@@ -10,6 +10,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 /**
  * 路径跳转的base类
+ * @Description:
+ * @Create 2018/3/21 15:55
  */
 @Controller
 @RequestMapping("/base")

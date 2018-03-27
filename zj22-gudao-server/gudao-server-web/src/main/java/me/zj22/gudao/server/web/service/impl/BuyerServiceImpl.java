@@ -35,27 +35,6 @@ public class BuyerServiceImpl implements Buyer2Service {
     @Autowired
     private OrderDetailMapper orderDetailMapper;
 
-    private OrderDTO copyOderParams(Order order){
-        OrderDTO orderDTO = new OrderDTO();
-        orderDTO.setOrderId(order.getOrderId());
-        orderDTO.setReceiverName(order.getReceiverName());
-        orderDTO.setReceiverPhone(order.getReceiverPhone());
-        orderDTO.setProv(order.getProv());
-        orderDTO.setCity(order.getCity());
-        orderDTO.setCounty(order.getCounty());
-        orderDTO.setAddress(order.getAddress());
-        orderDTO.setZipcode(order.getZipcode());
-        orderDTO.setOrderAmount(order.getOrderAmount());
-        orderDTO.setPostage(order.getPostage());
-        orderDTO.setOrderStatus(order.getOrderStatus());
-        orderDTO.setCreateTime(order.getCreateTime());
-        orderDTO.setOperationTime(order.getOperationTime());
-        orderDTO.setOperator(order.getOperator());
-        orderDTO.setRemark(order.getRemark());
-        orderDTO.setUserId(order.getUserId());
-        return orderDTO;
-    }
-
     @Override
     public OrderDTO findOrderOne(String openId, String orderId) {
         User user = userMapper.selectUserByOpenId(openId);
@@ -78,5 +57,26 @@ public class BuyerServiceImpl implements Buyer2Service {
             return orderDTO;
         }
         return null;
+    }
+
+    private OrderDTO copyOderParams(Order order){
+        OrderDTO orderDTO = new OrderDTO();
+        orderDTO.setOrderId(order.getOrderId());
+        orderDTO.setReceiverName(order.getReceiverName());
+        orderDTO.setReceiverPhone(order.getReceiverPhone());
+        orderDTO.setProv(order.getProv());
+        orderDTO.setCity(order.getCity());
+        orderDTO.setCounty(order.getCounty());
+        orderDTO.setAddress(order.getAddress());
+        orderDTO.setZipcode(order.getZipcode());
+        orderDTO.setOrderAmount(order.getOrderAmount());
+        orderDTO.setPostage(order.getPostage());
+        orderDTO.setOrderStatus(order.getOrderStatus());
+        orderDTO.setCreateTime(order.getCreateTime());
+        orderDTO.setOperationTime(order.getOperationTime());
+        orderDTO.setOperator(order.getOperator());
+        orderDTO.setRemark(order.getRemark());
+        orderDTO.setUserId(order.getUserId());
+        return orderDTO;
     }
 }

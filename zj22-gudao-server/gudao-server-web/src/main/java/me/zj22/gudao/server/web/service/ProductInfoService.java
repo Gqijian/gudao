@@ -9,6 +9,7 @@ import java.util.List;
 /**
  * daogu
  * Created by 袁鹏 on 2018/2/5.
+ * @Change Gqijian 2018/3/18
  */
 public interface ProductInfoService {
 
@@ -43,4 +44,7 @@ public interface ProductInfoService {
 
     //删除商品
     Integer delete(String pks[]);
+
+    /**前台查询所有商品*/
+    List<ProductInfo> findAllProducts();
 }

@@ -2,13 +2,14 @@ package me.zj22.gudao.server.web.dao.db.wrap;
 
 import me.zj22.gudao.server.web.dao.db.PointsMapper;
 import me.zj22.gudao.server.web.pojo.dto.Points;
-import me.zj22.gudao.server.web.pojo.dto.PointsKey;
 import me.zj22.gudao.server.web.pojo.vo.Page;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Mapper
+@Repository
 public interface PointsWrapperMapper extends PointsMapper {
     //根据orderId查询Points
     Points findByOrderId(String orderId);

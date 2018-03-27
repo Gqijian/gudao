@@ -2,10 +2,12 @@ package me.zj22.gudao.server.web.dao.db;
 
 import me.zj22.gudao.server.web.pojo.dto.OrderDetail;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Mapper
+@Repository
 public interface OrderDetailMapper {
     int deleteByPrimaryKey(String detailId);
 

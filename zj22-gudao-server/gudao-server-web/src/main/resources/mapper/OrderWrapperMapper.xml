@@ -82,4 +82,8 @@
       <!--#{pks}-->
     <!--</foreach>-->
   <!--</delete>-->
+  <select id="findUserOrders" resultType="java.util.List" parameterType="java.lang.Integer">
+    select * from `order` where user_id = #{userId}
+  </select>
+
 </mapper>

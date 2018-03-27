@@ -22,6 +22,7 @@ import java.util.List;
 /**
  * daogu
  * Created by 袁鹏 on 2018/2/5.
+ * @Change Gqijian 2018/3/18
  */
 @Service
 public class ProductInfoServiceImp implements ProductInfoService {
@@ -50,7 +51,7 @@ public class ProductInfoServiceImp implements ProductInfoService {
     @Override
     public Page<ProductInfo> findAll(Page<ProductInfo> page) {
         List<ProductInfo> productList = productInfoWrapperMapper.findPageList(page);
-        Integer count = productInfoWrapperMapper.findCount(page);
+        Integer count = productInfoWrapperMapper.findCount();
         page.setList(productList);
         page.setTotalRecord(count);
         return page;
@@ -146,6 +147,12 @@ public class ProductInfoServiceImp implements ProductInfoService {
 
     @Override
     public Integer delete(String[] pks) {
-        return productInfoWrapperMapper.delete(pks);
+        return null;
+    }
+
+    @Override
+    public List<ProductInfo> findAllProducts() {
+
+        return null;
     }
 }

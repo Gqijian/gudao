@@ -5,6 +5,7 @@ import me.zj22.gudao.server.web.pojo.dto.ProductInfo;
 import me.zj22.gudao.server.web.pojo.vo.Cart;
 import me.zj22.gudao.server.web.pojo.vo.Page;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -13,6 +14,7 @@ import java.util.List;
  * Created by 袁鹏 on 2018/2/5.
  */
 @Mapper
+@Repository
 public interface ProductInfoWrapperMapper extends ProductInfoMapper {
     /**查询所有在架商品 0 1*/
     List<ProductInfo> findUpAll(Byte productStatus);

@@ -10,12 +10,13 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * daogu
- * Created by 袁鹏 on 2018/2/23.
+ * @Program:zj22-gudao-server
+ * @Description:
+ * @Author Gqjian
+ * @Create 2018/3/12 20:08:02
  */
 @Service
-public class PointsServiceImp implements PointsService {
-
+public class PointsServiceImpl implements PointsService{
     @Autowired
     private PointsWrapperMapper pointsWrapperMapper;
 

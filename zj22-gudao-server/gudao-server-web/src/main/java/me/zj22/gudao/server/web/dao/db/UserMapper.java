@@ -2,9 +2,11 @@ package me.zj22.gudao.server.web.dao.db;
 
 import me.zj22.gudao.server.web.pojo.dto.User;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
 
 
 @Mapper
+@Repository
 public interface UserMapper {
     int deleteByPrimaryKey(Integer userId);
 
