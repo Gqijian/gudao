@@ -44,4 +44,11 @@
     #{pks}
   </foreach>
   </delete>
+
+  <select id="findAllProducts" resultMap="java.util.List">
+    SELECT
+    *
+    FROM
+    product_info
+  </select>
 </mapper>

@@ -35,7 +35,7 @@ public class CartController {
                                  HttpServletRequest request, HttpServletResponse response){
 
         String result = cartService.addCartItem(productId, num, request, response);
-        return "cartSuccess";
+        return "shoppingCart";
     }
 
     @RequestMapping("/cart")
@@ -43,6 +43,6 @@ public class CartController {
 
         List<CartProduct> cartList = cartService.getCartProductList(request, response);
         model.addAttribute("cartList", cartList);
-        return "cart";
+        return "shoppingCart";
     }
 }

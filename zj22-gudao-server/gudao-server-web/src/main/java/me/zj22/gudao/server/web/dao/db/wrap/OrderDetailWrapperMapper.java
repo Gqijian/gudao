@@ -4,6 +4,7 @@ import me.zj22.gudao.server.web.dao.db.OrderDetailMapper;
 import me.zj22.gudao.server.web.pojo.dto.OrderDetail;
 import me.zj22.gudao.server.web.pojo.vo.Page;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -12,6 +13,7 @@ import java.util.List;
  * Created by 袁鹏 on 2018/2/6.
  */
 @Mapper
+@Repository
 public interface OrderDetailWrapperMapper extends OrderDetailMapper {
     /**根据订单id查询订单详情*/
     List<OrderDetail> findByOrderId(String orderId);

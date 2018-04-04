@@ -23,7 +23,7 @@ import java.util.Map;
  * @Author Gqjian
  * @Create 2018/2/20 17:59:01
  */
-@Service
+@Service("BuyerServiceImpl")
 public class BuyerServiceImpl implements Buyer2Service {
 
     @Autowired

@@ -5,6 +5,7 @@ import me.zj22.gudao.server.web.pojo.dto.OrderDTO;
 import me.zj22.gudao.server.web.pojo.dto.OrderDetail;
 import me.zj22.gudao.server.web.pojo.vo.Page;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -13,6 +14,7 @@ import java.util.List;
  * Created by 袁鹏 on 2018/2/6.
  */
 @Mapper
+@Repository
 public interface OrderWrapperMapper extends OrderMapper{
 
     /**根据用户openid查询所有订单，在service层分页操作*/

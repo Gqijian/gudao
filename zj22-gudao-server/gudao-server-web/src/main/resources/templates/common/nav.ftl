@@ -47,7 +47,7 @@
     <#--<div class="navbar navbar-duomi navbar-static-top" role="navigation">-->
         <#--<div class="container-fluid">-->
             <#--<div class="navbar-header">-->
-                <#--<a class="navbar-brand" href="/Admin/index.html" id="logo">配置管理系统（流量包月）-->
+                <#--<a class="navbar-brand" href="/Admin/index.ftl" id="logo">配置管理系统（流量包月）-->
                 <#--</a>-->
             <#--</div>-->
         <#--</div>-->

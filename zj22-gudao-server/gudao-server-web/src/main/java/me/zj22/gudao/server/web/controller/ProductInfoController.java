@@ -5,7 +5,7 @@ import me.zj22.gudao.server.web.service.ProductInfoService;
 import me.zj22.gudao.server.web.utils.JsonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,17 +20,21 @@ public class ProductInfoController {
     @Autowired
     private ProductInfoService productInfoService;
 
+
+
     /**
      * 查询全部商品
      * @return
      */
-    @RequestMapping("/allProducts")
-    public String findAllProducts(){
+    @RequestMapping(value = "/allproducts")
+    @ResponseBody
+    public String findAllProducts(@RequestParam String cb, String _){
         String json;
         try{
             List<ProductInfo> allProducts = productInfoService.findAllProducts();
             json = JsonUtils.objectToJson(allProducts);
-            return json;
+            String result = "callback(" ;
+            return result+json+")";
         }catch (Exception e){
             e.printStackTrace();
         }

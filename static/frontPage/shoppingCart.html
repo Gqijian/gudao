@@ -1,158 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<title></title>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-		<link rel="stylesheet" href="css/common.css">
-		<link rel="stylesheet" type="text/css" href="css/goodscar.css">
-		<script type="text/javascript" src="js/jquery-1.11.2.js"></script>
-		<!--<script type="text/javascript" src="js/js.js"></script>-->
-		<script type="text/javascript" src="js/goodscar.js"></script>
-		<script>
-            var intDiff = parseInt(1200);//倒计时总秒数量
-            function timer(intDiff){
-                window.setInterval(function(){
-                    var minute=0,
-                        second=0;//时间默认值
-                    if(intDiff > 0){
-                       /* day = Math.floor(intDiff / (60 * 60 * 24));
-                        hour = Math.floor(intDiff / (60 * 60)) - (day * 24);*/
-                        minute = Math.floor(intDiff / 60);
-                        second = Math.floor(intDiff - minute * 60);
-                    }
-                    if (minute <= 9) minute = '0' + minute;
-                    if (second <= 9) second = '0' + second;
-                    $(".header-title span").eq(0).html(minute);
-                    $(".header-title span").eq(2).html(second);
-                    /*$('#day_show').html(day+"天");
-                    $('#hour_show').html('<s id="h"></s>'+hour+'时');
-                    $('#minute_show').html('<s></s>'+minute+'分');
-                    $('#second_show').html('<s></s>'+second+'秒');*/
-                    intDiff--;
-                }, 1000);
-            }
+<head>
+	<title></title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<link rel="stylesheet" href="css/common.css">
+	<link rel="stylesheet" type="text/css" href="css/goodscar.css">
+	<script type="text/javascript" src="js/jquery-1.11.2.js"></script>
+	<script type="text/javascript" src="js/goodscar.js"></script>
+	<script type="text/javascript" src="js/Car.js"></script>
+	<script>
+		$(function(){
+			var car = new Car();
+			car.bindDom();
+		});
 
-            $(function(){
-                timer(intDiff);
-            });
-		</script>
-		<style>
-			/*头部*/
-			.head_info {
-				background: #fff;
-				padding:3% 2%;
-				padding-bottom: 1rem;
-				color:#000;
-			}
-			.head_info a.head_info_return {
-				float:left;
-				width:3%;
-			}
-			.head_info span.title {
-				float:left;
-				display:block;
-				text-align:center;
-				font-size:120%;
-				margin-left:37%;
-			}
-			/*头部*/
+	</script>
+</head>
 
-			.header-title {
-				padding-left:3px;
-				float: left;
-				font-size: 80%;
-				line-height:200%;
+<body>
+<!--头部信息 start-->
+<header class="clearfloat" style="margin: 1rem 1.2rem;">
+	<div class="head_info">
+		<a href="spxq.html" class="head_info_return"><img src="images/head_returnIcon.png" /></a>
+		<span class="title">购物车</span>
+	</div>
 
-			}
-			.header-title span {
-				float: left;
-			}
-		</style>
+</header>
 
-	</head>
+<!--无商品页面 与 有商品模块切换，后台调用购物车list数据，如果购物车无数据，如果有数据则显示该注释下方代码-->
+<!--内容信息 start-->
+<div class="main_con" style="border-top:  2px solid #000000;">
+	<div class="main_con_allchoose">
+		<span class="circle"></span>全选
+		<a href="javascript:del_goods()"><img src="images/goods_del.png" /></a>
+	</div>
 
-	<body>
-		<!--头部信息 start-->
-		<header>
-				<div class="head_info">
-					<a href="spxq.html" class="head_info_return">
-						<img src="images/head_returnIcon.png" /></a>
-					<span class="title">购物车</span>
+	<div class="main_con_goods">
+		<ul>
+			<li style="border-bottom: 2px solid #FFFFFF;">
+				<span class="circle"></span>
+				<img src="images/goodscar_pic1.png">
+				<div>
+					<p class="title"><a href=""><font>产品名称</font>描述描述描述描述描述描述描述描述描述描述描述描描述...</a></p>
+					<p class="money">
+						<font>25.60￥</font><!--<b>库存100件</b>-->
+						<input class="add" type="button" value="+" />
+						<input class="num" type="text" value="1" />
+						<input class="del" type="button" value="-" />
+					</p>
 				</div>
+			</li>
+		</ul>
 
-			</header>
+	</div>
+</div>
+<!--内容信息 end-->
 
-		<!--无商品页面 与 有商品模块切换，后台调用购物车list数据，如果购物车无数据，如果有数据则显示该注释下方代码-->
-		<!--内容信息 start-->
-		<div class="main_con" style="border-top:  2px solid #000000;margin-top: 1rem;">
-			<div class="main_con_allchoose">
-				<span class="circle"></span>全选
-				<a href="javascript:del_goods()"><img src="images/goods_del.png" /></a>
-			</div>
+<!--结算信息 start-->
+<div class="settlement">
+	<div class="settlement_left">
+		<font class="zongji">总计：</font>
+		<font class="money">￥0</font>
+		<br />
+		（共0件，不包含运费）
+	</div>
+	<div class="settlement_right">
+		<input type="button" value="去结算" />
+	</div>
+</div>
+<!--结算信息 end-->
 
-			<div class="main_con_goods">
-				<ul>
-					<li style="border-bottom: 2px solid #FFFFFF;">
-						<span class="circle"></span>
-						<img src="images/goodscar_pic1.png">
-						<div>
-							<p class="title"><a href=""><font>产品名称</font>描述描述描述描述描述描述描述描述描述描述描述描描述...</a></p>
-							<p class="money">
-								<font>25.60￥</font><!--<b>库存100件</b>-->
-								<input class="add" type="button" value="+" />
-								<input class="num" type="text" value="1" />
-								<input class="del" type="button" value="-" />
-							</p>
-						</div>
-					</li>
-				</ul>
-
-			</div>
+<!--删除弹窗 start-->
+<div class="del_tc">
+	<div class="del_tc_box">
+		<div class="del_tc_box_title">
+			确认删除此商品？
 		</div>
-		<!--内容信息 end-->
-		
-		<!--结算信息 start-->
-		<div class="settlement">
-			<div class="settlement_left">
-				<font class="zongji">总计：</font>
-				<font class="money">￥0</font>
-				<br />
-				（共0件，不包含运费）
-			</div>
-			<div class="settlement_right">
-				<input type="button" value="去结算" />
-			</div>
+		<div class="del_tc_box_content">
+			<input class="cancel" type="button" value="取消" onclick="del_goods_cancel()"/>
+			<input class="ok" type="button" value="确认" />
 		</div>
-		<!--结算信息 end-->
-			
-		<!--删除弹窗 start-->
-		<div class="del_tc">
-			<div class="del_tc_box">
-				<div class="del_tc_box_title">
-					确认删除此商品？
-				</div>
-				<div class="del_tc_box_content">
-					<input class="cancel" type="button" value="取消" onclick="del_goods_cancel()"/>
-					<input class="ok" type="button" value="确认" />
-				</div>
-			</div>
-		</div>
-		<!--删除弹窗 end-->
-		
-		<!--无商品页面 与 有商品模块切换，后台调用购物车list数据，如果购物车无数据，则显示该注释下方代码-->
-		<!--goodscar.css 修改样式 .no_goods{display: block}-->
+	</div>
+</div>
+<!--删除弹窗 end-->
+
+<!--无商品页面 与 有商品模块切换，后台调用购物车list数据，如果购物车无数据，则显示该注释下方代码-->
+<!--goodscar.css 修改样式 .no_goods{display: block}-->
 
 
-		<!--无商品页面 start-->
-		<div class="no_goods">
-			<img src="images/no_goods_ico.png" />
-			<p>购物车里没有东西哦~<br />快去商城逛逛吧！</p>
-			<a href="#">即刻添置</a>
-		</div>
-		<!--无商品页面 end-->
+<!--无商品页面 start-->
+<div class="no_goods">
+	<img src="images/no_goods_ico.png" />
+	<p>购物车里没有东西哦~<br />快去商城逛逛吧！</p>
+	<a href="#">即刻添置</a>
+</div>
+<!--无商品页面 end-->
 
+<div class="wx_nav" id="wx_nav">
+	<a href="javascript:;" class="nav_index" id="nav_index">首页</a>
+	<a href="javascript:;" class="nav_shopcart" id="nav_shopcart">购物车</a>
+	<a href="javascript:;" class="nav_me on" id="nav_me on">订单</a>
+</div>
 
-	</body>
+</body>
 
 </html>

@@ -23,10 +23,10 @@ import java.util.List;
  * @Author Gqjian
  * @Create 2018/2/13 19:50:57
  */
-@Service
+@Service("OrderServiceImpl")
 public class OrderServiceImpl implements Order2Service {
 
-    @Autowired
+    @Autowired(required=true)
     private OrderMapper orderMapper;
 
     @Autowired

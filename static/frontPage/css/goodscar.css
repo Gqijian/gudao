@@ -2,7 +2,24 @@
 /* CSS Document */
 *,body.div,a,ul,li,p,span{margin:0;padding:0;list-style:none;font-family:"微软雅黑";}
 a{ text-decoration:none;color:#030000;}
-
+/*头部*/
+.head_info {
+	background: #fff;
+	padding:3% 2%;
+	padding-bottom: 1rem;
+	color:#000;
+}
+.head_info a.head_info_return {
+	float:left;
+	width:3%;
+}
+.head_info span.title {
+	float:left;
+	display:block;
+	text-align:center;
+	font-size:120%;
+	margin-left:37%;
+}
 /*-------------------------------------------------首页--------------------------------*/
 .main_con{
 	width: 100%;
@@ -119,7 +136,7 @@ a{ text-decoration:none;color:#030000;}
 	height: 50px;
 	position: fixed;
 	z-index: 99;
-	bottom: 0px;
+	bottom: 49px;
 	left: 0px;
 	background-color: #FFF;
 	

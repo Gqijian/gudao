@@ -1,7 +1,7 @@
 package me.zj22.gudao.server.web.service.impl;
 
+import me.zj22.gudao.server.web.dao.db.UserMapper;
 import me.zj22.gudao.server.web.dao.db.wrap.UserWrapperMapper;
-import me.zj22.gudao.server.web.pojo.dto.Order;
 import me.zj22.gudao.server.web.pojo.dto.User;
 import me.zj22.gudao.server.web.pojo.vo.Page;
 import me.zj22.gudao.server.web.service.UserSerivce;
@@ -66,11 +66,12 @@ public class UserServiceImp implements UserSerivce {
         return page;
     }
 
-
     @Override
-    public List<Order> findUserOrders(Integer userId) {
-        List<Order> list = userWrapperMapper.findUserOrders(userId);
-        return list;
+    public Page<User> findUserList(Page<User> page) {
+        page.setTotalRecord(userWrapperMapper.findCount(page));
+        page.setList(userWrapperMapper.findPageList(page));
+        return page;
     }
+
 
 }

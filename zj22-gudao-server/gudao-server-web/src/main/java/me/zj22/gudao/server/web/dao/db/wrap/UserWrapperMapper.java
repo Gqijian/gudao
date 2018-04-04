@@ -34,4 +34,8 @@ public interface UserWrapperMapper extends UserMapper {
     /**查询用户所有订单*/
     List<Order> findUserOrders(Integer userId);
 
+    Integer findCount(Page<User> page);
+
+    List<User> findPageList(Page<User> page);
+
 }

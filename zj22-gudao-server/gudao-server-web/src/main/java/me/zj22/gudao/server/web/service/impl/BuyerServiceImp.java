@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
  * daogu
  * Created by 袁鹏 on 2018/2/7.
  */
-@Service
+@Service("BuyerServiceImp")
 public class BuyerServiceImp implements BuyerService {
 
     private static final Logger LOG = LoggerFactory.getLogger(BuyerServiceImp.class);

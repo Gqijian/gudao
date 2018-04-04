@@ -13,7 +13,7 @@ import java.util.List;
  * daogu
  * Created by 袁鹏 on 2018/2/23.
  */
-@Service
+@Service("PointsServiceImp")
 public class PointsServiceImp implements PointsService {
 
     @Autowired
