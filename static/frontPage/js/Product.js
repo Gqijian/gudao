@@ -2,22 +2,22 @@
  * Created by Administrator on 2018/3/29 0029.
  */
 function Product(option) {
+    this.name=option.name||'';
     this.info =option.info||'';
-    this.address = option.address||"";
-    this.phone = option.phone||"";
     this.price = option.price||"";
     this.num = option.num||1;
+    this.phone=123456789;
     this.images =option.images||[];
     this.config = {
         swipe_wrap: document.getElementsByClassName('swipe-wrap')[0],//轮播图
         goodInfo :  document.getElementById('goodInfo'),//商品信息
         price :  document.getElementById('price'),//价格
-        phone :  document.getElementById('phone'),//电话
-        address :  document.getElementById('address')//店铺地址
+        name: document.getElementById('proName')
+
     };
     this.init=function () {
         this.bindDOM();
-        this.bindEvent();
+        /*this.bindEvent();*/
     };
 
 }
@@ -29,6 +29,7 @@ Product.prototype={
         memberfilter[1] = "price";
         memberfilter[2] = "images";
         memberfilter[3] = "num";
+        memberfilter[4] ='name';
         var good = new Array();
         var jsonText = JSON.stringify(that, memberfilter);
         if ((typeof (sessionStorage.good) == "undefined")){//没有商品
@@ -45,11 +46,10 @@ Product.prototype={
         /*通过点语法访问对象中的属性或者方法*/
         this.config.goodInfo.innerHTML=this.info;
         this.config.price.innerHTML=this.price;
-        this.config.phone.innerHTML=this.phone;
-        this.config.address.innerHTML=this.address;
+        this.config.name.innerHTML=this.name;
         var str ="";
         for(var i=0;i<3;i++){
-            str+='<div><a href="javascript:;"><img class="img-responsive" src="'+this.images[i]+'"/></a></div>';
+            str+='<div><a href="javascript:;"><img class="img-responsive" src="../upload/'+this.images[i]+'"/></a></div>';
         }
         this.config.swipe_wrap.innerHTML=str;
     },

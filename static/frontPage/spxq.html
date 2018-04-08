@@ -12,22 +12,24 @@
     <script src="js/Product.js"></script>
 
     <script>
+        var soleData;
+        var id = GetRequest();
          queryGoodsInfo();
          function queryGoodsInfo(){
-             var id = GetRequest();
                  $.ajax({
                     type:"get",
-                    url:url+id,
+                    url:'http://localhost:9876/gudao/product/productInfo?id='+id.id,
                     dataType:"jsonp",
                     jsonp:"cb",
+                    jsonpCallback:"callback",
                     success:function (data) {
                         var product = new Product({
-                        info:data.info,
-                        address:data.address,
-                        phone:data.phone,
-                        price:data.price,
-                        images:data.images
+                         name:data.productName,
+                        info:data.productDescription,
+                        price:data.productPrice,
+                        images:[data.productIconOne,data.productIconTwo,data.productIconThree]
                  });
+                        soleData = product;
                  product.init();
                  },error:function (e) {
 
@@ -50,12 +52,14 @@
          $(function () {
              $("#addCarBtn").click(function(){
                  var id = GetRequest();
-                 var url = "http://gudao/cart/add"+id;
+                 var url = "http://localhost:9876/gudao/cart/add?num=1&id="+id.id;
                  $.ajax({
                      type:"get",
                      url:url,
                      success:function (data) {
+                         alert("添加成功");
 
+                         Location.href="shooppingCart.html";
                      },error:function (e) {
 
                      }
@@ -66,19 +70,19 @@
     </script>
 </head>
 <body>
+
 <div class="body">
     <div class="tour">
         <a href="allGoods.html" class="tour1"><img src="images/back.png" alt="" style="height: 26px;width: 20px"></a>
         <p>商品详情</p>
-        <a href="myList.html" class="tour2"><img src="images/u65.png" alt="" style="width: 35px;height: 35px"></a>
     </div>
     <figure>
         <div class="addWrap">
             <div class="swipe" id="mySwipe">
                 <div class="swipe-wrap">
-                    <div><a href="javascript:;"><img class="img-responsive" src="images/thing.png"/></a></div>
-                    <div><a href="javascript:;"><img class="img-responsive" src="images/thing.png"/></a></div>
-                    <div><a href="javascript:;"><img class="img-responsive" src="images/thing.png"/></a></div>
+                    <div><a href="javascript:;"><img class="img-responsive" src="images/4.jpg"/></a></div>
+                    <div><a href="javascript:;"><img class="img-responsive" src="images/12.jpg"/></a></div>
+                    <div><a href="javascript:;"><img class="img-responsive" src="images/1.jpg"/></a></div>
                 </div>
             </div>
             <ul id="position">
@@ -88,45 +92,40 @@
             </ul>
         </div>
         <!-- 轮播 -->
-
-        <p>商品价格</p>
+        <script src="js/swipe.js"></script>
+        <script type="text/javascript">
+            var bullets = document.getElementById('position').getElementsByTagName('li');
+            var banner = Swipe(document.getElementById('mySwipe'), {
+                auto: 3000,
+                continuous: true,
+                disableScroll:false,
+                callback: function(pos) {
+                    var i = bullets.length;
+                    while (i--) {
+                        bullets[i].className = ' ';
+                    }
+                    bullets[pos].className = 'cur';
+                }
+            });
+        </script>
+        <p id="proName">商品价格</p>
         <div class="info">
-            <em class="sat">￥100</em>
+            <em class="sat">￥<span id="price"></span> </em>
             <a href="javascript:false"><button type="button" class="btn" id="addCarBtn">加入购物车</button></a>
         </div>
     </figure>
     <hr/>
     <div class="sjxx">
-        <p class="pclass1">商家信息</p>
+        <span class="pclass1" id="goodInfo">商家信息商家信息商家信息商家信息商家信息商家信息商家信息商家信息商家信息商家信息商家信息商家信息商家信息商家信息</span>
     </div>
     <hr/>
-    <div class="sjxx" >
-        <p class="pclass2">地址：第三方克拉斯的减肥了卡时间段</p>
-        <p class="pclass2">电话：11111111111</p>
-    </div>
     <div style="height: 5rem"></div>
     <div class="wx_nav" id="wx_nav">
         <a href="javascript:;" class="nav_index" id="nav_index">首页</a>
-        <a href="javascript:;" class="nav_shopcart" id="nav_shopcart">购物车</a>
+        <a href="shoppingCart.html" class="nav_shopcart" id="nav_shopcart">购物车</a>
         <a href="javascript:;" class="nav_me on" id="nav_me on">订单</a>
     </div>
+    <div class="theme-popover-mask"></div>
 </div>
 </body>
-<script src="js/swipe.js"></script>
-<script type="text/javascript">
-    var bullets = document.getElementById('position').getElementsByTagName('li');
-    var banner = Swipe(document.getElementById('mySwipe'), {
-        auto: 3000,
-        continuous: true,
-        disableScroll:false,
-        callback: function(pos) {
-            var i = bullets.length;
-            while (i--) {
-                bullets[i].className = ' ';
-            }
-            bullets[pos].className = 'cur';
-        }
-    });
-
-</script>
 </html>

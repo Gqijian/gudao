@@ -1,8 +1,11 @@
 package me.zj22.gudao.server.web.utils;
 
+import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.JsonObject;
+import springfox.documentation.spring.web.json.Json;
 
 import java.util.List;
 
@@ -23,7 +26,8 @@ public class JsonUtils {
      * @return
      */
     public static String objectToJson(Object data) {
-        try {
+        JsonObject json = new JsonObject();
+         try {
             String string = MAPPER.writeValueAsString(data);
             return string;
         } catch (JsonProcessingException e) {

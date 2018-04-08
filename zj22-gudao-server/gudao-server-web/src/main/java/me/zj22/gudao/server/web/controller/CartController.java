@@ -2,6 +2,7 @@ package me.zj22.gudao.server.web.controller;
 
 import me.zj22.gudao.server.web.pojo.vo.CartProduct;
 import me.zj22.gudao.server.web.service.CartService;
+import me.zj22.gudao.server.web.utils.JsonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
@@ -28,21 +30,36 @@ public class CartController {
     @Autowired
     private CartService cartService;
 
-    @RequestMapping("/add/{productId }")
+    @RequestMapping("/add")
     @ResponseBody
-    public String addCartProduct(@PathVariable Integer productId,
-                                 @RequestParam(defaultValue = "1") Integer num,
-                                 HttpServletRequest request, HttpServletResponse response){
+    public String addCartProduct(
+            @RequestParam(defaultValue = "1") Integer num,
+            Integer id,
+            HttpServletRequest request, HttpServletResponse response){
+        try {
+            String json = cartService.addCartItem(id, num, request, response);
+            String result = "callback(" ;
+            return result+json+")";
+        }catch (Exception e){
+            e.printStackTrace();
 
-        String result = cartService.addCartItem(productId, num, request, response);
-        return "shoppingCart";
+        }
+        return null;
     }
 
-    @RequestMapping("/cart")
-    public String showCart(HttpServletRequest request, HttpServletResponse response, Model model){
+    @RequestMapping("/carts")
+    @ResponseBody
+    public String showCart(@RequestParam String cb, String _,
+                           HttpServletRequest request, HttpServletResponse response){
 
-        List<CartProduct> cartList = cartService.getCartProductList(request, response);
-        model.addAttribute("cartList", cartList);
-        return "shoppingCart";
+        try{
+            List<CartProduct> cartList = cartService.getCartProductList(request, response);
+            String json = JsonUtils.objectToJson(cartList);
+            String result = "callback(" ;
+            return result+json+")";
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
     }
 }

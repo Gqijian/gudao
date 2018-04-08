@@ -20,8 +20,6 @@ public class ProductInfoController {
     @Autowired
     private ProductInfoService productInfoService;
 
-
-
     /**
      * 查询全部商品
      * @return
@@ -33,6 +31,21 @@ public class ProductInfoController {
         try{
             List<ProductInfo> allProducts = productInfoService.findAllProducts();
             json = JsonUtils.objectToJson(allProducts);
+            String result = "callback(" ;
+            return result+json+")";
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @RequestMapping(value = "/productInfo")
+    @ResponseBody
+    public String productInfo(@RequestParam Integer id,String cb, String _){
+        String json;
+        try{
+            ProductInfo productInfo = productInfoService.selectByPrimaryKey(id);
+            json = JsonUtils.objectToJson(productInfo);
             String result = "callback(" ;
             return result+json+")";
         }catch (Exception e){

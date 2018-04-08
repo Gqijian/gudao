@@ -7,7 +7,9 @@ import me.zj22.gudao.server.web.pojo.dto.OrderDTO;
 import me.zj22.gudao.server.web.pojo.vo.JsonResponse;
 import me.zj22.gudao.server.web.pojo.vo.Page;
 import me.zj22.gudao.server.web.service.BuyerService;
+import me.zj22.gudao.server.web.service.Order2Service;
 import me.zj22.gudao.server.web.service.OrderService;
+import me.zj22.gudao.server.web.utils.JsonUtils;
 import me.zj22.gudao.server.web.utils.OrderForm2OrderDTO;
 import me.zj22.gudao.server.web.utils.TimeParse;
 import org.slf4j.Logger;
@@ -39,13 +41,17 @@ public class OrderController {
     private OrderService orderService;
 
     @Autowired
+    private Order2Service order2Service;
+
+    @Autowired
     private BuyerService buyerService;
 
     //创建订单 OrderForm封装订单提交的字段
-    @PostMapping("/create")
+    @PostMapping("/creates")
     @ResponseBody
-    public JsonResponse<Map<String, String>> create(@Valid OrderForm orderForm,
-                                                    BindingResult bindingResult){
+    public JsonResponse<Map<String, String>> create(
+            @Valid OrderForm orderForm,
+            BindingResult bindingResult){
         if(bindingResult.hasErrors()){
             LOG.error(" [创建订单] 参数不正确， orderForm = {}",orderForm);
             throw new daoGuException(ResultEnum.PARAM_ERROR.getCode(),
@@ -62,6 +68,18 @@ public class OrderController {
         map.put("orderId", String.valueOf(creatResult.getOrderId()));//订单返回的是订单号、
         json.setData(map);
         return json;
+    }
+
+    @PostMapping(value = "/createOrder")
+    @ResponseBody
+    public String createOrder(@RequestBody OrderDTO orderDTO){
+        try{
+            OrderDTO order = order2Service.createOrder(orderDTO);
+            return JsonUtils.objectToJson(order);
+        }catch (Exception e){
+            e.printStackTrace();
+            return "";
+        }
     }
 
     //订单列表

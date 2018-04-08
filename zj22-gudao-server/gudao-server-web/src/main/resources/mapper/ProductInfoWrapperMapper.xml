@@ -33,7 +33,7 @@
     SELECT COUNT(0) FROM product_info WHERE  product_name like #{keyWord}
   </select>
 
-  <select id="findAllProducts" resultType="java.util.List">
+  <select id="findAllProducts" resultMap="BaseResultMap">
     SELECT * FROM product_info;
   </select>
 
@@ -45,10 +45,4 @@
   </foreach>
   </delete>
 
-  <select id="findAllProducts" resultMap="java.util.List">
-    SELECT
-    *
-    FROM
-    product_info
-  </select>
 </mapper>

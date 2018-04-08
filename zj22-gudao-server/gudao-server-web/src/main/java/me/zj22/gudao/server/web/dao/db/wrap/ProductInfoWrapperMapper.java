@@ -42,6 +42,6 @@ public interface ProductInfoWrapperMapper extends ProductInfoMapper {
 
     //删除商品
     Integer delete(String pks[]);
-
+    /**查询所有商品*/
     List<ProductInfo> findAllProducts();
 }

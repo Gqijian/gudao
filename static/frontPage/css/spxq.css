@@ -53,27 +53,30 @@ figure div a button{
     margin-top: -0.5rem;
     height:30px;
     width: 8rem;
-    color: green;
+    color: #ef1f07;
     background-color: #ffffff;
-    border:1px solid green;
+    border:1px solid #ef1f07;
     border-radius: 6px;
     text-align: center;
     outline: none;
     margin-right: 1.5rem;
 }
 .sjxx {
+    padding-top: 4%;
+    padding-left: 1%;
+    padding-right: 1%;
     max-width: 640px;
     margin: 0 auto;
-    height: 70px;
+    min-height: 70px;
 }
 .sjxx .pclass1{
-    line-height: 70px;
+    line-height: 1.3rem;
     font-size:1.3rem;
     font-weight: normal;
-    white-space: nowrap;
+    /* white-space: nowrap;*/
     overflow: hidden;
     text-overflow: ellipsis;
-    padding-left: 2%;
+    padding-left: 4%;
 }
 .sjxx .pclass2{
     line-height: 35px;

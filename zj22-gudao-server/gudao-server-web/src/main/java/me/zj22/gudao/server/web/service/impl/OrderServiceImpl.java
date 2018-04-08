@@ -38,7 +38,7 @@ public class OrderServiceImpl implements Order2Service {
      * @return
      */
     @Override
-    public OrderDTO create(OrderDTO orderDTO) {
+    public OrderDTO createOrder(OrderDTO orderDTO) {
         Order order = new Order();
         //获得一个订单ID
         IdWorkerUtil idWork = new IdWorkerUtil(0,0);
@@ -53,6 +53,7 @@ public class OrderServiceImpl implements Order2Service {
         //插入订单表
         order.setOrderId(orderDTO.getOrderId());
         order.setOrderStatus(OrderStatusEnum.NEW.getCode());
+        //order.setOrderAmount(orderDTO.getNum()*);
         order.setCreateTime(date);
         orderMapper.insert(order);
         //插入订单表明细

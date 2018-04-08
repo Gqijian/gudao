@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="css/common.css">
 	<link rel="stylesheet" type="text/css" href="css/goodscar.css">
 	<script type="text/javascript" src="js/jquery-1.11.2.js"></script>
-	<script type="text/javascript" src="js/goodscar.js"></script>
+	<!--<script type="text/javascript" src="js/goodscar.js"></script>-->
 	<script type="text/javascript" src="js/Car.js"></script>
 	<script>
 		$(function(){
@@ -37,20 +37,8 @@
 	</div>
 
 	<div class="main_con_goods">
-		<ul>
-			<li style="border-bottom: 2px solid #FFFFFF;">
-				<span class="circle"></span>
-				<img src="images/goodscar_pic1.png">
-				<div>
-					<p class="title"><a href=""><font>产品名称</font>描述描述描述描述描述描述描述描述描述描述描述描描述...</a></p>
-					<p class="money">
-						<font>25.60￥</font><!--<b>库存100件</b>-->
-						<input class="add" type="button" value="+" />
-						<input class="num" type="text" value="1" />
-						<input class="del" type="button" value="-" />
-					</p>
-				</div>
-			</li>
+		<ul id="main_con-goods-ul">
+
 		</ul>
 
 	</div>
@@ -66,7 +54,7 @@
 		（共0件，不包含运费）
 	</div>
 	<div class="settlement_right">
-		<input type="button" value="去结算" />
+		<input type="button" id="submitOrder" value="去结算" />
 	</div>
 </div>
 <!--结算信息 end-->

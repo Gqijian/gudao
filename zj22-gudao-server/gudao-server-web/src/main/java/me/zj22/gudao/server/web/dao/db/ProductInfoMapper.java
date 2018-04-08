@@ -23,6 +23,4 @@ public interface ProductInfoMapper {
     int updateByPrimaryKeyWithBLOBs(ProductInfo record);
 
     int updateByPrimaryKey(ProductInfo record);
-
-    List<ProductInfo> findAllProducts();
 }

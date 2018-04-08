@@ -16,7 +16,7 @@ a {
     -webkit-user-select: none;
 }
 .body{
-    font-family:"Tahoma,Arial,Roboto,”Droid Sans”,”Helvetica Neue”,”Droid Sans Fallback”,”Heiti SC”,”Hiragino Sans GB”,Simsun,sans-self";
+    font-family:"楷体,Tahoma,Arial,Roboto,”Droid Sans”,”Helvetica Neue”,”Droid Sans Fallback”,”Heiti SC”,”Hiragino Sans GB”,Simsun,sans-self";
     margin: 0 auto;
 }
 img{
@@ -71,15 +71,7 @@ a,img,button,input,textarea{
     background-color:whitesmoke;
     color:lightseagreen;
 }
-.wx_nav a:active,.wx_nav a.nav_index{
-    color:lightseagreen;
-}
-.wx_nav a:active:before,.wx_nav a.nav_index:before{
-    background-image:url("../images/greenicon.png");
-    background-repeat:no-repeat;
-    background-size:340px 20px;
-    -webkit-background-size:340px 20px;
-}
+
 .wx_nav .nav_index:before{
     background-position: 5px 0;
 }
@@ -93,8 +85,6 @@ a,img,button,input,textarea{
     background-position: -315px 0;
 }
 .wx_nav{
-    display:box;
-    display:-ms-box;
     display:-webkit-box;
     display:flex;
     display:-ms-flexbox;

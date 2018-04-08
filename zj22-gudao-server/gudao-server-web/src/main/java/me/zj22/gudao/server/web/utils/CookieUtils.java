@@ -16,7 +16,8 @@ import java.net.URLEncoder;
 public final class CookieUtils {
 
     /**
-     * 得到Cookie的值不编码
+     * 得到Cookie的值, 不编码
+     *
      * @param request
      * @param cookieName
      * @return
@@ -26,10 +27,10 @@ public final class CookieUtils {
     }
 
     /**
-     * 得到Cookie的值
+     * 得到Cookie的值,
+     *
      * @param request
      * @param cookieName
-     * @param isDecoder
      * @return
      */
     public static String getCookieValue(HttpServletRequest request, String cookieName, boolean isDecoder) {
@@ -49,17 +50,17 @@ public final class CookieUtils {
                     break;
                 }
             }
-        } catch (UnsupportedEncodingException e) {
+        } catch (Exception e) {//UnsupportedEncodingException e
             e.printStackTrace();
         }
         return retValue;
     }
 
     /**
-     * 得到Cookie的值
+     * 得到Cookie的值,
+     *
      * @param request
      * @param cookieName
-     * @param encodeString
      * @return
      */
     public static String getCookieValue(HttpServletRequest request, String cookieName, String encodeString) {
@@ -182,7 +183,6 @@ public final class CookieUtils {
                     cookie.setDomain(domainName);
                 }
             }
-            cookie.setPath("/");
             response.addCookie(cookie);
         } catch (Exception e) {
             e.printStackTrace();
@@ -222,7 +222,6 @@ public final class CookieUtils {
         }
         return domainName;
     }
-
 }
 
 

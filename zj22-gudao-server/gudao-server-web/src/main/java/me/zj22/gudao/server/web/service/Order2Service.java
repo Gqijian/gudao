@@ -9,7 +9,7 @@ import me.zj22.gudao.server.web.pojo.vo.Page;
  */
 public interface Order2Service {
     /**创建订单*/
-    OrderDTO create(OrderDTO orderDTO);
+    OrderDTO createOrder(OrderDTO orderDTO);
 
     /**查询单个订单*/
     OrderDTO findOne(String orderId);

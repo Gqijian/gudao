@@ -9,7 +9,7 @@
     <script src="js/jquery-1.11.2.js"></script>
     <script src="js/index.js"></script>
     <script>
-        queryURl("http://localhost:9876/gudao/product/allProducts");//填地址
+        queryURl("http://localhost:9876/gudao/product/allproducts");//填地址
 
         function queryURl(url){
             $.ajax({
@@ -23,10 +23,10 @@
                     var allsp =  $(".allsp");
                     $.each(data,function (index,item) {
                         str+='<figure>';
-                        str+='<a href="spxq.html"+item.productId><img src="'+item.productIconOne+'" alt="商品" class="xqtp"/></a>';
-                        str+='<p>item.productName</p>';
+                        str+='<a href="spxq.html?id='+item.productId+'"><img src="../upload/'+item.productIconOne+'" alt="商品" class="xqtp"/></a>';
+                        str+='<p>'+item.productName+'</p>';
                         str+='<div class="info">';
-                        str+='<em class="sat"><small>item.productPrice</small></em>';
+                        str+='<em class="sat">'+item.productPrice+'<small></small></em>';
                         str+='<a href="#"><img src="images/u20.png" alt="购物车" style="width: 30px;height: 30px" align="right"/></a>';
                         str+='</div>';
                         str+='</figure>';
@@ -45,7 +45,7 @@
 <div class="container">
     <!--logo-->
     <div class="allLogo">
-        <div class="logo"><img src="images/douLogo.png" alt="logo"/></div>
+        <div class="logo"><img src="images/1.jpg" alt="logo"/></div>
         <div class="head"><a href="javascript:;"><img src="images/u61.png"/></a></div>
         <div class="headInfo"><a href="#">酱豆</a></div>
     </div>
@@ -74,70 +74,7 @@
     </div>
 
     <div class="allsp clearfloat">
-        <figure>
-            <a href="spxq.html"><img src="images/thing.png" alt="商品" class="xqtp"/></a>
-            <p>全部商品</p>
-            <div class="info">
-                <em class="sat">￥46&nbsp;<small>￥46</small></em>
-                <a href="#"><img src="images/u20.png" alt="购物车" style="width: 30px;height: 30px" align="right"/></a>
-            </div>
-        </figure>
-        <figure>
-            <a href="spxq.html"><img src="images/thing2.png" alt="商品" class="xqtp"/></a>
-            <p>全部商品</p>
-            <div class="info">
-                <em class="sat">￥46&nbsp;<small>￥46</small></em>
-                <a href="#"><img src="images/u20.png" alt="购物车" style="width: 30px;height: 30px" align="right"/></a>
-            </div>
-        </figure>
-        <figure>
-            <a href="spxq.html"><img src="images/thing.png" alt="商品" class="xqtp"/></a>
-            <p>全部商品</p>
-            <div class="info">
-                <em class="sat">￥46&nbsp;<small>￥46</small></em>
-                <a href="#"><img src="images/u20.png" alt="购物车" style="width: 30px;height: 30px" align="right"/></a>
-            </div>
-        </figure>
-        <figure>
-            <a href="spxq.html"><img src="images/thing2.png" alt="商品" class="xqtp"/></a>
-            <p>全部商品</p>
-            <div class="info">
-                <em class="sat">￥46&nbsp;<small>￥46</small></em>
-                <a href="#"><img src="images/u20.png" alt="购物车" style="width: 30px;height: 30px" align="right"/></a>
-            </div>
-        </figure>
-        <figure>
-            <a href="spxq.html"><img src="images/thing.png" alt="商品" class="xqtp"/></a>
-            <p>全部商品</p>
-            <div class="info">
-                <em class="sat">￥46&nbsp;<small>￥46</small></em>
-                <a href="#"><img src="images/u20.png" alt="购物车" style="width: 30px;height: 30px" align="right"/></a>
-            </div>
-        </figure>
-        <figure>
-            <a href="spxq.html"><img src="images/thing2.png" alt="商品" class="xqtp"/></a>
-            <p>全部商品</p>
-            <div class="info">
-                <em class="sat">￥46&nbsp;<small>￥46</small></em>
-                <a href="#"><img src="images/u20.png" alt="购物车" style="width: 30px;height: 30px" align="right"/></a>
-            </div>
-        </figure>
-        <figure>
-            <a href="spxq.html"><img src="images/thing.png" alt="商品" class="xqtp"/></a>
-            <p>全部商品</p>
-            <div class="info">
-                <em class="sat">￥46&nbsp;<small>￥46</small></em>
-                <a href="#"><img src="images/u20.png" alt="购物车" style="width: 30px;height: 30px" align="right"/></a>
-            </div>
-        </figure>
-        <figure>
-            <a href="spxq.html"><img src="images/thing2.png" alt="商品" class="xqtp"/></a>
-            <p>全部商品</p>
-            <div class="info">
-                <em class="sat">￥46&nbsp;<small>￥46</small></em>
-                <a href="#"><img src="images/u20.png" alt="购物车" style="width: 30px;height: 30px" align="right"/></a>
-            </div>
-        </figure>
+
     </div>
 
     <div class="wx_nav" id="wx_nav">
