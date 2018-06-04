@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MyHtml.html</title>
+	
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="this is my page">
+    <meta name="content-type" content="text/html; charset=UTF-8">
+   <script src="js/jquery-1.11.2.js"></script>
+    <script src="js/common.js"></script>
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+     <script>
+  		 var orderDTO  = {
+            		orderId:'443107297149845504',
+                    receiverName:1,
+                    receiverPhone:1,
+                    prov:1,
+                    city:'成都市',
+                    county:'成都市',
+                    address:1,
+                    zipcode:1,
+                    postage:11
+                };
+                 postUrl(Base.yfUrl,orderDTO,function (data) {
+                            console.log(data.postage);
+                        })
+  </script>
+  
+
+  </head>
+
+  <body>
+    This is my HTML page. <br>
+  </body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title></title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<link rel="stylesheet" href="css/common.css">
+	<link rel="stylesheet" type="text/css" href="css/goodscar.css">
+	<script type="text/javascript" src="js/jquery-1.11.2.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+	<script type="text/javascript" src="js/Car.js"></script>
+	<script>
+		$(function(){
+			var car = new Car();
+			car.bindDom();
+		});
+
+	</script>
+</head>
+
+<body>
+<!--头部信息 start-->
+<header class="clearfloat" style="margin: 1rem 1.2rem;">
+	<div class="head_info">
+		<a href="javascript:history.go(-1);" class="head_info_return"><img src="images/head_returnIcon.png" /></a>
+		<span class="title">购物车</span>
+	</div>
+
+</header>
+
+<!--无商品页面 与 有商品模块切换，后台调用购物车list数据，如果购物车无数据，如果有数据则显示该注释下方代码-->
+<!--内容信息 start-->
+<div class="main_con" style="border-top:  2px solid #000000;">
+	<div class="main_con_allchoose">
+		<span class="circle selectAll"></span>全选
+		<a href="javascript:false" id="del_goods"><img src="images/goods_del.png" /></a>
+	</div>
+
+	<div class="main_con_goods">
+		<ul id="main_con-goods-ul">
+		</ul>
+
+	</div>
+</div>
+<!--内容信息 end-->
+
+<!--结算信息 start-->
+<div class="settlement">
+	<div class="settlement_left">
+		<font class="zongji">总计：</font>
+		<font class="money">￥0</font>
+		<br />
+		（共0件，不包含运费）
+	</div>
+	<div class="settlement_right">
+		<input type="button" id="submitOrder" value="去结算" />
+	</div>
+</div>
+<!--结算信息 end-->
+
+<!--删除弹窗 start-->
+<div class="del_tc">
+	<div class="del_tc_box">
+		<div class="del_tc_box_title" style="border: 1px solid #CCCCCC;">
+			确认删除此商品？
+		</div>
+		<div class="del_tc_box_content">
+			<input class="cancel" type="button" value="取消" id="del_goods_cancel"/>
+			<input class="ok" type="button" id="ok" value="确认" />
+		</div>
+	</div>
+</div>
+<!--删除弹窗 end-->
+
+<!--无商品页面 与 有商品模块切换，后台调用购物车list数据，如果购物车无数据，则显示该注释下方代码-->
+<!--goodscar.css 修改样式 .no_goods{display: block}-->
+
+
+<!--无商品页面 start-->
+<div class="no_goods">
+	<img src="images/no_goods_ico.png" />
+	<p>购物车里没有东西哦~<br />快去商城逛逛吧！</p>
+	<a href="index.html">即刻添置</a>
+</div>
+<!--无商品页面 end-->
+
+
+</body>
+
+</html>

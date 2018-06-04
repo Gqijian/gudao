@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="css/common.css">
 	<link rel="stylesheet" type="text/css" href="css/goodscar.css">
 	<script type="text/javascript" src="js/jquery-1.11.2.js"></script>
-	<!--<script type="text/javascript" src="js/goodscar.js"></script>-->
+	<script type="text/javascript" src="js/common.js"></script>
 	<script type="text/javascript" src="js/Car.js"></script>
 	<script>
 		$(function(){
@@ -22,7 +22,7 @@
 <!--头部信息 start-->
 <header class="clearfloat" style="margin: 1rem 1.2rem;">
 	<div class="head_info">
-		<a href="spxq.html" class="head_info_return"><img src="images/head_returnIcon.png" /></a>
+		<a href="javascript:history.go(-1);" class="head_info_return"><img src="images/head_returnIcon.png" /></a>
 		<span class="title">购物车</span>
 	</div>
 
@@ -33,12 +33,11 @@
 <div class="main_con" style="border-top:  2px solid #000000;">
 	<div class="main_con_allchoose">
 		<span class="circle"></span>全选
-		<a href="javascript:del_goods()"><img src="images/goods_del.png" /></a>
+		<a href="javascript:false" id="del_goods"><img src="images/goods_del.png" /></a>
 	</div>
 
 	<div class="main_con_goods">
 		<ul id="main_con-goods-ul">
-
 		</ul>
 
 	</div>
@@ -62,12 +61,12 @@
 <!--删除弹窗 start-->
 <div class="del_tc">
 	<div class="del_tc_box">
-		<div class="del_tc_box_title">
+		<div class="del_tc_box_title" style="border: 1px solid #CCCCCC;">
 			确认删除此商品？
 		</div>
 		<div class="del_tc_box_content">
-			<input class="cancel" type="button" value="取消" onclick="del_goods_cancel()"/>
-			<input class="ok" type="button" value="确认" />
+			<input class="cancel" type="button" value="取消" id="del_goods_cancel"/>
+			<input class="ok" type="button" id="ok" value="确认" />
 		</div>
 	</div>
 </div>
@@ -81,15 +80,10 @@
 <div class="no_goods">
 	<img src="images/no_goods_ico.png" />
 	<p>购物车里没有东西哦~<br />快去商城逛逛吧！</p>
-	<a href="#">即刻添置</a>
+	<a href="index.html">即刻添置</a>
 </div>
 <!--无商品页面 end-->
 
-<div class="wx_nav" id="wx_nav">
-	<a href="javascript:;" class="nav_index" id="nav_index">首页</a>
-	<a href="javascript:;" class="nav_shopcart" id="nav_shopcart">购物车</a>
-	<a href="javascript:;" class="nav_me on" id="nav_me on">订单</a>
-</div>
 
 </body>
 

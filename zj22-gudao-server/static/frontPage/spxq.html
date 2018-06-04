@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,height=device-height, user-scalable=no,initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>商品详情</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/spxq.css"/>
+    <link rel="stylesheet" type="text/css" href="css/swipe.css">
+    <script src="js/jquery-1.11.2.js"></script>
+    <script type="text/javascript" src="js/touch.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/Product.js"></script>
+
+    <script>
+        var id = GetRequest();
+
+        $(function () {
+             $(document).on('click','#addCarBtn',function(){
+                 queryURl(Base.addCarUrl+''+id.id,function (data) {
+                     webToast("添加成功","middle",300);
+                 });
+                 
+             });
+
+            queryURl(Base.spxqUrl+''+id.id,function (data) {
+                var product = new Product({
+                    name:data.productName,
+                    info:data.productDescription,
+                    price:data.productPrice,
+                    images:[data.productIconOne,data.productIconTwo,data.productIconThree]
+                });
+                product.init();
+            });
+         })
+
+    </script>
+
+</head>
+<body>
+
+<div class="body">
+    <div class="tour">
+        <a href="javascript:history.go(-1);" class="tour1"><img src="images/back.png" alt="" style="height: 26px;width: 20px"></a>
+        <p>商品详情</p>
+    </div>
+    <figure>
+        <div class="addWrap">
+            <div class="swipe" id="mySwipe">
+                <div class="swipe-wrap" id="swip1">
+
+                </div>
+            </div>
+            <ul id="position">
+                <li class="cur"></li>
+                <li class=""></li>
+                <li class=""></li>
+            </ul>
+        </div>
+        <!-- 轮播 -->
+        <script src="js/swipe.js"></script>
+        <script type="text/javascript">
+            var bullets = document.getElementById('position').getElementsByTagName('li');
+            var banner = Swipe(document.getElementById('mySwipe'), {
+                auto: 3000,
+                continuous: true,
+                disableScroll:false,
+                callback: function(pos) {
+                    var i = bullets.length;
+                    while (i--) {
+                        bullets[i].className = ' ';
+                    }
+                    bullets[pos].className = 'cur';
+                }
+            });
+        </script>
+        <p id="proName">商品价格</p>
+        <div class="info">
+            <em class="sat">￥<span id="price"></span> </em>
+            <a href="javascript:false"><button type="button" class="btn" id="addCarBtn">加入购物车</button></a>
+        </div>
+    </figure>
+    <hr/>
+    <div class="sjxx">
+        <span class="pclass1" id="goodInfo"></span>
+    </div>
+    <hr/>
+    <div style="height: 5rem"></div>
+    <div class="wx_nav" id="wx_nav">
+        <a href="index.html;" class="nav_index" id="nav_index">首页</a>
+        <a href="shoppingCart.html" class="nav_shopcart" id="nav_shopcart">购物车</a>
+        <a href="order.html" class="nav_me on" id="nav_me on">订单</a>
+    </div>
+    <div class="theme-popover-mask"></div>
+</div>
+</body>
+</html>

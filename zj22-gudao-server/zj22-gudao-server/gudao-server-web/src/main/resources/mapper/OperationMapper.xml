@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="me.zj22.gudao.server.web.dao.db.OperationMapper" >
+  <resultMap id="BaseResultMap" type="me.zj22.gudao.server.web.pojo.dto.Operation">
+    <id column="op_id" jdbcType="INTEGER" property="opId" />
+    <result column="op_name" jdbcType="VARCHAR" property="opName" />
+    <result column="op_href" jdbcType="VARCHAR" property="opHref" />
+    <result column="op_code" jdbcType="VARCHAR" property="opCode" />
+    <result column="op_seq" jdbcType="VARCHAR" property="opSeq" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="op_pid" jdbcType="INTEGER" property="opPid" />
+    <result column="op_type" jdbcType="VARCHAR" property="opType" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    op_id, op_name, op_href, op_code, op_seq, description, op_pid, op_type
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from operation
+    where op_id = #{opId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from operation
+    where op_id = #{opId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="me.zj22.gudao.server.web.pojo.dto.Operation">
+    insert into operation (op_id, op_name, op_href,
+    op_code, op_seq, description,
+    op_pid, op_type)
+    values (#{opId,jdbcType=INTEGER}, #{opName,jdbcType=VARCHAR}, #{opHref,jdbcType=VARCHAR},
+    #{opCode,jdbcType=VARCHAR}, #{opSeq,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR},
+    #{opPid,jdbcType=INTEGER}, #{opType,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="me.zj22.gudao.server.web.pojo.dto.Operation">
+    insert into operation
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="opId != null">
+        op_id,
+      </if>
+      <if test="opName != null">
+        op_name,
+      </if>
+      <if test="opHref != null">
+        op_href,
+      </if>
+      <if test="opCode != null">
+        op_code,
+      </if>
+      <if test="opSeq != null">
+        op_seq,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="opPid != null">
+        op_pid,
+      </if>
+      <if test="opType != null">
+        op_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="opId != null">
+        #{opId,jdbcType=INTEGER},
+      </if>
+      <if test="opName != null">
+        #{opName,jdbcType=VARCHAR},
+      </if>
+      <if test="opHref != null">
+        #{opHref,jdbcType=VARCHAR},
+      </if>
+      <if test="opCode != null">
+        #{opCode,jdbcType=VARCHAR},
+      </if>
+      <if test="opSeq != null">
+        #{opSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="opPid != null">
+        #{opPid,jdbcType=INTEGER},
+      </if>
+      <if test="opType != null">
+        #{opType,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="me.zj22.gudao.server.web.pojo.dto.Operation">
+    update operation
+    <set>
+      <if test="opName != null">
+        op_name = #{opName,jdbcType=VARCHAR},
+      </if>
+      <if test="opHref != null">
+        op_href = #{opHref,jdbcType=VARCHAR},
+      </if>
+      <if test="opCode != null">
+        op_code = #{opCode,jdbcType=VARCHAR},
+      </if>
+      <if test="opSeq != null">
+        op_seq = #{opSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="opPid != null">
+        op_pid = #{opPid,jdbcType=INTEGER},
+      </if>
+      <if test="opType != null">
+        op_type = #{opType,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where op_id = #{opId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="me.zj22.gudao.server.web.pojo.dto.Operation">
+    update operation
+    set op_name = #{opName,jdbcType=VARCHAR},
+      op_href = #{opHref,jdbcType=VARCHAR},
+      op_code = #{opCode,jdbcType=VARCHAR},
+      op_seq = #{opSeq,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      op_pid = #{opPid,jdbcType=INTEGER},
+      op_type = #{opType,jdbcType=VARCHAR}
+    where op_id = #{opId,jdbcType=INTEGER}
+  </update>
+
+  <!--权限查询-->
+  <select id="findOperationByRoleId" parameterType="me.zj22.gudao.server.web.pojo.vo.Page" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM operation
+    WHERE  op_id in (SELECT op_id FROM role_permission WHERE role_id = #{KeyWord})
+  </select>
+
+  <!--未有的权限查询-->
+  <select id="findNoOperationByRoleId" parameterType="me.zj22.gudao.server.web.pojo.vo.Page" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM operation
+    WHERE op_id NOT IN (SELECT op_id FROM role_permission WHERE role_id = #{KeyWord})
+  </select>
+
+  <select id="findOperationCount" parameterType="me.zj22.gudao.server.web.pojo.vo.Page" resultType="java.lang.Integer">
+    SELECT
+      count(0)
+    FROM operation
+    WHERE op_id in (SELECT op_id FROM role_permission WHERE role_id = #{KeyWord})
+  </select>
+
+  <!-- 批量删除 -->
+  <delete id="delete">
+    delete from operation where op_id in
+    <foreach collection="array" open="(" close=")" separator="," item="pks">
+      #{pks}
+    </foreach>
+  </delete>
+</mapper>

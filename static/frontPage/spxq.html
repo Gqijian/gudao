@@ -9,80 +9,44 @@
     <link rel="stylesheet" type="text/css" href="css/swipe.css">
     <script src="js/jquery-1.11.2.js"></script>
     <script type="text/javascript" src="js/touch.js"></script>
+    <script src="js/common.js"></script>
     <script src="js/Product.js"></script>
 
     <script>
-        var soleData;
         var id = GetRequest();
-         queryGoodsInfo();
-         function queryGoodsInfo(){
-                 $.ajax({
-                    type:"get",
-                    url:'http://localhost:9876/gudao/product/productInfo?id='+id.id,
-                    dataType:"jsonp",
-                    jsonp:"cb",
-                    jsonpCallback:"callback",
-                    success:function (data) {
-                        var product = new Product({
-                         name:data.productName,
-                        info:data.productDescription,
-                        price:data.productPrice,
-                        images:[data.productIconOne,data.productIconTwo,data.productIconThree]
+        queryURl(Base.spxqUrl+''+id.id,function (data) {
+            var product = new Product({
+                name:data.productName,
+                info:data.productDescription,
+                price:data.productPrice,
+                images:[data.productIconOne,data.productIconTwo,data.productIconThree]
+            });
+            product.init();
+        });
+        $(function () {
+             $(document).on('click','#addCarBtn',function(){
+                 queryURl(Base.addCarUrl+''+id.id,function (data) {
+                     webToast("添加成功","middle",300);
                  });
-                        soleData = product;
-                 product.init();
-                 },error:function (e) {
-
-                 }
-             })
-         }
-        function GetRequest() {
-            var url = location.search;
-            console.log(url)//获取url中"?"符后的字串
-            var theRequest = new Object();
-            if (url.indexOf("?") != -1) {
-                var str = url.substr(1);
-                strs = str.split("&");
-                for (var i = 0; i < strs.length; i++) {
-                    theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
-                }
-            }
-            return theRequest;
-        }
-         $(function () {
-             $("#addCarBtn").click(function(){
-                 var id = GetRequest();
-                 var url = "http://localhost:9876/gudao/cart/add?num=1&id="+id.id;
-                 $.ajax({
-                     type:"get",
-                     url:url,
-                     success:function (data) {
-                         alert("添加成功");
-
-                         Location.href="shooppingCart.html";
-                     },error:function (e) {
-
-                     }
-                 })
-             })
+                 
+             });
          })
 
     </script>
+
 </head>
 <body>
 
 <div class="body">
     <div class="tour">
-        <a href="allGoods.html" class="tour1"><img src="images/back.png" alt="" style="height: 26px;width: 20px"></a>
+        <a href="javascript:history.go(-1);" class="tour1"><img src="images/back.png" alt="" style="height: 26px;width: 20px"></a>
         <p>商品详情</p>
     </div>
     <figure>
         <div class="addWrap">
             <div class="swipe" id="mySwipe">
                 <div class="swipe-wrap">
-                    <div><a href="javascript:;"><img class="img-responsive" src="images/4.jpg"/></a></div>
-                    <div><a href="javascript:;"><img class="img-responsive" src="images/12.jpg"/></a></div>
-                    <div><a href="javascript:;"><img class="img-responsive" src="images/1.jpg"/></a></div>
+
                 </div>
             </div>
             <ul id="position">
@@ -121,9 +85,9 @@
     <hr/>
     <div style="height: 5rem"></div>
     <div class="wx_nav" id="wx_nav">
-        <a href="javascript:;" class="nav_index" id="nav_index">首页</a>
+        <a href="index.html;" class="nav_index" id="nav_index">首页</a>
         <a href="shoppingCart.html" class="nav_shopcart" id="nav_shopcart">购物车</a>
-        <a href="javascript:;" class="nav_me on" id="nav_me on">订单</a>
+        <a href="order.html" class="nav_me on" id="nav_me on">订单</a>
     </div>
     <div class="theme-popover-mask"></div>
 </div>

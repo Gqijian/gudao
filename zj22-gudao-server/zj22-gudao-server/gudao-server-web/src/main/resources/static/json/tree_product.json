@@ -1,0 +1,109 @@
+[
+  {
+    "id": 1,
+    "text": "系统管理",
+    "state": "open",
+    "children": [
+      {
+        "id": 11,
+        "text": "角色管理",
+        "attributes": {
+          "url": "#"
+        }
+      },
+      {
+        "id": 12,
+        "text": "人员管理",
+        "attributes": {
+          "url": "#"
+        }
+      }
+    ]
+  },
+  {
+    "id": 2,
+   "url": "",
+    "state": "closed",
+    "text": "商品管理",
+    "attributes": {
+      "url": "../base/goURL/product/productList.action"
+    }
+  },
+  {
+    "id": 3,
+    "url": "",
+    "state": "closed",
+    "text": "邮费管理",
+    "attributes": {
+      "url": ""
+    }
+  },
+  {
+    "id": 4,
+    "url": "",
+    "state": "open",
+    "text": "订单管理",
+    "children": [
+      {
+        "id": 13,
+        "url": "",
+        "text": "未付款",
+        "attributes": {
+          "url": "orderManagement/nonPay.html"
+        }
+      },
+      {
+        "id": 14,
+        "url": "",
+        "text": "付款成功",
+        "attributes": {
+          "url": "orderManagement/payment.html"
+        }
+      },
+      {
+        "id": 15,
+        "url": "",
+        "text": "已退款",
+        "attributes": {
+          "url": "orderManagement/refund.html"
+        }
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "url": "",
+    "state": "open",
+    "text": "返点管理",
+    "children": [
+      {
+        "id": 16,
+        "url": "",
+        "text": "返点比例",
+        "attributes": {
+          "url": "rebateManagement/rebateScale.html"
+        }
+      },
+      {
+        "id": 17,
+        "url": "",
+        "text": "红包返现",
+        "attributes": {
+          "url": "rebateManagement/returnCash.html"
+        }
+      },
+      {
+        "id": 18,
+        "url": "",
+        "text": "历史点数",
+        "attributes": {
+          "url": "rebateManagement/historyRebate.html"
+        }
+      },{
+        "id":100,
+        "text":"退出",
+        "iconCls":"icon-exit"
+      }
+    ]
+  }
+]

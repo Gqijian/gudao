@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="me.zj22.gudao.server.web.dao.db.RolePermissionMapper" >
+  <resultMap id="BaseResultMap" type="me.zj22.gudao.server.web.pojo.dto.RolePermission" >
+    <result column="role_id" property="roleId" jdbcType="INTEGER" />
+    <result column="op_id" property="opId" jdbcType="INTEGER" />
+  </resultMap>
+  <insert id="insert" parameterType="me.zj22.gudao.server.web.pojo.dto.RolePermission" >
+    insert into role_permission (role_id, op_id)
+    values (#{roleId,jdbcType=INTEGER}, #{opId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="me.zj22.gudao.server.web.pojo.dto.RolePermission" >
+    insert into role_permission
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="roleId != null" >
+        role_id,
+      </if>
+      <if test="opId != null" >
+        op_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="roleId != null" >
+        #{roleId,jdbcType=INTEGER},
+      </if>
+      <if test="opId != null" >
+        #{opId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+
+  <!-- 批量删除 collection的值为pks，是传入的参数Map的key-->
+  <delete id="delete">
+    delete from role_permission where role_id = #{roleId} AND  op_id in
+    <foreach collection="pks" open="(" close=")" separator="," item="ids">
+      #{ids}
+    </foreach>
+  </delete>
+
+  <!--根据role_id删除-->
+  <delete id="deleteByRoleId" parameterType="java.lang.Integer">
+    delete from role_permission where role_id = #{roleId}
+  </delete>
+
+</mapper>

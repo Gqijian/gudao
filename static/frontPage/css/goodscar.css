@@ -103,8 +103,8 @@ a{ text-decoration:none;color:#030000;}
 }
 .main_con_goods ul li div .money .add{
 	width: 24px;
-	height: 24px;
-	line-height: 24px;
+	height: 22px;
+	line-height: 20px;
 	margin-left: -1px;
 	position: relative;
 	z-index: 1;
@@ -115,8 +115,8 @@ a{ text-decoration:none;color:#030000;}
 }
 .main_con_goods ul li div .money .del{
 	width: 24px;
-	height: 24px;
-	line-height: 24px;
+	height: 22px;
+	line-height: 20px;
 	margin-right: -1px;
 	position: relative;
 	z-index: 1;
@@ -231,6 +231,11 @@ a{ text-decoration:none;color:#030000;}
 	margin-bottom: 50px;
 	text-align: center;
 	display: none;
+}
+.no_goods img{
+	display: initial;
+	width: 100px;
+	height: 100px;
 }
 .no_goods p{
 	line-height: 24px;

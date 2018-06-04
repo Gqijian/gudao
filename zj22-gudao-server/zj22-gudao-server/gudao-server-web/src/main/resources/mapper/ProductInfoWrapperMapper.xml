@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="me.zj22.gudao.server.web.dao.db.wrap.ProductInfoWrapperMapper" >
+  <resultMap id="BaseResultMap" type="me.zj22.gudao.server.web.pojo.dto.ProductInfo" >
+    <id column="product_id" property="productId" jdbcType="INTEGER" />
+    <result column="product_name" property="productName" jdbcType="VARCHAR" />
+    <result column="product_icon_one" property="productIconOne" jdbcType="VARCHAR" />
+    <result column="product_icon_two" property="productIconTwo" jdbcType="VARCHAR" />
+    <result column="product_icon_three" property="productIconThree" jdbcType="VARCHAR" />
+    <result column="product_price" property="productPrice" jdbcType="DECIMAL" />
+    <result column="cost" property="cost" jdbcType="INTEGER" />
+    <result column="weight" property="weight" jdbcType="INTEGER" />
+    <result column="product_status" property="productStatus" jdbcType="TINYINT" />
+    <result column="product_about" property="productAbout" jdbcType="VARCHAR" />
+    <result column="product_stock" property="productStock" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="BIGINT" />
+    <result column="creat_user" property="creatUser" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="BIGINT" />
+    <result column="update_user" property="updateUser" jdbcType="VARCHAR" />
+  </resultMap>
+
+
+  <select id="findPageList" resultMap="BaseResultMap" parameterType="me.zj22.gudao.server.web.pojo.vo.Page">
+    SELECT
+      product_id, product_name, product_icon_one, product_icon_two, product_icon_three,
+      product_price, cost, weight, product_status, product_about, product_stock, create_time,
+      creat_user, update_time, update_user
+    FROM
+      product_info WHERE product_name like #{keyWord} limit #{start},#{rows}
+  </select>
+
+  <select id="findCount" resultType="java.lang.Integer" parameterType="me.zj22.gudao.server.web.pojo.vo.Page">
+    SELECT COUNT(0) FROM product_info WHERE  product_name like #{keyWord}
+  </select>
+
+  <select id="findAllProducts" resultMap="BaseResultMap">
+    SELECT * FROM product_info;
+  </select>
+
+  <!-- 批量删除用户 -->
+  <delete id="delete">
+  delete from product_info where product_id in
+  <foreach collection="array" open="(" close=")" separator="," item="pks">
+    #{pks}
+  </foreach>
+  </delete>
+
+</mapper>

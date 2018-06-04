@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,height=device-height, user-scalable=no,initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>商品详情</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/pay.css"/>
+    <script src="js/jquery-1.11.2.js"></script>
+    <script src="js/common.js"></script>
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <script>
+
+        var pruData;//储存商品信息;
+        var addressInfo;//储存地址信息;
+        var ids = GetRequest();
+        //配置微信支付js信息
+        var configData=[];
+        var ajaxData={
+            url:Base.wxConfUrl+''+ids.orderId,
+            type:'get',
+            dataType:'jsonp',
+            jsonp:"cb",
+            jsonpCallback:"callback",
+            success:function(data)
+            {
+                if(data==null){
+                    alert('null');
+                }else {
+                    wx.config({
+                        debug: true,
+                        appId: data["appId"],
+                        timestamp: data["timestamp"],
+                        nonceStr: data["nonceStr"],
+                        signature: data["signature"],
+                        jsApiList: [
+                            'checkJsApi',
+                            'editAddress',
+                            'chooseWXPay',
+                            'getLatestAddress',
+                            'openCard',
+                            'getLocation'
+                        ]
+                    });
+                }
+            },
+            error:function() {
+                /*alert('error');*/
+            }
+        };
+        $.ajax(ajaxData);//获取configData
+
+
+
+        $(function(){
+
+            //查询订单信息
+            queryURl(Base.orderInfoUrl+''+ids.orderId,function (data) {
+                pruData = data;
+                var str = "";
+                for (var i=0;i<data.orderDetailList.length;i++){
+                    str+='<div class="zfdd clearfloat">';
+                    str+='<ul>';
+                    str+='<li class="li1"><div><img src="'+data.orderDetailList[i].productIconOne+'" style="width: 60px;height: 60px"/></div></li>';
+                    str+='<li class="li2"><div>'+data.orderDetailList[i].productName+'</div></li>';
+                    str+='<li class="li3"> <span>×1</span><br/>￥<span style="color: red">'+data.orderDetailList[i].price+'</span></li>';
+                    str+='</ul>';
+                    str+='</div>';
+                }
+                $(".all-zfdd").html(str);
+                $("#all_prices").html(data.orderAmount);
+            });
+            $('#address1').click(function(){
+                wx.openAddress({
+                    success: function (res) {
+                        addressInfo={
+                        userName:res.userName,
+                        telNumber:res.telNumber,
+                        provinceName: res.provinceName,
+                        cityName: res.cityName,
+                        postalCode: res.postalCode,
+                        detailInfo:res.detailInfo
+                        },
+                        $("#address1").css("display","none");
+                        var userName = res.userName; // 收货人姓名
+                        var detailInfo = res.detailInfo; // 详细收货地址信息
+                        var telNumber = res.telNumber; // 收货人手机号码
+                        $("#span1 > span").eq(0).html(userName);
+                        $("#span1 > span").eq(1).html(telNumber);
+                        $("#span2 > span").html(detailInfo);
+                        $("#address2").css("display","block");
+                        var orderDTO  = {
+                            orderId:ids.orderId,
+                            receiverName:addressInfo.userName,
+                            receiverPhone:addressInfo.telNumber,
+                            prov:addressInfo.provinceName,
+                            city:addressInfo.cityName,
+                            county:'中国',
+                            address:addressInfo.detailInfo,
+                            zipcode:addressInfo.postalCode
+                        };
+                        postUrl(Base.yfUrl,orderDTO,function (data) {
+                            $('#yfPrice').html(data.postage);
+                            $("#all_prices").html(data.orderAmount);
+
+                        })
+                   }
+                });
+
+            });
+
+            $('#address2').click(function(){
+                wx.openAddress({
+                    success: function (res) {
+                        addressInfo={
+                            userName:res.userName,
+                            telNumber:res.telNumber,
+                            provinceName: res.provinceName,
+                            cityName: res.cityName,
+                            postalCode: res.postalCode,
+                            detailInfo:res.detailInfo
+                        };
+                        var userName = res.userName; // 收货人姓名
+                        var detailInfo = res.detailInfo; // 详细收货地址信息
+                        var telNumber = res.telNumber; // 收货人手机号码
+                        $("#span1 > span").eq(0).html(userName);
+                        $("#span1 > span").eq(1).html(telNumber);
+                        $("#span2 > span").html(detailInfo);
+                        var orderDTO  = {
+                            orderId:ids.orderId,
+                            receiverName:addressInfo.userName,
+                            receiverPhone:addressInfo.telNumber,
+                            prov:addressInfo.provinceName,
+                            city:addressInfo.cityName,
+                            county:'中国',
+                            address:addressInfo.detailInfo,
+                            zipcode:addressInfo.postalCode
+                        };
+                        postUrl(Base.yfUrl,orderDTO,function (data) {
+                            $('#yfPrice').html(data.postage);
+                            $("#all_prices").html(data.orderAmount);
+
+                        })
+                    }
+                });
+
+            });
+
+            $("#btn3").click(function () {
+            var orderDTO  = {
+            		orderId:ids.orderId,
+                    receiverName:addressInfo.userName,
+                    receiverPhone:addressInfo.telNumber,
+                    prov:addressInfo.provinceName,
+                    city:addressInfo.cityName,
+                    county:'中国',
+                    address:addressInfo.detailInfo,
+                    zipcode:addressInfo.postalCode,
+                    postage: $('#yfPrice').html()
+                };
+                postUrl(Base.orderUpdata,orderDTO,function (data) {
+                    location.href="http://yuanpeng.free.ngrok.cc/gudao/pay/create?orderId="+ids.orderId+"&returnUrl=http://yuanpeng.free.ngrok.cc/gudao/pay/notify";
+                });
+            });
+        });
+
+
+    </script>
+
+
+
+</head>
+<body>
+<div class="body">
+    <!--确认订单、送货上门、到店自取 start-->
+    <div class="tour">
+        <a href="javascript:history.go(-1)" class="tour1"><img src="images/back.png" alt="" style="height: 26px;width: 20px"></a>
+        <p>订单确认</p>
+    </div>
+    <!--<div class="header3">
+        <a href="javascript:;" class="shsm"><button type="button" id="btn1">送货上门</button></a>
+        <a href="javascript:;" class="ddzq"><button type="button" id="btn2">到店自取</button></a>
+    </div>-->
+    <!--确认订单、送货上门、到店自取 end-->
+
+    <div>
+        <div id="address1" class="address">
+            <a href="#" class="daohang"><img src="images/timg.jpg" alt="" style="width: 40px;display: inline-block" /></a>
+            <div  style="text-align: center;line-height: 5rem;">
+                添加收货地址
+            </div>
+            <a href="javascript:;" class="xdz">&gt;</a>
+        </div>
+        <!--地址 start-->
+        <div class="address" id="address2">
+            <a href="#" class="daohang"><img src="images/timg.jpg" alt="" style="width: 40px;display: inline-block" /></a>
+            <div class="caizhu">
+                <p class="person" id="span1">收货人：<span>呵呵呵</span>&nbsp;&nbsp;  电话<span>sfsfsdfsf</span></p><br/>
+                <p class="diqiu" id="span2">收货地址：<span>拉拉啦啦啦啦阿拉啦啦拉啊</span></p>
+            </div>
+            <a href="javascript:;" class="xdz">&gt;</a>
+        </div>
+        <!--地址 end-->
+    </div>
+
+    <!--商铺地址 start-->
+    <div class="address2" id="spdz">
+        <a href="#" class="daohang"><img src="images/timg.jpg" alt="" style="width: 40px;display: inline-block" /></a>
+        <div class="caizhu">
+            <p class="store" id="span3">店铺电话：12345678</p><br/>
+            <p class="saddress" id="span4">店铺地址：撒大师傅犯得上发射点发射点犯</p>
+        </div>
+        <a href="javascript:;" class="xdz">&gt;</a>
+    </div>
+    <!--商铺地址 end-->
+
+    <!--支付订单展示 start -->
+    <div class="hbt" style="width: 100%;height: 1rem;background-color:lightgrey"></div>
+    <div class="all-zfdd">
+
+       <!-- <div class="zfdd clearfloat">
+            <ul>
+                <li class="li1">
+                    <div><img src="images/thing.png" style="width: 60px;height: 60px"/></div>
+                </li>
+                <li class="li2"><div>法式小面包法式小面包法式小面包</div></li>
+                <li class="li3"><span>×1</span><br/>￥<span style="color: red" data-good_price="100.00">100.00</span></li>
+            </ul>
+        </div>-->
+    </div>
+    <div class="yunfei" id="yunfei">
+        <ul>
+            <li class="yunli">运费</li>
+            <li class="qianli">￥&nbsp;<span id="yfPrice">8.00</span></li>
+        </ul>
+    </div>
+    <!--支付订单 end-->
+
+
+    <!--商家留言-->
+    <div class="sjly">
+        <input type="text" placeholder="给商家留言"/>
+    </div>
+
+    <!--总计费用-->
+    <div class="zjfy">
+        <div class="fy">
+            <p><span style="color: #000000">合计：</span><span id="all_prices">￥208</span></p>
+        </div>
+    </div>
+</div>
+<div class="footing">
+    <ul>
+        <li class="li7">
+           <button type="button" id="btn3">去支付</button>
+        </li>
+    </ul>
+</div>
+</body>
+</html>

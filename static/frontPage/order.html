@@ -1,173 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Title</title>
+    <title>所有订单</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/style.css">
     <script type="text/javascript" src="js/jquery-1.11.2.js"></script>
-    <script type="text/javascript" src="js/goodscar.js"></script>
-    <link rel="stylesheet" href="css/orderdetail.css">
+    <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript" src="js/order.js"></script>
 </head>
 <body>
-    <!--头部信息start-->
-    <header>
-        <div class="head_info">
-            <a href="01.html" class="head_info_return">
-                <img src="images/head_returnIcon.png" />
-            </a>
-            <span class="title">订单详情</span>
-        </div>
-    </header>
-    <!--头部信息end-->
-    <div style="height: 20px;background: #CCCCCC;"></div>
-    <!--商品信息 start-->
-    <div class="goodsinfo">
-        <div class="shop-title" style="font-size: 120%;border-bottom: 1px solid #dcdcdc;padding: 2% 2%;">
-            <img src="images/u16.png" style="width: 12px;height: 12px;" alt="">
-            大别山土菜馆
-        </div>
-        <div class="goods-list ">
-            <ul class="clearfix">
-                <!-- <li class="goods-img">
-                     <div><img src="images/u16.png" style="width: 60px;height: 60px;margin-left: 5%;"/></div>
-                 </li>-->
-                <li class="li1">
-                    <div>法式小面包法式小面包法式小面包</div>
-                </li>
-                <li class="li2">
-                    <span>×1</span>
-                </li>
-                <li class="li3">
-                    ￥<span style="color: #4f4d4f" data-good_price="100.00">100.00</span>
-                </li>
-            </ul>
-        </div>
-        <div class="goods-list ">
-            <ul class="clearfix">
-                <!-- <li class="goods-img">
-                     <div><img src="images/u16.png" style="width: 60px;height: 60px;margin-left: 5%;"/></div>
-                 </li>-->
-                <li class="li1">
-                    <div>法式小面包法式小面包法式小面包</div>
-                </li>
-                <li class="li2">
-                    <span>×1</span>
-                </li>
-                <li class="li3">
-                    ￥<span style="color: #4f4d4f" data-good_price="100.00">100.00</span>
-                </li>
-            </ul>
-        </div>
-
-        <div class="goods-privilege" style="color: #CA7535;border-bottom: 1px dashed #CCCCCC;">
-            <ul class="clearfix">
-                <li class="li1">
-                    优惠卷优惠立减
-                </li>
-                <li class="li3">
-                    -￥<span style="color: #CA7535" data-good_price="100.00">100.00</span>
-                </li>
-            </ul>
-        </div>
-        <div class="all-money" style="color: #CA7535;">
-            <ul class="clearfix">
-                <li class="li1"><a href="#" class="more">再来一单</a></li>
-                <li class="li3" style="color: #CA7535">
-                    合计￥<span>100</span>
-                </li>
-            </ul>
-        </div>
+    <div class="tour">
+        <a href="#" class="tour1"><img src="images/back.png" alt="" style="height: 26px;width: 20px"></a>
+        <p>全部订单</p>
     </div>
-    <!--商品信息 end-->
-
-    <div style="height: 20px;background: #CCCCCC;"></div>
-
-    <!--配送方式 start-->
-    <div style="font-size: 90%;">
-        <ul>
-            <li>
-                <div class="delivery-method"><h4>配送方式</h4></div>
-            </li>
-            <li>
-                <div class="delivery-method last">
-                    <span>配送方式：</span>
-                    <span>商家配送</span>
+    <div class="hint">未支付订单将在三十分钟后自动关闭交易</div>
+    <div class="container">
+        <figure class="disable">
+            <div class="orderHeader">
+                <div class="fl">
+                    <div>店铺：酱豆</div>
+                    <div>订单编号：<span class="orderId">E201831512564563165</span></div>
                 </div>
-            </li>
-        </ul>
-    </div>
-    <!--配送方式 end-->
-
-    <div style="height: 18px;background: #CCCCCC;"></div>
-
-    <!--订单详情 start-->
-    <div class="order-details">
-        <ul class="clearfix" style="padding:2%;padding-left: 5%;color: #949494;">
-            <li class="clearfix last">
-                <div class="fl" style="color: #000;">
-                    <h4>订单详情</h4>
+                <div class="fr">
+                    订单状态：<span class="orderState">交易关闭</span>
+                    <span class="orderTime">
+                        <span>20</span>
+                        <span>:</span>
+                        <span>00</span>
+                        <span></span>
+                    </span>
                 </div>
-                <div class="fr" style="font-size: 80%;color: #949494;">
-                    订单号：<span>1009 4014 5667 4349 79</span>
+            </div>
+            <div class="orderInfo clearfloat">
+                <ul class="clearfloat">
+                    <li class="li1">
+                        <div><img src="images/u61.png" alt=""style="width: 60px;height: 60px"></div>
+                    </li>
+                    <li class="li2">
+                        <span>法式小面包法式小面包法式小面包</span>
+                    </li>
+                    <li class="li3">
+                        <span class="num">×1</span><br/>￥<span style="color: red" data-good_price="100.00">100.00</span>
+                    </li>
+                </ul>
+                <ul class="clearfloat">
+                    <li class="li1">
+                        <div><img src="images/u61.png" alt=""style="width: 60px;height: 60px"></div>
+                    </li>
+                    <li class="li2">
+                        <span>法式小面包法式小面包法式小面包</span>
+                    </li>
+                    <li class="li3">
+                        <span>×1</span><br/>￥<span style="color: red" data-good_price="100.00">100.00</span>
+                    </li>
+                </ul>
+                <div>总价：<span id="allPrice">1000</span></div>
+            </div>
+
+        </figure>
+        <figure class="disable">
+            <div class="orderHeader">
+                <div class="fl">
+                    <div>店铺：酱豆</div>
+                    <div>订单编号：<span class="orderId">E201831512564563165</span></div>
                 </div>
-            </li>
-            <li >
-                联系人：<span>贺琪恒 先生</span>
-            </li>
-            <li>
-                联系电话：<spa>13636532283</spa>
-            </li>
-            <li>
-                收货地址：<span>泪湿的衣洗干净阳光里晒干回忆200米</span>
-            </li>
-            <li>
-                支付方式：<span>在线支付</span>
-            </li>
-            <li>
-                下单时间：<span>2017-06-08 19:48</span>
-            </li>
-            <li>
-                送达时间：<span>尽快送达</span>
-            </li>
-        </ul>
+                <div class="fr">
+                    订单状态：<span class="orderState">交易关闭</span>
+                </div>
+            </div>
+            <div class="orderInfo clearfloat">
+                <ul class="clearfloat">
+                    <li class="li1">
+                        <div><img src="images/u61.png" alt=""style="width: 60px;height: 60px"></div>
+                    </li>
+                    <li class="li2">
+                        <span>法式小面包法式小面包法式小面包</span>
+                    </li>
+                    <li class="li3">
+                        <span class="num">×1</span><br/>￥<span style="color: red" data-good_price="100.00">100.00</span>
+                    </li>
+                </ul>
+                <ul class="clearfloat">
+                    <li class="li1">
+                        <div><img src="images/u61.png" alt=""style="width: 60px;height: 60px"></div>
+                    </li>
+                    <li class="li2">
+                        <span>法式小面包法式小面包法式小面包</span>
+                    </li>
+                    <li class="li3">
+                        <span class="num">×1</span><br/>￥<span style="color: red" data-good_price="100.00">100.00</span>
+                    </li>
+                </ul>
+                <div>总价：<span class="allPrice">1000</span></div>
+            </div>
+
+        </figure>
     </div>
-    <!--订单详情 end-->
-    <!--退单 评价 start-->
-    <div class="evaluate">
-            <botton class="fr">退单</botton>
-            <botton class="fr" style="background: #FF6102;">评价</botton>
+    <div class="footer">
+        <div>
+            <span>( ⊙ o ⊙ )啊哦！没有更多订单了</span>
         </div>
     </div>
-    <!--退单 评价 end-->
-    <script>
-        $(function () {
-            // 获取顶部 top 的高度值
-            var topHeight = $(".top").height();
-
-            // 监听浏览器的滚动事件
-            $(window).scroll(function () {
-                var docScrollTop = $(document).scrollTop();
-                //console.log(docScrollTop);
-                // 判断一下 docScrollTOp 和 topHeight两个大小
-                // 文档被卷去的高度 大于或等于 top高度的时候
-                // 让导航栏变成固定定位
-                if(docScrollTop >= topHeight) {
-                    $(".nav").css({
-                        "position": "fixed",
-                        "top": 0
-                    });
-
-                    $(".main").css("margin-top" ,$(".nav").height());
-                } else {
-                    // 让固定导航栏变为默认状态 position: static
-                    $(".nav").css({
-                        "position": "static"
-                    });
-                    $(".main").css("margin-top" ,0);
-                }
-            });
-        });
-
-    </script>
 </body>
 </html>
